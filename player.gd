@@ -53,23 +53,24 @@ func check_for_walls():
 	wall_is_right = ray_right.is_colliding()
 	
 func try_grid_movement(axis,direction):
-	var moved_direction = check_direction(direction)
-	
-	if move_state == move_states.MOVABLE:
-		if is_on_floor():
-			match moved_direction:
-				move_directions.FORWARD:
-					if not wall_is_forward:
-						grid_movement(axis)
-				move_directions.BACK:
-					if not wall_is_back:
-						grid_movement(axis)
-				move_directions.LEFT:
-					if not wall_is_left:
-						grid_movement(axis)
-				move_directions.RIGHT:
-					if not wall_is_right:
-						grid_movement(axis)
+	if can_move():
+		var moved_direction = check_direction(direction)
+		match moved_direction:
+			move_directions.FORWARD:
+				if not wall_is_forward:
+					grid_movement(axis)
+			move_directions.BACK:
+				if not wall_is_back:
+					grid_movement(axis)
+			move_directions.LEFT:
+				if not wall_is_left:
+					grid_movement(axis)
+			move_directions.RIGHT:
+				if not wall_is_right:
+					grid_movement(axis)
+
+func can_move():
+	return move_state == move_states.MOVABLE and is_on_floor()
 		
 func check_direction(direction):
 	match direction:
