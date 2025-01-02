@@ -45,10 +45,10 @@ size = Vector3(29, 1, 8)
 size = Vector3(88.225, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
-size = Vector3(8, 1, 1)
+size = Vector3(9, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_337bg"]
-size = Vector3(8, 1, 1)
+size = Vector3(9, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -165,7 +165,6 @@ skeleton = NodePath("../../..")
 [node name="Platform" type="Area3D" parent="Debug/Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -8)
 script = ExtResource("4_xc556")
-collision_type = 4
 
 [node name="mesh" type="MeshInstance3D" parent="Debug/Platforms/Platform"]
 mesh = SubResource("BoxMesh_0y23v")
@@ -178,3 +177,5 @@ unique_name_in_owner = true
 
 [node name="collision" type="CollisionShape3D" parent="Debug/Platforms/Platform/Ground_platform"]
 shape = SubResource("BoxShape3D_337bg")
+
+[node name="Enemies" type="Node3D" parent="Debug"]

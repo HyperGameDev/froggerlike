@@ -1,14 +1,13 @@
 extends Detectable
 
-class_name Platform
+class_name Enemy
 
-@onready var ground: AnimatableBody3D = %Ground_platform
 
 @export var is_moving: bool = true
 @export var speed: float = 1.
 
 func _ready() -> void:
-	collision_type = collision_types.PLATFORM
+	collision_type = collision_types.ENEMY
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -18,20 +17,10 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		var movement_rate: float = speed * delta
 		move_platform(movement_rate)
-		
-	if alignment_check():
-		print(self.name," is aligned with ",player.name)
-		if not player_landed:
-			player_landed = true
-			player_just_landed()
-	else:
-		if player_landed:
-			player_landed = false
-			player_just_left()
+
 	
 func move_platform(movement_rate):
-	ground.global_position.x += movement_rate
-	self.global_position.x = ground.global_position.x
+	self.global_position.x += movement_rate
 
 
 func player_just_landed():
