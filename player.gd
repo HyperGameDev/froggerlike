@@ -44,6 +44,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	check_for_walls()
 	
+	move_and_slide()
+	
 func check_for_walls():
 	wall_is_forward = ray_forward.is_colliding()
 	wall_is_back = ray_back.is_colliding()
@@ -54,19 +56,20 @@ func try_grid_movement(axis,direction):
 	var moved_direction = check_direction(direction)
 	
 	if move_state == move_states.MOVABLE:
-		match moved_direction:
-			move_directions.FORWARD:
-				if not wall_is_forward:
-					grid_movement(axis)
-			move_directions.BACK:
-				if not wall_is_back:
-					grid_movement(axis)
-			move_directions.LEFT:
-				if not wall_is_left:
-					grid_movement(axis)
-			move_directions.RIGHT:
-				if not wall_is_right:
-					grid_movement(axis)
+		if is_on_floor():
+			match moved_direction:
+				move_directions.FORWARD:
+					if not wall_is_forward:
+						grid_movement(axis)
+				move_directions.BACK:
+					if not wall_is_back:
+						grid_movement(axis)
+				move_directions.LEFT:
+					if not wall_is_left:
+						grid_movement(axis)
+				move_directions.RIGHT:
+					if not wall_is_right:
+						grid_movement(axis)
 		
 func check_direction(direction):
 	match direction:

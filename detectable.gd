@@ -8,6 +8,7 @@ enum collision_types {
 	BONUS_END,
 	BONUS_CARRY,
 	FINISH,
+	PLATFORM,
 	}
 	
 
