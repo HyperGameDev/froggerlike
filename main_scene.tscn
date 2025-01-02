@@ -1,9 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=24 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0i62y"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
 [ext_resource type="Script" path="res://boundaries.gd" id="2_pcsaw"]
-[ext_resource type="Script" path="res://platform.gd" id="4_xc556"]
+[ext_resource type="PackedScene" uid="uid://bqeblvhwekkri" path="res://platform-1_00.tscn" id="4_c0dlx"]
+[ext_resource type="Script" path="res://enemy.gd" id="5_3u414"]
+[ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-3_00.tscn" id="5_vak1a"]
+[ext_resource type="PackedScene" uid="uid://bgjk518k86wey" path="res://platform-2_00.tscn" id="6_o78nf"]
+[ext_resource type="PackedScene" uid="uid://cr3oxpcycmfx8" path="res://platform-5_00.tscn" id="6_vsurg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,11 +48,11 @@ size = Vector3(29, 1, 8)
 [sub_resource type="BoxMesh" id="BoxMesh_x8n22"]
 size = Vector3(88.225, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
-size = Vector3(9, 1, 1)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_an62r"]
+height = 3.3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_337bg"]
-size = Vector3(9, 1, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4yfvf"]
+height = 3.3
 
 [node name="Node3D" type="Node3D"]
 
@@ -75,26 +79,58 @@ skeleton = NodePath("../..")
 [node name="collision" type="CollisionShape3D" parent="Player"]
 shape = SubResource("BoxShape3D_0j0yx")
 
-[node name="ray_forward" type="RayCast3D" parent="Player"]
+[node name="ray_forward_l" type="RayCast3D" parent="Player"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49, 0, 0)
 target_position = Vector3(0, 0, -0.5)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="ray_back" type="RayCast3D" parent="Player"]
+[node name="ray_forward_r" type="RayCast3D" parent="Player"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49, 0, 0)
+target_position = Vector3(0, 0, -0.5)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ray_back_l" type="RayCast3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49, 0, 0)
 target_position = Vector3(0, 0, 0.5)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="ray_left" type="RayCast3D" parent="Player"]
+[node name="ray_back_r" type="RayCast3D" parent="Player"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49, 0, 0)
+target_position = Vector3(0, 0, 0.5)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ray_left_l" type="RayCast3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49)
 target_position = Vector3(-0.5, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="ray_right" type="RayCast3D" parent="Player"]
+[node name="ray_left_r" type="RayCast3D" parent="Player"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.49)
+target_position = Vector3(-0.5, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ray_right_l" type="RayCast3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.49)
+target_position = Vector3(0.5, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ray_right_r" type="RayCast3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49)
 target_position = Vector3(0.5, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
@@ -162,20 +198,37 @@ skeleton = NodePath("../../..")
 
 [node name="Platforms" type="Node3D" parent="Debug"]
 
-[node name="Platform" type="Area3D" parent="Debug/Platforms"]
+[node name="Platform-1_00" parent="Debug/Platforms" instance=ExtResource("4_c0dlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -12)
+direction = -1
+
+[node name="Platform-5_00" parent="Debug/Platforms" instance=ExtResource("6_vsurg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -10)
+speed = 1.5
+direction = 1
+
+[node name="Platform-3_00" parent="Debug/Platforms" instance=ExtResource("5_vak1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -8)
-script = ExtResource("4_xc556")
+speed = 1.0
+direction = -1
 
-[node name="mesh" type="MeshInstance3D" parent="Debug/Platforms/Platform"]
-mesh = SubResource("BoxMesh_0y23v")
-
-[node name="collision" type="CollisionShape3D" parent="Debug/Platforms/Platform"]
-shape = SubResource("BoxShape3D_337bg")
-
-[node name="Ground_platform" type="AnimatableBody3D" parent="Debug/Platforms/Platform"]
-unique_name_in_owner = true
-
-[node name="collision" type="CollisionShape3D" parent="Debug/Platforms/Platform/Ground_platform"]
-shape = SubResource("BoxShape3D_337bg")
+[node name="Platform-2_00" parent="Debug/Platforms" instance=ExtResource("6_o78nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -9)
+speed = 1.2
+direction = 1
 
 [node name="Enemies" type="Node3D" parent="Debug"]
+
+[node name="Enemy" type="Area3D" parent="Debug/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.6, -6)
+script = ExtResource("5_3u414")
+speed = 1.0
+direction = -1
+
+[node name="mesh" type="MeshInstance3D" parent="Debug/Enemies/Enemy"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_an62r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Debug/Enemies/Enemy"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4yfvf")
