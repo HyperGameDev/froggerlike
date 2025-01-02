@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=20 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0i62y"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
 [ext_resource type="Script" path="res://boundaries.gd" id="2_pcsaw"]
-[ext_resource type="Script" path="res://detectable.gd" id="4_8wky6"]
+[ext_resource type="Script" path="res://platform.gd" id="4_xc556"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +20,13 @@ tonemap_mode = 2
 [sub_resource type="BoxMesh" id="BoxMesh_3ptw0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0j0yx"]
+size = Vector3(0.999, 1, 0.999)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vgdm5"]
+size = Vector2(29, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4mdq"]
+albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0yht1"]
 size = Vector2(29, 8)
@@ -93,9 +100,9 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Ground_lower" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
-mesh = SubResource("PlaneMesh_0yht1")
-surface_material_override/0 = SubResource("StandardMaterial3D_q71l3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.9, -11.5)
+mesh = SubResource("PlaneMesh_vgdm5")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4mdq")
 
 [node name="Rows_0-7" type="Node3D" parent="."]
 
@@ -157,7 +164,7 @@ skeleton = NodePath("../../..")
 
 [node name="Platform" type="Area3D" parent="Debug/Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -8)
-script = ExtResource("4_8wky6")
+script = ExtResource("4_xc556")
 collision_type = 4
 
 [node name="mesh" type="MeshInstance3D" parent="Debug/Platforms/Platform"]
@@ -166,7 +173,8 @@ mesh = SubResource("BoxMesh_0y23v")
 [node name="collision" type="CollisionShape3D" parent="Debug/Platforms/Platform"]
 shape = SubResource("BoxShape3D_337bg")
 
-[node name="Ground_platform" type="StaticBody3D" parent="Debug/Platforms/Platform"]
+[node name="Ground_platform" type="AnimatableBody3D" parent="Debug/Platforms/Platform"]
+unique_name_in_owner = true
 
 [node name="collision" type="CollisionShape3D" parent="Debug/Platforms/Platform/Ground_platform"]
 shape = SubResource("BoxShape3D_337bg")
