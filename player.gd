@@ -11,6 +11,8 @@ enum move_directions {FORWARD,BACK,LEFT,RIGHT}
 @export var move_state: move_states
 enum move_states {MOVABLE,MOVING}
 
+@onready var animation: AnimationTree = get_tree().get_current_scene().get_node("Player/human_03_00/AnimationTree")
+
 @onready var ray_forward_l: RayCast3D = %ray_forward_l
 @onready var ray_forward_r: RayCast3D = %ray_forward_r
 var wall_is_forward: bool = false
@@ -112,6 +114,8 @@ func check_direction(direction):
 		
 	
 func grid_movement(axis):
+	animation.set("parameters/Transition/transition_request", "running")
+	
 	if axis == "x" or axis == "z":
 		move_state = move_states.MOVING
 		
@@ -136,7 +140,11 @@ func grid_movement(axis):
 
 func _on_move_x_finished():
 	move_state = move_states.MOVABLE
+	await get_tree().create_timer(.1).timeout
+	animation.set("parameters/Transition/transition_request", "idling")
 	
 func _on_move_z_finished():
 	move_state = move_states.MOVABLE
+	await get_tree().create_timer(.1).timeout
+	animation.set("parameters/Transition/transition_request", "idling")
 	

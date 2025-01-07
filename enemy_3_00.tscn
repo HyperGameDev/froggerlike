@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://s530se5wb3d6"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_1ew68"]
+[ext_resource type="PackedScene" uid="uid://osq3w8mw28vr" path="res://enemies/aliens/alien_short.tscn" id="2_k5pi2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_an62r"]
+height = 3.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tnou8"]
+radius = 0.4
+
+[node name="Enemy-3_00" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.28986, -5)
+script = ExtResource("1_1ew68")
+speed = 1.0
+direction = 1
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_an62r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-7.35137e-08, -1, 0, 1, -7.35137e-08, 0, 0, 0, 1, -0.105994, 0.8, 0)
+shape = SubResource("SphereShape3D_tnou8")
+
+[node name="alien_short" parent="." instance=ExtResource("2_k5pi2")]
+transform = Transform3D(-6.11959e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.11959e-08, 0.3, -0.79765, 0)
+
+[node name="Armature" parent="alien_short" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0422069, 0)
+
+[editable path="alien_short"]

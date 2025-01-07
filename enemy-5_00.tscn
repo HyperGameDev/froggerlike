@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp1so6y3s8kna"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_jjy8o"]
+[ext_resource type="PackedScene" uid="uid://t8eqm65h8hjs" path="res://enemies/aliens/alien_quadruped.tscn" id="2_agfhp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_an62r"]
+height = 3.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4yfvf"]
+
+[node name="Enemy-5_00" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -6)
+script = ExtResource("1_jjy8o")
+speed = 1.0
+direction = -1
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_an62r")
+
+[node name="alien_quadruped" parent="." instance=ExtResource("2_agfhp")]
+transform = Transform3D(-4.74269e-08, 0, -1.085, 0, 1.085, 0, 1.085, 0, -4.74269e-08, -0.6, -0.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_4yfvf")

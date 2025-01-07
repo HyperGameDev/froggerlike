@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://byigjw6ypjv5n"]
+
+[ext_resource type="PackedScene" uid="uid://drt1btraoik6l" path="res://player/human_03_00_GIANT.tscn" id="1_3tpiy"]
+[ext_resource type="Material" uid="uid://vjw4d4d4e4cv" path="res://player/textures/human_clothes_blk_01.tres" id="2_j803k"]
+[ext_resource type="Texture2D" uid="uid://bijiemen3cle7" path="res://player/textures/resistance_top.png" id="3_3wh1q"]
+[ext_resource type="Material" path="res://player/textures/human_clothes_blk_02.tres" id="4_53v1p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iu4e"]
+albedo_texture = ExtResource("3_3wh1q")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5o2n"]
+animation = &"Run_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eosoo"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b0pt0"]
+
+[sub_resource type="Curve" id="Curve_7a5cb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_hs3qg"]
+xfade_time = 0.1
+xfade_curve = SubResource("Curve_7a5cb")
+input_0/name = "idling"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "running"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xwo5o"]
+graph_offset = Vector2(-478.603, 144.917)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_eosoo")
+nodes/Animation/position = Vector2(-120, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_k5o2n")
+"nodes/Animation 2/position" = Vector2(-260, 300)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_b0pt0")
+nodes/TimeScale/position = Vector2(-80, 300)
+nodes/Transition/node = SubResource("AnimationNodeTransition_hs3qg")
+nodes/Transition/position = Vector2(100, 100)
+nodes/output/position = Vector2(380, 120)
+node_connections = [&"TimeScale", 0, &"Animation 2", &"Transition", 0, &"Animation", &"Transition", 1, &"TimeScale", &"output", 0, &"Transition"]
+
+[node name="human_03_00" type="Node3D"]
+
+[node name="human_03_00_GIANT" parent="." instance=ExtResource("1_3tpiy")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Armature" parent="human_03_00_GIANT" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00441668, 0)
+
+[node name="Skeleton3D" parent="human_03_00_GIANT/Armature" index="0"]
+bones/6/rotation = Quaternion(-0.0343034, -1.16471e-07, 1.57604e-08, 0.999411)
+bones/8/rotation = Quaternion(-0.295852, 0.836265, -0.310508, 0.341639)
+bones/9/rotation = Quaternion(0.578388, -0.146379, 0.232546, 0.76809)
+bones/10/rotation = Quaternion(0.205966, 0.0147476, -0.119349, 0.971142)
+bones/12/rotation = Quaternion(-0.039279, -0.0623083, -0.0464746, 0.9962)
+bones/13/rotation = Quaternion(0.032416, 0.0191695, 0.0566854, 0.997682)
+bones/14/rotation = Quaternion(-1.8545e-06, 9.09436e-07, 1.8077e-06, 1)
+bones/15/rotation = Quaternion(-0.115006, 0.0186132, 0.107252, 0.987382)
+bones/16/rotation = Quaternion(0.00658036, -0.0171917, -0.00226191, 0.999828)
+bones/17/rotation = Quaternion(0.0728292, -0.011762, -0.0116749, 0.997207)
+bones/19/rotation = Quaternion(0.0404889, 0.00722214, -0.0125732, 0.999075)
+bones/20/rotation = Quaternion(0.0431751, -0.0142914, -0.0274428, 0.998588)
+bones/21/rotation = Quaternion(-0.423217, -0.0290024, 0.14092, 0.894532)
+bones/22/rotation = Quaternion(0.0337555, 0.00843742, -0.00672542, 0.999372)
+bones/23/rotation = Quaternion(0.0524176, -4.47866e-05, -0.047229, 0.997508)
+bones/24/position = Vector3(-0.0580036, 0.246204, -0.103801)
+bones/24/rotation = Quaternion(-0.526691, -0.332353, -0.212004, 0.753122)
+bones/26/rotation = Quaternion(-0.330447, -0.673567, 0.380387, 0.540756)
+bones/27/rotation = Quaternion(0.508169, 0.11136, -0.0501971, 0.852551)
+bones/28/rotation = Quaternion(0.205966, -0.0147476, 0.119349, 0.971142)
+bones/30/rotation = Quaternion(-0.039279, 0.0623083, 0.0464746, 0.9962)
+bones/31/rotation = Quaternion(0.0324159, -0.0191695, -0.0566853, 0.997682)
+bones/32/rotation = Quaternion(-1.80112e-06, -9.11998e-07, -1.83424e-06, 1)
+bones/33/rotation = Quaternion(-0.115006, -0.0186131, -0.107252, 0.987382)
+bones/34/rotation = Quaternion(0.00658034, 0.0171917, 0.00226191, 0.999828)
+bones/35/rotation = Quaternion(0.0728292, 0.011762, 0.0116748, 0.997207)
+bones/37/rotation = Quaternion(0.0404889, -0.00722216, 0.0125732, 0.999075)
+bones/38/rotation = Quaternion(0.0431751, 0.0142915, 0.0274428, 0.998588)
+bones/39/rotation = Quaternion(-0.423217, 0.0290024, -0.14092, 0.894532)
+bones/40/rotation = Quaternion(0.0337555, -0.00843743, 0.00672542, 0.999372)
+bones/41/rotation = Quaternion(0.0524177, 4.47959e-05, 0.047229, 0.997508)
+bones/42/position = Vector3(0.0580035, 0.246204, -0.103801)
+bones/42/rotation = Quaternion(-0.616811, 0.138703, 0.163449, 0.757357)
+bones/47/rotation = Quaternion(0.960199, 0.117133, -0.0108943, 0.253335)
+bones/48/rotation = Quaternion(0.278627, 0.0272798, 0.113449, 0.953285)
+bones/49/rotation = Quaternion(-0.744498, -0.00510243, 0.0419598, 0.666285)
+bones/52/rotation = Quaternion(0.960139, -0.117586, 0.0109637, 0.253351)
+bones/53/rotation = Quaternion(0.278611, -0.0273706, -0.113959, 0.953226)
+bones/54/rotation = Quaternion(-0.745794, 0.0145233, 0.00980267, 0.665946)
+bones/55/rotation = Quaternion(-5.49686e-07, 0.995399, -0.0958151, -1.93912e-07)
+
+[node name="Human_ArmL" parent="human_03_00_GIANT/Armature/Skeleton3D" index="9"]
+surface_material_override/0 = ExtResource("2_j803k")
+surface_material_override/1 = ExtResource("2_j803k")
+
+[node name="Human_ArmR" parent="human_03_00_GIANT/Armature/Skeleton3D" index="10"]
+surface_material_override/0 = ExtResource("2_j803k")
+surface_material_override/1 = ExtResource("2_j803k")
+
+[node name="Human_Body" parent="human_03_00_GIANT/Armature/Skeleton3D" index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7iu4e")
+surface_material_override/1 = ExtResource("4_53v1p")
+surface_material_override/2 = ExtResource("4_53v1p")
+
+[node name="Human_LegL" parent="human_03_00_GIANT/Armature/Skeleton3D" index="16"]
+surface_material_override/0 = ExtResource("4_53v1p")
+surface_material_override/1 = ExtResource("4_53v1p")
+surface_material_override/2 = ExtResource("2_j803k")
+surface_material_override/3 = ExtResource("2_j803k")
+
+[node name="Human_LegR" parent="human_03_00_GIANT/Armature/Skeleton3D" index="17"]
+surface_material_override/0 = ExtResource("4_53v1p")
+surface_material_override/1 = ExtResource("4_53v1p")
+surface_material_override/2 = ExtResource("2_j803k")
+surface_material_override/3 = ExtResource("2_j803k")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../human_03_00_GIANT")
+tree_root = SubResource("AnimationNodeBlendTree_xwo5o")
+anim_player = NodePath("../human_03_00_GIANT/AnimationPlayer")
+parameters/TimeScale/scale = 3.0
+parameters/Transition/current_state = "idling"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0
+
+[editable path="human_03_00_GIANT"]
