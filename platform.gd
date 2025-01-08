@@ -4,6 +4,9 @@ class_name Platform
 
 @onready var ground: AnimatableBody3D = %Ground_platform
 
+func _ready() -> void:
+	set_collision_layer_value(Globals.collision.PLATFORM, true)
+
 func _physics_process(delta: float) -> void:
 	if not direction == 0:
 		var rate: float = speed * delta

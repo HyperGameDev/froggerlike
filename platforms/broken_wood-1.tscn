@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://0yp8myhmj3at"]
+
+[ext_resource type="PackedScene" uid="uid://djprhh0ao1fsk" path="res://platforms/broken_wood-1.blend" id="1_ipdd1"]
+
+[node name="broken_wood-1" instance=ExtResource("1_ipdd1")]

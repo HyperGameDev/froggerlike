@@ -7,4 +7,7 @@ enum collision {
 	GROUND = 1,
 	WALL = 2,
 	ENEMY = 3,
+	PLATFORM = 4,
+	PLAYER = 5,
+	PLAYER_WRAP = 6,
 }

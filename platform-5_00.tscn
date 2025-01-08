@@ -1,12 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr3oxpcycmfx8"]
+[gd_scene load_steps=8 format=3 uid="uid://cr3oxpcycmfx8"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_5k8ei"]
+[ext_resource type="Shader" path="res://mesh_hider_01.gdshader" id="2_sjtw1"]
+[ext_resource type="PackedScene" uid="uid://0yp8myhmj3at" path="res://platforms/broken_wood-1.tscn" id="3_i5tv3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_d4nmx"]
 size = Vector3(12.4, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iaa81"]
+render_priority = -1
+transparency = 1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3ghy"]
 size = Vector3(12.4, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kloik"]
+render_priority = 0
+shader = ExtResource("2_sjtw1")
+shader_parameter/rect_size = Vector2(1.19, 0.17)
+shader_parameter/feather = Vector2(0, 0)
+shader_parameter/center = Vector2(0.333, 0.5)
 
 [node name="Platform-5_00" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
@@ -16,6 +29,7 @@ direction = -1
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_d4nmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_iaa81")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_i3ghy")
@@ -25,3 +39,12 @@ unique_name_in_owner = true
 
 [node name="collision" type="CollisionShape3D" parent="Ground_platform"]
 shape = SubResource("BoxShape3D_i3ghy")
+
+[node name="broken_wood-1" parent="." instance=ExtResource("3_i5tv3")]
+transform = Transform3D(-0.00397057, 0, -0.854967, 0, 1, 0, 0.454983, 0, -0.00746118, 0.34, 1.05337, -0.0646294)
+visible = false
+
+[node name="Cube" parent="broken_wood-1" index="0"]
+material_override = SubResource("ShaderMaterial_kloik")
+
+[editable path="broken_wood-1"]

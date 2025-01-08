@@ -32,6 +32,9 @@ func _ready() -> void:
 	
 	set_ray_masks()
 	
+	set_collision_layer_value(Globals.collision.PLAYER, true)	
+	set_collision_layer_value(Globals.collision.PLAYER_WRAP, true)
+	
 func set_ray_masks():
 	for node in get_children():
 		if node is RayCast3D:

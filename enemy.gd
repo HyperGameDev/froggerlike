@@ -4,6 +4,8 @@ class_name Enemy
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	set_collision_layer_value(Globals.collision.ENEMY, true)	
+	set_collision_mask_value(Globals.collision.PLAYER, true)
 	
 
 func _physics_process(delta: float) -> void:

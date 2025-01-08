@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=26 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0i62y"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bqeblvhwekkri" path="res://platform-1_00.tscn" id="4_c0dlx"]
 [ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-3_00.tscn" id="5_vak1a"]
 [ext_resource type="PackedScene" uid="uid://bgjk518k86wey" path="res://platform-2_00.tscn" id="6_o78nf"]
-[ext_resource type="PackedScene" uid="uid://cr3oxpcycmfx8" path="res://platform-5_00.tscn" id="6_vsurg"]
 [ext_resource type="PackedScene" uid="uid://dp1so6y3s8kna" path="res://enemy-5_00.tscn" id="8_a2xvh"]
 [ext_resource type="PackedScene" uid="uid://dfjaalolso6t1" path="res://enemy_4_00.tscn" id="10_mcp35"]
 [ext_resource type="PackedScene" uid="uid://s530se5wb3d6" path="res://enemy_3_00.tscn" id="11_ny747"]
+[ext_resource type="Script" path="res://wrap.gd" id="12_c6wka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,6 +50,9 @@ size = Vector3(29, 1, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x8n22"]
 size = Vector3(88.225, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_631lw"]
+size = Vector3(3.5, 3, 14)
 
 [node name="Node3D" type="Node3D"]
 
@@ -212,23 +215,27 @@ skeleton = NodePath("../../..")
 [node name="Platforms" type="Node3D" parent="Debug"]
 
 [node name="Platform-1_00" parent="Debug/Platforms" instance=ExtResource("4_c0dlx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -8)
 direction = -1
-
-[node name="Platform-5_00" parent="Debug/Platforms" instance=ExtResource("6_vsurg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -10)
-speed = 1.5
-direction = 1
 
 [node name="Platform-3_00" parent="Debug/Platforms" instance=ExtResource("5_vak1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -10)
 speed = 1.0
-direction = -1
+direction = 1
 
 [node name="Platform-2_00" parent="Debug/Platforms" instance=ExtResource("6_o78nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -12)
+speed = 1.2
+direction = 1
+
+[node name="Platform-2_01" parent="Debug/Platforms" instance=ExtResource("6_o78nf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -9)
 speed = 1.2
 direction = 1
+
+[node name="Platform-2_02" parent="Debug/Platforms" instance=ExtResource("6_o78nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -11)
+speed = 1.2
 
 [node name="Enemies" type="Node3D" parent="Debug"]
 
@@ -271,3 +278,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.28986, -5)
 
 [node name="Enemy-3_03" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.28986, -5)
+
+[node name="Wrapper" type="Node3D" parent="."]
+
+[node name="rightWrap" type="Area3D" parent="Wrapper"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6.5)
+script = ExtResource("12_c6wka")
+
+[node name="collision" type="CollisionShape3D" parent="Wrapper/rightWrap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+shape = SubResource("BoxShape3D_631lw")
+
+[node name="leftWrap" type="Area3D" parent="Wrapper"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6.5)
+script = ExtResource("12_c6wka")
+
+[node name="collision" type="CollisionShape3D" parent="Wrapper/leftWrap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1, 0)
+shape = SubResource("BoxShape3D_631lw")
