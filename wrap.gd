@@ -27,7 +27,6 @@ func _on_body_entered(body):
 		
 func player_visibility(player,is_visible):
 		player.visible = is_visible
-		print(player.visible)
 		player.set_collision_layer_value(Globals.collision.PLAYER, is_visible)
 	
 func teleport_object(object):

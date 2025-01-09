@@ -2,26 +2,24 @@
 
 [ext_resource type="Script" path="res://platform.gd" id="1_hj2ax"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_mk6r7"]
-size = Vector3(6, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
+size = Vector3(3, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s7jc4"]
-size = Vector3(6, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnded"]
+size = Vector3(3, 1, 1)
 
 [node name="Platform-2_00" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.4, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 script = ExtResource("1_hj2ax")
-speed = 1.0
-direction = -1
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_mk6r7")
+mesh = SubResource("BoxMesh_0y23v")
 
 [node name="collision" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_s7jc4")
+shape = SubResource("BoxShape3D_gnded")
 
 [node name="Ground_platform" type="AnimatableBody3D" parent="."]
 unique_name_in_owner = true
 
 [node name="collision" type="CollisionShape3D" parent="Ground_platform"]
-shape = SubResource("BoxShape3D_s7jc4")
+shape = SubResource("BoxShape3D_gnded")

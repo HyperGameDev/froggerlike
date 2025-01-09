@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqeblvhwekkri"]
+[gd_scene load_steps=4 format=3 uid="uid://46tstyywyhx8"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_o0sbh"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
-size = Vector3(4, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_yxeev"]
+size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_337bg"]
-size = Vector3(4, 1, 1)
+size = Vector3(2, 1, 1)
 
-[node name="Platform-1_00" type="Area3D"]
+[node name="Platform-2_00" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 script = ExtResource("1_o0sbh")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_0y23v")
+mesh = SubResource("BoxMesh_yxeev")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_337bg")
