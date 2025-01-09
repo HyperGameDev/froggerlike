@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm0bwxh43ilpf"]
+[gd_scene load_steps=6 format=3 uid="uid://cm0bwxh43ilpf"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_msp01"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jb6xd"]
 size = Vector3(4, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhpjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lphh"]
+albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6dh8r"]
 size = Vector3(4, 1, 1)
@@ -14,6 +19,12 @@ script = ExtResource("1_msp01")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jb6xd")
+
+[node name="measuring" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_qhpjp")
+surface_material_override/0 = SubResource("StandardMaterial3D_3lphh")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6dh8r")
