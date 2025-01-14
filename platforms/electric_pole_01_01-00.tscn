@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxy13up6ptitp"]
+
+[ext_resource type="PackedScene" uid="uid://4nfpqv38l4k8" path="res://platforms/electric-pole_01-01_00.blend" id="1_u2wgu"]
+[ext_resource type="Material" path="res://platforms/textures/electric-pole_colors_01_bracket-01.tres" id="2_xyiol"]
+[ext_resource type="Material" uid="uid://bboq2ihym5maj" path="res://platforms/textures/electric-pole_colors_01_wood-01.tres" id="3_41jje"]
+[ext_resource type="Material" path="res://platforms/textures/electric-pole_colors_01_conduit-01.tres" id="4_wkovs"]
+[ext_resource type="Material" path="res://platforms/textures/electric-pole_colors_01_wire-01.tres" id="5_m7377"]
+[ext_resource type="Material" path="res://platforms/textures/electric-pole_colors_01_transformer-01.tres" id="6_dof2o"]
+
+[node name="electric-pole_01-01_00" instance=ExtResource("1_u2wgu")]
+
+[node name="Pole" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xyiol")
+surface_material_override/1 = ExtResource("3_41jje")
+surface_material_override/2 = ExtResource("4_wkovs")
+
+[node name="Conduit-Top" parent="." index="1"]
+surface_material_override/0 = ExtResource("4_wkovs")
+surface_material_override/1 = ExtResource("5_m7377")
+
+[node name="Transformer" parent="." index="2"]
+transform = Transform3D(-0.0121372, 0, 0.0199786, 0, -0.034, 0, -0.00881411, 0, -0.027511, -0.000549041, 2.68171, 0.0646185)
+surface_material_override/0 = ExtResource("5_m7377")
+surface_material_override/1 = ExtResource("3_41jje")
+surface_material_override/2 = ExtResource("4_wkovs")
+surface_material_override/3 = ExtResource("6_dof2o")
+
+[node name="Wire" parent="." index="3"]
+surface_material_override/0 = ExtResource("5_m7377")

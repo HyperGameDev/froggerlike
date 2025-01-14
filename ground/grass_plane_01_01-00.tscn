@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgsamx5rklub3"]
+
+[ext_resource type="PackedScene" uid="uid://dbyvus1bggpyw" path="res://ground/grass_plane_01-01_00.blend" id="1_0i337"]
+[ext_resource type="Material" uid="uid://cg30w7y16hdo4" path="res://textures/grass2.tres" id="2_dhmdj"]
+
+[node name="grass_plane_01-01_00" instance=ExtResource("1_0i337")]
+
+[node name="Grass2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_dhmdj")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgjk518k86wey"]
+[gd_scene load_steps=9 format=3 uid="uid://bgjk518k86wey"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_hj2ax"]
+[ext_resource type="PackedScene" uid="uid://0yp8myhmj3at" path="res://platforms/broken_wood-1.tscn" id="3_831ig"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
 size = Vector3(3, 1, 1)
@@ -19,11 +20,12 @@ albedo_color = Color(1, 0, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnded"]
 size = Vector3(3, 1, 1)
 
-[node name="Platform-1_00" type="Area3D"]
+[node name="Platform-2_00" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 script = ExtResource("1_hj2ax")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_0y23v")
 
 [node name="measuring_l" type="MeshInstance3D" parent="."]
@@ -46,3 +48,18 @@ unique_name_in_owner = true
 
 [node name="collision" type="CollisionShape3D" parent="Ground_platform"]
 shape = SubResource("BoxShape3D_gnded")
+
+[node name="broken_wood-1" parent="." instance=ExtResource("3_831ig")]
+transform = Transform3D(-6.78653e-09, 1.23396e-12, -0.198, 0.00894133, 0.344425, -4.99387e-10, 0.154742, -0.0199017, -8.65485e-09, 0.113929, 0.701806, -0.047397)
+visible = false
+
+[node name="broken_wood-2" parent="." instance=ExtResource("3_831ig")]
+transform = Transform3D(-4.33757e-05, -0.00167112, 0.197998, -0.0144197, -0.3435, -0.000960074, 0.154328, -0.0320955, -3.40553e-05, -0.108585, 0.148193, -0.047397)
+visible = false
+
+[node name="broken_wood-3" parent="." instance=ExtResource("3_831ig")]
+transform = Transform3D(-0.0116221, 0.00409237, -0.197429, -0.0144197, -0.3435, -0.000960074, -0.15389, 0.0318774, 0.0150002, 0.0664949, 0.148193, 0.0639071)
+visible = false
+
+[node name="broken_wood-4" parent="." instance=ExtResource("3_831ig")]
+transform = Transform3D(0.0116939, -0.00150398, 0.197434, 0.00894133, 0.344426, -4.85844e-10, -0.154299, 0.0198448, 0.0149629, -0.135054, 0.701806, 0.0978063)

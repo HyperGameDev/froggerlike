@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://sy8noemqrlfq"]
+
+[ext_resource type="PackedScene" uid="uid://bdjcoxe0u0hgo" path="res://finish-line/bunker_doors_01-00.blend" id="1_mx3kk"]
+[ext_resource type="Material" uid="uid://clwqoiabgmlsl" path="res://textures/grass.tres" id="2_c7qi2"]
+[ext_resource type="Material" uid="uid://mi7nrucx8trq" path="res://textures/stone.tres" id="3_6qpx2"]
+[ext_resource type="Material" uid="uid://ctbknmgrjj77n" path="res://textures/red.tres" id="3_go5xq"]
+[ext_resource type="Material" uid="uid://u8kqbh8hccx0" path="res://textures/hole.tres" id="3_jnksj"]
+[ext_resource type="Material" uid="uid://vjw4d4d4e4cv" path="res://player/textures/human_clothes_blk_01.tres" id="4_hq7sr"]
+[ext_resource type="Material" uid="uid://bboq2ihym5maj" path="res://platforms/textures/electric-pole_colors_01_wood-01.tres" id="7_05pn2"]
+
+[node name="bunker_doors_01-00" instance=ExtResource("1_mx3kk")]
+
+[node name="Bunker-1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_c7qi2")
+surface_material_override/1 = ExtResource("3_6qpx2")
+surface_material_override/2 = ExtResource("3_jnksj")
+
+[node name="Door_R" parent="." index="1"]
+transform = Transform3D(-0.534854, 1.49012e-08, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+surface_material_override/0 = ExtResource("3_go5xq")
+surface_material_override/1 = ExtResource("4_hq7sr")
+
+[node name="Door_L" parent="." index="2"]
+transform = Transform3D(-0.423981, -1.49012e-08, -0.405021, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+surface_material_override/0 = ExtResource("3_go5xq")
+surface_material_override/1 = ExtResource("4_hq7sr")
+
+[node name="Door_frame" parent="." index="3"]
+surface_material_override/0 = ExtResource("7_05pn2")
+
+[node name="Bunker-2" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_c7qi2")
+surface_material_override/1 = ExtResource("3_6qpx2")
+surface_material_override/2 = ExtResource("3_jnksj")
+
+[node name="Bunker-3" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_c7qi2")
+surface_material_override/1 = ExtResource("3_6qpx2")
+surface_material_override/2 = ExtResource("3_jnksj")
+
+[node name="Bunker-4" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_c7qi2")
+surface_material_override/1 = ExtResource("3_6qpx2")
+surface_material_override/2 = ExtResource("3_jnksj")
+
+[node name="Bunker-5" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_c7qi2")
+surface_material_override/1 = ExtResource("3_6qpx2")
+surface_material_override/2 = ExtResource("3_jnksj")

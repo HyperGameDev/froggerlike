@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://0yp8myhmj3at"]
+[gd_scene load_steps=3 format=3 uid="uid://0yp8myhmj3at"]
 
 [ext_resource type="PackedScene" uid="uid://djprhh0ao1fsk" path="res://platforms/broken_wood-1.blend" id="1_ipdd1"]
+[ext_resource type="Material" uid="uid://bboq2ihym5maj" path="res://platforms/textures/electric-pole_colors_01_wood-01.tres" id="2_m4krb"]
 
 [node name="broken_wood-1" instance=ExtResource("1_ipdd1")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_m4krb")

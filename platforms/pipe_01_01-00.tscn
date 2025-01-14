@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw8hhdtlobrep"]
+
+[ext_resource type="PackedScene" uid="uid://055x1iuabuhc" path="res://platforms/pipe_01-01_00.blend" id="1_qolsp"]
+
+[node name="pipe_01-01_00" instance=ExtResource("1_qolsp")]
+
+[node name="Pipe_2" parent="." index="1"]
+visible = false
+
+[node name="Pipe_3" parent="." index="2"]
+visible = false
