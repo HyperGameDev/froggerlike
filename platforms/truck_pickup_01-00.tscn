@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://opns1s4ivtcx" path="res://platforms/truckPickup_01_00.blend" id="1_qex2e"]
 [ext_resource type="Script" path="res://platforms/mesh.gd" id="2_vm8ch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnvcw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlkmn"]
 albedo_color = Color(0, 0.961769, 0.923596, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7cvp"]
@@ -16,5 +16,5 @@ mesh_1 = NodePath("Truck-Body")
 color_1 = Color(0, 0.961769, 0.923596, 1)
 
 [node name="Truck-Body" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_dnvcw")
+surface_material_override/0 = SubResource("StandardMaterial3D_vlkmn")
 surface_material_override/1 = SubResource("StandardMaterial3D_g7cvp")

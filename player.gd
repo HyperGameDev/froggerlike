@@ -11,7 +11,7 @@ enum move_directions {FORWARD,BACK,LEFT,RIGHT}
 @export var move_state: move_states
 enum move_states {MOVABLE,MOVING}
 
-@onready var animation: AnimationTree = get_tree().get_current_scene().get_node("Player/human_03_00/AnimationTree")
+@onready var animation: AnimationTree = get_tree().get_current_scene().get_node("Spawned/Player/human_03_00/AnimationTree")
 
 @onready var ray_forward_l: RayCast3D = %ray_forward_l
 @onready var ray_forward_r: RayCast3D = %ray_forward_r
@@ -28,6 +28,7 @@ var wall_is_right: bool = false
 
 
 func _ready() -> void:
+	Messenger.player_ready.emit()
 	add_to_group("Player")
 	
 	set_ray_masks()

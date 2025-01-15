@@ -3,6 +3,7 @@ extends Detectable
 class_name Enemy
 
 func _ready() -> void:
+	Messenger.player_ready.connect(_on_player_ready)
 	body_entered.connect(_on_body_entered)
 	set_collision_layer_value(Globals.collision.ENEMY, true)	
 	set_collision_mask_value(Globals.collision.PLAYER, true)
