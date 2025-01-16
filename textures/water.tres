@@ -2,7 +2,7 @@
 
 [sub_resource type="Gradient" id="Gradient_ypvpo"]
 offsets = PackedFloat32Array(0, 0.299595, 0.797571)
-colors = PackedColorArray(1, 1, 1, 1, 0.207853, 0.1288, 0.56, 1, 0.925353, 0.925353, 0.925353, 1)
+colors = PackedColorArray(0.203922, 0.458824, 1, 1, 0, 0.0956668, 0.41, 1, 0.203922, 0.458824, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mkdu1"]
 frequency = 0.0685
@@ -17,4 +17,5 @@ albedo_texture = SubResource("NoiseTexture2D_565yc")
 
 [resource]
 next_pass = SubResource("StandardMaterial3D_k7vml")
-albedo_color = Color(0.038, 0.038, 0.38, 1)
+blend_mode = 1
+albedo_color = Color(0, 0, 0.48, 1)

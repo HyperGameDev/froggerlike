@@ -1,9 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=40 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
+[ext_resource type="PackedScene" uid="uid://bpdort7stahe0" path="res://enemies/enemy_shooter.tscn" id="2_duxgb"]
+[ext_resource type="PackedScene" uid="uid://bj6tfo3l3fofv" path="res://bonuses/bonus_finish.tscn" id="2_lh48f"]
 [ext_resource type="Script" path="res://boundaries.gd" id="2_pcsaw"]
 [ext_resource type="Material" uid="uid://clwqoiabgmlsl" path="res://textures/grass.tres" id="3_07ldn"]
+[ext_resource type="Script" path="res://finish-line/finish_lines.gd" id="3_ccrfc"]
 [ext_resource type="PackedScene" uid="uid://sy8noemqrlfq" path="res://finish-line/bunker_doors_01-00.tscn" id="3_y3jml"]
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="4_ikhtq"]
 [ext_resource type="Script" path="res://all_platforms.gd" id="5_trm1l"]
@@ -74,12 +77,21 @@ size = Vector3(2, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_6qfjw")
-player_spawn_pos_z = -7
 
 [node name="Spawned" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="Player_Tweens" type="Node3D" parent="Spawned"]
+unique_name_in_owner = true
+
+[node name="Teleportees" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Bonus_Finish" parent="Teleportees" instance=ExtResource("2_lh48f")]
+unique_name_in_owner = true
+
+[node name="Enemy_Shooter" parent="Teleportees" instance=ExtResource("2_duxgb")]
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -95,81 +107,112 @@ environment = SubResource("Environment_yr3j7")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433012, 0, 0, 0)
 shadow_enabled = true
 
-[node name="FinishLine" type="Node3D" parent="."]
+[node name="FinishLines" type="Node3D" parent="."]
+script = ExtResource("3_ccrfc")
 
-[node name="bunker_doors_01-00" parent="FinishLine" instance=ExtResource("3_y3jml")]
+[node name="bunker_doors_01-00" parent="FinishLines" instance=ExtResource("3_y3jml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50397, 0.1, -13.6907)
 
-[node name="Bunker-2" parent="FinishLine/bunker_doors_01-00" index="4"]
+[node name="Door_R" parent="FinishLines/bunker_doors_01-00" index="1"]
+transform = Transform3D(-0.534854, -1.84418e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+
+[node name="Door_L" parent="FinishLines/bunker_doors_01-00" index="2"]
+transform = Transform3D(-0.423981, -1.06768e-07, -0.405022, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+
+[node name="Bunker-2" parent="FinishLines/bunker_doors_01-00" index="4"]
 visible = false
 
-[node name="Bunker-3" parent="FinishLine/bunker_doors_01-00" index="5"]
+[node name="Bunker-3" parent="FinishLines/bunker_doors_01-00" index="5"]
 visible = false
 
-[node name="Bunker-4" parent="FinishLine/bunker_doors_01-00" index="6"]
+[node name="Bunker-4" parent="FinishLines/bunker_doors_01-00" index="6"]
 visible = false
 
-[node name="Bunker-5" parent="FinishLine/bunker_doors_01-00" index="7"]
+[node name="Bunker-5" parent="FinishLines/bunker_doors_01-00" index="7"]
 visible = false
 
-[node name="bunker_doors_01-01" parent="FinishLine" instance=ExtResource("3_y3jml")]
+[node name="bunker_doors_01-01" parent="FinishLines" instance=ExtResource("3_y3jml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50397, 0.1, -13.6907)
 
-[node name="Bunker-1" parent="FinishLine/bunker_doors_01-01" index="0"]
+[node name="Bunker-1" parent="FinishLines/bunker_doors_01-01" index="0"]
 visible = false
 
-[node name="Bunker-3" parent="FinishLine/bunker_doors_01-01" index="5"]
+[node name="Door_R" parent="FinishLines/bunker_doors_01-01" index="1"]
+transform = Transform3D(-0.534854, -1.84418e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+
+[node name="Door_L" parent="FinishLines/bunker_doors_01-01" index="2"]
+transform = Transform3D(-0.423981, -1.06768e-07, -0.405022, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+
+[node name="Bunker-3" parent="FinishLines/bunker_doors_01-01" index="5"]
 visible = false
 
-[node name="Bunker-4" parent="FinishLine/bunker_doors_01-01" index="6"]
+[node name="Bunker-4" parent="FinishLines/bunker_doors_01-01" index="6"]
 visible = false
 
-[node name="Bunker-5" parent="FinishLine/bunker_doors_01-01" index="7"]
+[node name="Bunker-5" parent="FinishLines/bunker_doors_01-01" index="7"]
 visible = false
 
-[node name="bunker_doors_01-02" parent="FinishLine" instance=ExtResource("3_y3jml")]
+[node name="bunker_doors_01-02" parent="FinishLines" instance=ExtResource("3_y3jml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496027, 0.1, -13.6907)
 
-[node name="Bunker-1" parent="FinishLine/bunker_doors_01-02" index="0"]
+[node name="Bunker-1" parent="FinishLines/bunker_doors_01-02" index="0"]
 visible = false
 
-[node name="Bunker-2" parent="FinishLine/bunker_doors_01-02" index="4"]
+[node name="Door_R" parent="FinishLines/bunker_doors_01-02" index="1"]
+transform = Transform3D(-0.534854, -1.84418e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+
+[node name="Door_L" parent="FinishLines/bunker_doors_01-02" index="2"]
+transform = Transform3D(-0.423981, -1.06768e-07, -0.405022, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+
+[node name="Bunker-2" parent="FinishLines/bunker_doors_01-02" index="4"]
 visible = false
 
-[node name="Bunker-4" parent="FinishLine/bunker_doors_01-02" index="6"]
+[node name="Bunker-4" parent="FinishLines/bunker_doors_01-02" index="6"]
 visible = false
 
-[node name="Bunker-5" parent="FinishLine/bunker_doors_01-02" index="7"]
+[node name="Bunker-5" parent="FinishLines/bunker_doors_01-02" index="7"]
 visible = false
 
-[node name="bunker_doors_01-03" parent="FinishLine" instance=ExtResource("3_y3jml")]
+[node name="bunker_doors_01-03" parent="FinishLines" instance=ExtResource("3_y3jml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49603, 0.1, -13.6907)
 
-[node name="Bunker-1" parent="FinishLine/bunker_doors_01-03" index="0"]
+[node name="Bunker-1" parent="FinishLines/bunker_doors_01-03" index="0"]
 visible = false
 
-[node name="Bunker-2" parent="FinishLine/bunker_doors_01-03" index="4"]
+[node name="Door_R" parent="FinishLines/bunker_doors_01-03" index="1"]
+transform = Transform3D(-0.534854, -1.84418e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+
+[node name="Door_L" parent="FinishLines/bunker_doors_01-03" index="2"]
+transform = Transform3D(-0.423981, -1.06768e-07, -0.405022, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+
+[node name="Bunker-2" parent="FinishLines/bunker_doors_01-03" index="4"]
 visible = false
 
-[node name="Bunker-3" parent="FinishLine/bunker_doors_01-03" index="5"]
+[node name="Bunker-3" parent="FinishLines/bunker_doors_01-03" index="5"]
 visible = false
 
-[node name="Bunker-5" parent="FinishLine/bunker_doors_01-03" index="7"]
+[node name="Bunker-5" parent="FinishLines/bunker_doors_01-03" index="7"]
 visible = false
 
-[node name="bunker_doors_01-04" parent="FinishLine" instance=ExtResource("3_y3jml")]
+[node name="bunker_doors_01-04" parent="FinishLines" instance=ExtResource("3_y3jml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49603, 0.1, -13.6907)
 
-[node name="Bunker-1" parent="FinishLine/bunker_doors_01-04" index="0"]
+[node name="Bunker-1" parent="FinishLines/bunker_doors_01-04" index="0"]
 visible = false
 
-[node name="Bunker-2" parent="FinishLine/bunker_doors_01-04" index="4"]
+[node name="Door_R" parent="FinishLines/bunker_doors_01-04" index="1"]
+transform = Transform3D(-0.534854, -1.84418e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
+
+[node name="Door_L" parent="FinishLines/bunker_doors_01-04" index="2"]
+transform = Transform3D(-0.423981, -1.06768e-07, -0.405022, 0.311432, 0.528554, -0.188332, 0.432406, -0.380681, -0.261488, -0.626537, 0.353358, 0.568979)
+
+[node name="Bunker-2" parent="FinishLines/bunker_doors_01-04" index="4"]
 visible = false
 
-[node name="Bunker-3" parent="FinishLine/bunker_doors_01-04" index="5"]
+[node name="Bunker-3" parent="FinishLines/bunker_doors_01-04" index="5"]
 visible = false
 
-[node name="Bunker-4" parent="FinishLine/bunker_doors_01-04" index="6"]
+[node name="Bunker-4" parent="FinishLines/bunker_doors_01-04" index="6"]
 visible = false
 
 [node name="Ground_water" type="MeshInstance3D" parent="."]
@@ -788,11 +831,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -9)
 visible = false
 mesh = SubResource("BoxMesh_a7tce")
 
-[editable path="FinishLine/bunker_doors_01-00"]
-[editable path="FinishLine/bunker_doors_01-01"]
-[editable path="FinishLine/bunker_doors_01-02"]
-[editable path="FinishLine/bunker_doors_01-03"]
-[editable path="FinishLine/bunker_doors_01-04"]
+[editable path="FinishLines/bunker_doors_01-00"]
+[editable path="FinishLines/bunker_doors_01-01"]
+[editable path="FinishLines/bunker_doors_01-02"]
+[editable path="FinishLines/bunker_doors_01-03"]
+[editable path="FinishLines/bunker_doors_01-04"]
 [editable path="Rows 8-12/Plat_Row-12_1"]
 [editable path="Rows 8-12/Plat_Row-12_2"]
 [editable path="Rows 8-12/Plat_Row-12_3"]

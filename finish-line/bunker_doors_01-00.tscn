@@ -151,6 +151,8 @@ script = ExtResource("8_h55mw")
 [node name="collision" type="CollisionShape3D" parent="Finish_Line" index="0"]
 shape = SubResource("BoxShape3D_b42ah")
 
+[node name="bunker_object" type="Marker3D" parent="Finish_Line" index="1"]
+
 [node name="Killer_Gap_R" type="Area3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.7)
 script = ExtResource("9_racuh")

@@ -10,6 +10,8 @@ enum finish_line_states {EMPTY,FILLED,BONUS,ENEMY,}
 
 
 func _ready() -> void:
+	add_to_group("Finish Line")
+	
 	set_collision_layer_value(Globals.collision.GROUND, false)
 	set_collision_mask_value(Globals.collision.PLAYER, true)
 	
@@ -17,6 +19,7 @@ func _ready() -> void:
 	
 func fill_finish_line():
 	finish_line_state = finish_line_states.FILLED
+	Messenger.update_finish_lines.emit()
 	animation.play("close_doors")
 	set_collision_layer_value(Globals.collision.WALL, true)
 	
