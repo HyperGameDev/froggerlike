@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=37 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -69,10 +69,17 @@ baseline_offset = -0.15
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36b74"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_a7tce"]
+size = Vector3(2, 1, 1)
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_6qfjw")
+player_spawn_pos_z = -7
 
 [node name="Spawned" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player_Tweens" type="Node3D" parent="Spawned"]
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -170,6 +177,241 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -10.5)
 mesh = SubResource("PlaneMesh_vgdm5")
 surface_material_override/0 = ExtResource("4_ikhtq")
 
+[node name="Rows 8-12" type="Node3D" parent="."]
+script = ExtResource("5_trm1l")
+rows_type = 1
+
+[node name="Plat_Row-12_1" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, -0.4, -12)
+row = 12.0
+speed = 1.0
+direction = 1
+
+[node name="Plat_Row-12_2" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.4, -12)
+row = 12.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_2" index="4"]
+transform = Transform3D(0.00108568, -0.000139632, -0.253994, 0.00894133, 0.344425, 1.28472e-11, 0.154738, -0.0199012, 0.00178209, 0.113971, 0.598478, -0.0414267)
+visible = false
+
+[node name="broken_wood-2" parent="Rows 8-12/Plat_Row-12_2" index="5"]
+visible = true
+
+[node name="Plat_Row-12_3" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.4, -12)
+row = 12.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_3" index="4"]
+visible = false
+
+[node name="broken_wood-3" parent="Rows 8-12/Plat_Row-12_3" index="6"]
+visible = true
+
+[node name="Plat_Row-12_4" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, -12)
+row = 12.0
+speed = 1.0
+direction = 1
+
+[node name="Plat_Row-12_5" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.4, -12)
+row = 12.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_5" index="4"]
+visible = false
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-12_5" index="7"]
+visible = true
+
+[node name="Plat_Row-11_1" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, -0.4, -11)
+has_two_killer_gaps = true
+row = 11.0
+speed = 1.0
+direction = -1
+
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_1" index="7"]
+color_1 = Color(0.590199, 0.414322, 0.289688, 1)
+
+[node name="Plat_Row-11_2" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -0.4, -11)
+row = 11.0
+speed = 1.0
+direction = -1
+
+[node name="truck_1" parent="Rows 8-12/Plat_Row-11_2" index="4"]
+visible = true
+color_1 = Color(0.190914, 0.405013, 0.183585, 1)
+
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_2" index="7"]
+visible = false
+
+[node name="Plat_Row-11_3" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -11)
+row = 11.0
+speed = 1.0
+direction = -1
+
+[node name="truck_3" parent="Rows 8-12/Plat_Row-11_3" index="6"]
+visible = true
+color_1 = Color(0.423651, 0.423651, 0.423651, 1)
+
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_3" index="7"]
+visible = false
+
+[node name="Plat_Row-11_4" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, -0.4, -11)
+row = 11.0
+speed = 1.0
+direction = -1
+
+[node name="truck_2" parent="Rows 8-12/Plat_Row-11_4" index="5"]
+visible = true
+color_1 = Color(0.383299, 8.30255e-07, 0.0295464, 1)
+
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_4" index="7"]
+visible = false
+
+[node name="Plat_Row-10_1" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.4, -10)
+row = 10.0
+speed = 2.0
+direction = 1
+
+[node name="Plat_Row-10_2" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.4, -10)
+row = 10.0
+speed = 2.0
+direction = 1
+
+[node name="electric-pole_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="4"]
+visible = true
+
+[node name="pipe_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="5"]
+visible = false
+
+[node name="Pipe_2" parent="Rows 8-12/Plat_Row-10_2/pipe_01-01_00" index="1"]
+visible = true
+
+[node name="Plat_Row-10_3" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, -10)
+row = 10.0
+speed = 2.0
+direction = 1
+
+[node name="Plat_Row-09_1" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.4, -9)
+uses_alt_killer_gap = true
+row = 9.0
+speed = 1.0
+direction = 1
+
+[node name="Plat_Row-09_2" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, -9)
+uses_alt_killer_gap = true
+row = 9.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-09_2" index="5"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_2" index="8"]
+visible = false
+
+[node name="Plat_Row-09_3" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, -9)
+uses_alt_killer_gap = true
+row = 9.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-3" parent="Rows 8-12/Plat_Row-09_3" index="7"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_3" index="8"]
+visible = false
+
+[node name="Plat_Row-09_4" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -9)
+uses_alt_killer_gap = true
+row = 9.0
+speed = 1.0
+direction = 1
+
+[node name="broken_wood-2" parent="Rows 8-12/Plat_Row-09_4" index="6"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_4" index="8"]
+visible = false
+
+[node name="Plat_Row-08_1" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.4, -8)
+row = 8.0
+speed = 1.0
+direction = -1
+
+[node name="mesh" parent="Rows 8-12/Plat_Row-08_1" index="0"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_1" index="8"]
+visible = false
+
+[node name="Plat_Row-08_2" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.4, -8)
+row = 8.0
+speed = 1.0
+direction = -1
+
+[node name="mesh" parent="Rows 8-12/Plat_Row-08_2" index="0"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_2" index="8"]
+visible = false
+
+[node name="Plat_Row-08_3" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.4, -8)
+row = 8.0
+speed = 1.0
+direction = -1
+
+[node name="mesh" parent="Rows 8-12/Plat_Row-08_3" index="0"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_3" index="8"]
+visible = false
+
+[node name="Plat_Row-08_4" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.4, -8)
+row = 8.0
+speed = 1.0
+direction = -1
+
+[node name="mesh" parent="Rows 8-12/Plat_Row-08_4" index="0"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_4" index="8"]
+visible = false
+
+[node name="Plat_Row-08_5" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -8)
+row = 8.0
+speed = 1.0
+direction = -1
+
+[node name="mesh" parent="Rows 8-12/Plat_Row-08_5" index="0"]
+visible = true
+
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_5" index="8"]
+visible = false
+
 [node name="Rows_0-7" type="Node3D" parent="."]
 
 [node name="Ground" type="StaticBody3D" parent="Rows_0-7"]
@@ -240,6 +482,13 @@ mesh = SubResource("BoxMesh_nb68i")
 [node name="collision" type="CollisionShape3D" parent="Debug/Colliders/Wall"]
 shape = SubResource("BoxShape3D_pwxq0")
 
+[node name="Wall3" type="Area3D" parent="Debug/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.6, -1)
+script = ExtResource("2_6sw12")
+
+[node name="collision" type="CollisionShape3D" parent="Debug/Colliders/Wall3"]
+shape = SubResource("BoxShape3D_pwxq0")
+
 [node name="Wall2" type="Area3D" parent="Debug/Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 0)
 script = ExtResource("2_6sw12")
@@ -279,241 +528,6 @@ visible = false
 cast_shadow = 0
 mesh = SubResource("BoxMesh_x8n22")
 skeleton = NodePath("../../..")
-
-[node name="Platforms" type="Node3D" parent="Debug"]
-script = ExtResource("5_trm1l")
-rows_type = 1
-
-[node name="Plat_Row-12_1" parent="Debug/Platforms" instance=ExtResource("8_gvvhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, -0.4, -12)
-row = 12.0
-speed = 4.0
-direction = 1
-
-[node name="broken_wood-2" parent="Debug/Platforms/Plat_Row-12_1" index="5"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-12_1" index="7"]
-visible = false
-
-[node name="Plat_Row-12_2" parent="Debug/Platforms" instance=ExtResource("8_gvvhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.4, -12)
-row = 12.0
-speed = 4.0
-direction = 1
-
-[node name="broken_wood-1" parent="Debug/Platforms/Plat_Row-12_2" index="4"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-12_2" index="7"]
-visible = false
-
-[node name="Plat_Row-12_3" parent="Debug/Platforms" instance=ExtResource("8_gvvhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.4, -12)
-row = 12.0
-speed = 4.0
-direction = 1
-
-[node name="broken_wood-2" parent="Debug/Platforms/Plat_Row-12_3" index="5"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-12_3" index="7"]
-visible = false
-
-[node name="Plat_Row-12_4" parent="Debug/Platforms" instance=ExtResource("8_gvvhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, -12)
-row = 12.0
-speed = 4.0
-direction = 1
-
-[node name="broken_wood-3" parent="Debug/Platforms/Plat_Row-12_4" index="6"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-12_4" index="7"]
-visible = false
-
-[node name="Plat_Row-12_5" parent="Debug/Platforms" instance=ExtResource("8_gvvhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.4, -12)
-row = 12.0
-speed = 4.0
-direction = 1
-
-[node name="Plat_Row-11_1" parent="Debug/Platforms" instance=ExtResource("7_tf02s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, -0.4, -11)
-row = 11.0
-speed = 4.0
-direction = -1
-
-[node name="truck_4" parent="Debug/Platforms/Plat_Row-11_1" index="7"]
-color_1 = Color(0.590199, 0.414322, 0.289688, 1)
-
-[node name="Plat_Row-11_2" parent="Debug/Platforms" instance=ExtResource("7_tf02s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -0.4, -11)
-row = 11.0
-speed = 4.0
-direction = -1
-
-[node name="truck_1" parent="Debug/Platforms/Plat_Row-11_2" index="4"]
-visible = true
-color_1 = Color(0.190914, 0.405013, 0.183585, 1)
-
-[node name="truck_4" parent="Debug/Platforms/Plat_Row-11_2" index="7"]
-visible = false
-
-[node name="Plat_Row-11_3" parent="Debug/Platforms" instance=ExtResource("7_tf02s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -11)
-row = 11.0
-speed = 4.0
-direction = -1
-
-[node name="truck_3" parent="Debug/Platforms/Plat_Row-11_3" index="6"]
-visible = true
-color_1 = Color(0.423651, 0.423651, 0.423651, 1)
-
-[node name="truck_4" parent="Debug/Platforms/Plat_Row-11_3" index="7"]
-visible = false
-
-[node name="Plat_Row-11_4" parent="Debug/Platforms" instance=ExtResource("7_tf02s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, -0.4, -11)
-row = 11.0
-speed = 4.0
-direction = -1
-
-[node name="truck_2" parent="Debug/Platforms/Plat_Row-11_4" index="5"]
-visible = true
-color_1 = Color(0.383299, 8.30255e-07, 0.0295464, 1)
-
-[node name="truck_4" parent="Debug/Platforms/Plat_Row-11_4" index="7"]
-visible = false
-
-[node name="Plat_Row-10_1" parent="Debug/Platforms" instance=ExtResource("5_y2lln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.4, -10)
-row = 10.0
-speed = 4.0
-direction = 1
-
-[node name="Plat_Row-10_2" parent="Debug/Platforms" instance=ExtResource("5_y2lln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.4, -10)
-row = 10.0
-speed = 4.0
-direction = 1
-
-[node name="electric-pole_01-01_00" parent="Debug/Platforms/Plat_Row-10_2" index="4"]
-visible = true
-
-[node name="pipe_01-01_00" parent="Debug/Platforms/Plat_Row-10_2" index="5"]
-visible = false
-
-[node name="Pipe_2" parent="Debug/Platforms/Plat_Row-10_2/pipe_01-01_00" index="1"]
-visible = true
-
-[node name="Plat_Row-10_3" parent="Debug/Platforms" instance=ExtResource("5_y2lln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, -10)
-row = 10.0
-speed = 4.0
-direction = 1
-
-[node name="Plat_Row-09_1" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.4, -9)
-row = 9.0
-speed = 6.0
-direction = 1
-
-[node name="Plat_Row-09_2" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, -9)
-row = 9.0
-speed = 6.0
-direction = 1
-
-[node name="broken_wood-1" parent="Debug/Platforms/Plat_Row-09_2" index="5"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-09_2" index="8"]
-visible = false
-
-[node name="Plat_Row-09_3" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, -9)
-row = 9.0
-speed = 6.0
-direction = 1
-
-[node name="broken_wood-3" parent="Debug/Platforms/Plat_Row-09_3" index="7"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-09_3" index="8"]
-visible = false
-
-[node name="Plat_Row-09_4" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -9)
-row = 9.0
-speed = 6.0
-direction = 1
-
-[node name="broken_wood-2" parent="Debug/Platforms/Plat_Row-09_4" index="6"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-09_4" index="8"]
-visible = false
-
-[node name="Plat_Row-08_1" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.4, -8)
-row = 8.0
-speed = 6.0
-direction = -1
-
-[node name="mesh" parent="Debug/Platforms/Plat_Row-08_1" index="0"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-08_1" index="8"]
-visible = false
-
-[node name="Plat_Row-08_2" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.4, -8)
-row = 8.0
-speed = 6.0
-direction = -1
-
-[node name="mesh" parent="Debug/Platforms/Plat_Row-08_2" index="0"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-08_2" index="8"]
-visible = false
-
-[node name="Plat_Row-08_3" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.4, -8)
-row = 8.0
-speed = 6.0
-direction = -1
-
-[node name="mesh" parent="Debug/Platforms/Plat_Row-08_3" index="0"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-08_3" index="8"]
-visible = false
-
-[node name="Plat_Row-08_4" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.4, -8)
-row = 8.0
-speed = 6.0
-direction = -1
-
-[node name="mesh" parent="Debug/Platforms/Plat_Row-08_4" index="0"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-08_4" index="8"]
-visible = false
-
-[node name="Plat_Row-08_5" parent="Debug/Platforms" instance=ExtResource("6_fwm3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -8)
-row = 8.0
-speed = 6.0
-direction = -1
-
-[node name="mesh" parent="Debug/Platforms/Plat_Row-08_5" index="0"]
-visible = true
-
-[node name="broken_wood-4" parent="Debug/Platforms/Plat_Row-08_5" index="8"]
-visible = false
 
 [node name="Enemies" type="Node3D" parent="Debug"]
 script = ExtResource("10_2fmjq")
@@ -687,7 +701,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.05, 0, -6.5)
 
 [node name="Canvas_debug" type="CanvasLayer" parent="."]
 layer = 128
-visible = false
 script = ExtResource("15_v8146")
 
 [node name="MarginContainer" type="MarginContainer" parent="Canvas_debug"]
@@ -770,30 +783,36 @@ grow_vertical = 0
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -9)
+visible = false
+mesh = SubResource("BoxMesh_a7tce")
+
 [editable path="FinishLine/bunker_doors_01-00"]
 [editable path="FinishLine/bunker_doors_01-01"]
 [editable path="FinishLine/bunker_doors_01-02"]
 [editable path="FinishLine/bunker_doors_01-03"]
 [editable path="FinishLine/bunker_doors_01-04"]
-[editable path="Debug/Platforms/Plat_Row-12_1"]
-[editable path="Debug/Platforms/Plat_Row-12_2"]
-[editable path="Debug/Platforms/Plat_Row-12_3"]
-[editable path="Debug/Platforms/Plat_Row-12_4"]
-[editable path="Debug/Platforms/Plat_Row-11_1"]
-[editable path="Debug/Platforms/Plat_Row-11_2"]
-[editable path="Debug/Platforms/Plat_Row-11_3"]
-[editable path="Debug/Platforms/Plat_Row-11_4"]
-[editable path="Debug/Platforms/Plat_Row-10_1"]
-[editable path="Debug/Platforms/Plat_Row-10_1/pipe_01-01_00"]
-[editable path="Debug/Platforms/Plat_Row-10_2"]
-[editable path="Debug/Platforms/Plat_Row-10_2/pipe_01-01_00"]
-[editable path="Debug/Platforms/Plat_Row-10_3"]
-[editable path="Debug/Platforms/Plat_Row-10_3/pipe_01-01_00"]
-[editable path="Debug/Platforms/Plat_Row-09_2"]
-[editable path="Debug/Platforms/Plat_Row-09_3"]
-[editable path="Debug/Platforms/Plat_Row-09_4"]
-[editable path="Debug/Platforms/Plat_Row-08_1"]
-[editable path="Debug/Platforms/Plat_Row-08_2"]
-[editable path="Debug/Platforms/Plat_Row-08_3"]
-[editable path="Debug/Platforms/Plat_Row-08_4"]
-[editable path="Debug/Platforms/Plat_Row-08_5"]
+[editable path="Rows 8-12/Plat_Row-12_1"]
+[editable path="Rows 8-12/Plat_Row-12_2"]
+[editable path="Rows 8-12/Plat_Row-12_3"]
+[editable path="Rows 8-12/Plat_Row-12_4"]
+[editable path="Rows 8-12/Plat_Row-12_5"]
+[editable path="Rows 8-12/Plat_Row-11_1"]
+[editable path="Rows 8-12/Plat_Row-11_2"]
+[editable path="Rows 8-12/Plat_Row-11_3"]
+[editable path="Rows 8-12/Plat_Row-11_4"]
+[editable path="Rows 8-12/Plat_Row-10_1"]
+[editable path="Rows 8-12/Plat_Row-10_1/pipe_01-01_00"]
+[editable path="Rows 8-12/Plat_Row-10_2"]
+[editable path="Rows 8-12/Plat_Row-10_2/pipe_01-01_00"]
+[editable path="Rows 8-12/Plat_Row-10_3"]
+[editable path="Rows 8-12/Plat_Row-10_3/pipe_01-01_00"]
+[editable path="Rows 8-12/Plat_Row-09_2"]
+[editable path="Rows 8-12/Plat_Row-09_3"]
+[editable path="Rows 8-12/Plat_Row-09_4"]
+[editable path="Rows 8-12/Plat_Row-08_1"]
+[editable path="Rows 8-12/Plat_Row-08_2"]
+[editable path="Rows 8-12/Plat_Row-08_3"]
+[editable path="Rows 8-12/Plat_Row-08_4"]
+[editable path="Rows 8-12/Plat_Row-08_5"]

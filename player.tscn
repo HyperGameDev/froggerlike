@@ -6,11 +6,13 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3ptw0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0j0yx"]
-size = Vector3(0.009, 0.9, 0.999)
+size = Vector3(0.009, 0.9, 0.279)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+platform_on_leave = 2
 script = ExtResource("1_jxjj8")
+fall_speed = 20.0
 
 [node name="human_03_00" parent="." instance=ExtResource("2_tvxr5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.458401, 0)
@@ -21,7 +23,7 @@ mesh = SubResource("BoxMesh_3ptw0")
 skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.11657)
 shape = SubResource("BoxShape3D_0j0yx")
 
 [node name="ray_forward_l" type="RayCast3D" parent="."]

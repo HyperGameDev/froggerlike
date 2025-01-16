@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://46tstyywyhx8"]
+[gd_scene load_steps=9 format=3 uid="uid://46tstyywyhx8"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_o0sbh"]
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="2_6xht5"]
 [ext_resource type="PackedScene" uid="uid://0tg56jldrm0h" path="res://platforms/truck_pickup_01-00.tscn" id="2_c8to8"]
+[ext_resource type="Script" path="res://platforms/killer_gap.gd" id="4_857k3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yxeev"]
 size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_337bg"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gin5q"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nerma"]
 size = Vector3(2, 1, 1)
 
 [node name="Platform-2_00" type="Area3D"]
@@ -47,3 +54,29 @@ visible = false
 
 [node name="truck_4" parent="." instance=ExtResource("2_c8to8")]
 transform = Transform3D(0.0537259, 0.0870502, -1.2157, -1.20653, -0.168517, -0.0653873, -0.17259, 1.20517, 0.0786684, 0.255271, 0.197559, -0.380496)
+
+[node name="KillerGap_R" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+script = ExtResource("4_857k3")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_R"]
+visible = false
+mesh = SubResource("BoxMesh_gin5q")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_R"]
+shape = SubResource("BoxShape3D_nerma")
+disabled = true
+
+[node name="KillerGap_L" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+script = ExtResource("4_857k3")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_L"]
+visible = false
+mesh = SubResource("BoxMesh_gin5q")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_L"]
+shape = SubResource("BoxShape3D_nerma")
+disabled = true

@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgjk518k86wey"]
+[gd_scene load_steps=16 format=3 uid="uid://bgjk518k86wey"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_hj2ax"]
 [ext_resource type="PackedScene" uid="uid://0yp8myhmj3at" path="res://platforms/broken_wood-1.tscn" id="3_831ig"]
+[ext_resource type="Script" path="res://platforms/killer_gap.gd" id="3_t3rh1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0y23v"]
 size = Vector3(3, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuvex"]
+albedo_color = Color(0.82, 0.579467, 0.369, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dwvkk"]
 size = Vector3(1.5, 1, 1)
@@ -20,6 +24,21 @@ albedo_color = Color(1, 0, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnded"]
 size = Vector3(3, 1, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_xgvai"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_elksb"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s60et"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhnxm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3qt4"]
+size = Vector3(3, 1, 1)
+
 [node name="Platform-2_00" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 script = ExtResource("1_hj2ax")
@@ -27,6 +46,7 @@ script = ExtResource("1_hj2ax")
 [node name="mesh" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_0y23v")
+surface_material_override/0 = SubResource("StandardMaterial3D_vuvex")
 
 [node name="measuring_l" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
@@ -50,16 +70,74 @@ unique_name_in_owner = true
 shape = SubResource("BoxShape3D_gnded")
 
 [node name="broken_wood-1" parent="." instance=ExtResource("3_831ig")]
-transform = Transform3D(-6.78653e-09, 1.23396e-12, -0.198, 0.00894133, 0.344425, -4.99387e-10, 0.154742, -0.0199017, -8.65485e-09, 0.113929, 0.701806, -0.047397)
+transform = Transform3D(0.000320291, 0.0100512, -0.19797, 0.0183498, 0.575832, 0.00345558, 0.15391, -0.0686743, -8.65354e-09, 0.114, 0.827, -0.112)
 visible = false
 
 [node name="broken_wood-2" parent="." instance=ExtResource("3_831ig")]
-transform = Transform3D(-4.33757e-05, -0.00167112, 0.197998, -0.0144197, -0.3435, -0.000960074, 0.154328, -0.0320955, -3.40553e-05, -0.108585, 0.148193, -0.047397)
+transform = Transform3D(-0.000479455, -0.00789683, 0.197981, -0.0343367, -0.565531, -0.00276451, 0.151148, -0.128498, -8.65401e-09, -0.109, -0.102, -0.132)
 visible = false
 
 [node name="broken_wood-3" parent="." instance=ExtResource("3_831ig")]
-transform = Transform3D(-0.0116221, 0.00409237, -0.197429, -0.0144197, -0.3435, -0.000960074, -0.15389, 0.0318774, 0.0150002, 0.0664949, 0.148193, 0.0639071)
+transform = Transform3D(-0.0116221, 0.00658336, -0.197429, -0.0144196, -0.552587, -0.00096007, -0.15389, 0.0512809, 0.0150002, 0.066, -0.067, 0.064)
 visible = false
 
 [node name="broken_wood-4" parent="." instance=ExtResource("3_831ig")]
-transform = Transform3D(0.0116939, -0.00150398, 0.197434, 0.00894133, 0.344426, -4.85844e-10, -0.154299, 0.0198448, 0.0149629, -0.135054, 0.701806, 0.0978063)
+transform = Transform3D(0.0116939, -0.00333491, 0.197434, 0.00894135, 0.763726, -1.84317e-09, -0.154299, 0.0440037, 0.014963, -0.135, 0.927, 0.098)
+
+[node name="KillerGap_R" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0)
+script = ExtResource("3_t3rh1")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_R"]
+visible = false
+mesh = SubResource("BoxMesh_xgvai")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_R"]
+shape = SubResource("BoxShape3D_elksb")
+disabled = true
+
+[node name="KillerGap_L" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 0)
+script = ExtResource("3_t3rh1")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_L"]
+visible = false
+mesh = SubResource("BoxMesh_xgvai")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_L"]
+shape = SubResource("BoxShape3D_elksb")
+disabled = true
+
+[node name="KillerGap_R2" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0)
+script = ExtResource("3_t3rh1")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_R2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_s60et")
+surface_material_override/0 = SubResource("StandardMaterial3D_lhnxm")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_R2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_h3qt4")
+disabled = true
+
+[node name="KillerGap_L2" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 0)
+script = ExtResource("3_t3rh1")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_L2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_s60et")
+surface_material_override/0 = SubResource("StandardMaterial3D_lhnxm")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_L2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_h3qt4")
+disabled = true

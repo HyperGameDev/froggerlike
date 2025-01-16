@@ -10,4 +10,5 @@ enum collision {
 	PLATFORM = 4,
 	PLAYER = 5,
 	PLAYER_WRAP = 6,
+	KILLER_GAP = 7,
 }

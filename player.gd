@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+class_name Player
+
+@export var fall_death_pos: float = -1.1
+@export var fall_speed: float = 10.
+
 const SPEED = .1
 const JUMP_VELOCITY = 4.5
 
@@ -8,10 +13,14 @@ var move: Vector3 = Vector3.ZERO
 var move_direction: move_directions
 enum move_directions {FORWARD,BACK,LEFT,RIGHT}
 
+var death_state: death_states
+enum death_states {NON,ENEMY,WATER,TIME,EDGE,}
+
 @export var move_state: move_states
 enum move_states {MOVABLE,MOVING}
 
-@onready var animation: AnimationTree = get_tree().get_current_scene().get_node("Spawned/Player/human_03_00/AnimationTree")
+@onready var animation: AnimationTree
+@onready var collision: CollisionShape3D = $collision
 
 @onready var ray_forward_l: RayCast3D = %ray_forward_l
 @onready var ray_forward_r: RayCast3D = %ray_forward_r
@@ -29,12 +38,16 @@ var wall_is_right: bool = false
 
 func _ready() -> void:
 	Messenger.player_ready.emit()
+	animation = get_tree().get_current_scene().get_node("Spawned/Player/human_03_00/AnimationTree")
+	
 	add_to_group("Player")
 	
 	set_ray_masks()
 	
 	set_collision_layer_value(Globals.collision.PLAYER, true)	
 	set_collision_layer_value(Globals.collision.PLAYER_WRAP, true)
+	
+	Messenger.player_respawn.connect(_on_player_respawn)
 	
 func set_ray_masks():
 	for node in get_children():
@@ -61,6 +74,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	if global_position.y <= fall_death_pos:
+		free_player()
+	
 	check_for_walls()
 	
 	move_and_slide()
@@ -125,14 +142,14 @@ func grid_movement(axis):
 		
 	match axis:
 		"x":
-			var tween_move_x = get_tree().create_tween()
+			var tween_move_x = get_tree().get_current_scene().get_node("%Player_Tweens").create_tween()
 			var to_move_x: float = global_position.x + move.x
 			
 			tween_move_x.tween_property(self, "global_position:x", to_move_x, SPEED)
 			tween_move_x.connect("finished", _on_move_x_finished)
 			
 		"z":
-			var tween_move_z = get_tree().create_tween()
+			var tween_move_z = get_tree().get_current_scene().get_node("%Player_Tweens").create_tween()
 			var to_move_z: float = global_position.z + move.z
 			
 			tween_move_z.tween_property(self, "global_position:z", to_move_z, SPEED)
@@ -152,3 +169,31 @@ func _on_move_z_finished():
 	await get_tree().create_timer(.1).timeout
 	animation.set("parameters/Transition/transition_request", "idling")
 	
+func _on_player_respawn(is_dead,state):
+	if is_dead:
+		#subtract life
+		match state:
+			death_states.NON:
+				pass
+			death_states.ENEMY:
+				death_state = death_states.ENEMY
+				free_player()
+			death_states.WATER:
+				death_state = death_states.WATER
+				collision.set_deferred("disabled", true)
+				call_deferred("apply_velocity_change")
+				
+			death_states.EDGE:
+				death_state = death_states.EDGE
+				free_player()
+			
+	else:
+		#add filled finish line
+		free_player()
+		
+func free_player():
+	Messenger.player_freed.emit()
+	queue_free()
+			
+func apply_velocity_change():
+	velocity.y -= fall_speed

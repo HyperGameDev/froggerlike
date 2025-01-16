@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://df0o5t0d5jqli"]
+[gd_scene load_steps=11 format=3 uid="uid://df0o5t0d5jqli"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_y2lnb"]
 [ext_resource type="PackedScene" uid="uid://dxy13up6ptitp" path="res://platforms/electric_pole_01_01-00.tscn" id="2_ebcok"]
 [ext_resource type="PackedScene" uid="uid://dw8hhdtlobrep" path="res://platforms/pipe_01_01-00.tscn" id="3_66t50"]
+[ext_resource type="Script" path="res://platforms/killer_gap.gd" id="4_x1mrb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fqwgt"]
 size = Vector3(6, 1, 1)
@@ -15,6 +16,12 @@ albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3ghy"]
 size = Vector3(6, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgxdj"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg6te"]
+size = Vector3(3, 1, 1)
 
 [node name="Platform-5_00" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
@@ -55,5 +62,31 @@ transform = Transform3D(0, 0.99948, -0.0322481, -1, 0, 0, 0, 0.0322481, 0.99948,
 [node name="Pipe_3" parent="pipe_01-01_00" index="2"]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.202645, 2.24919, 0.194378)
 visible = true
+
+[node name="KillerGap_R" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 0)
+script = ExtResource("4_x1mrb")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_R"]
+visible = false
+mesh = SubResource("BoxMesh_wgxdj")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_R"]
+shape = SubResource("BoxShape3D_rg6te")
+disabled = true
+
+[node name="KillerGap_L" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 0)
+script = ExtResource("4_x1mrb")
+
+[node name="mesh" type="MeshInstance3D" parent="KillerGap_L"]
+visible = false
+mesh = SubResource("BoxMesh_wgxdj")
+
+[node name="collision" type="CollisionShape3D" parent="KillerGap_L"]
+shape = SubResource("BoxShape3D_rg6te")
+disabled = true
 
 [editable path="pipe_01-01_00"]
