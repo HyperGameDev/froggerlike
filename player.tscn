@@ -26,6 +26,13 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.11657)
 shape = SubResource("BoxShape3D_0j0yx")
 
+[node name="Area_Player" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="collision" type="CollisionShape3D" parent="Area_Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028753, -0.11657)
+shape = SubResource("BoxShape3D_0j0yx")
+
 [node name="ray_forward_l" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49, 0, 0)
@@ -57,27 +64,27 @@ collide_with_bodies = false
 [node name="ray_left_l" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49)
-target_position = Vector3(-0.5, 0, 0)
+target_position = Vector3(-1.2, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ray_left_r" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.49)
-target_position = Vector3(-0.5, 0, 0)
+target_position = Vector3(-1.2, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ray_right_l" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.49)
-target_position = Vector3(0.5, 0, 0)
+target_position = Vector3(1.2, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ray_right_r" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49)
-target_position = Vector3(0.5, 0, 0)
+target_position = Vector3(1.2, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false

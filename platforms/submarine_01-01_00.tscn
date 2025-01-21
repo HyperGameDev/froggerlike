@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://wl8gqsqoc7nt"]
+
+[ext_resource type="PackedScene" uid="uid://cbpyu8q47n6l4" path="res://platforms/submarine_01-01_00.blend" id="1_xa23e"]
+[ext_resource type="Texture2D" uid="uid://cefrtytjlq5e8" path="res://platforms/textures/earth_order_flag_alpha.png" id="2_v61ol"]
+[ext_resource type="Material" uid="uid://wji14fl5uodx" path="res://platforms/textures/sub_hull_02.tres" id="3_e71x3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3ipq"]
+albedo_texture = ExtResource("2_v61ol")
+metallic = 0.21
+metallic_specular = 0.57
+roughness = 0.34
+
+[node name="submarine_01-01_00" instance=ExtResource("1_xa23e")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v3ipq")
+surface_material_override/1 = ExtResource("3_e71x3")

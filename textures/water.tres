@@ -12,10 +12,12 @@ color_ramp = SubResource("Gradient_ypvpo")
 noise = SubResource("FastNoiseLite_mkdu1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7vml"]
+render_priority = 10
 blend_mode = 3
 albedo_texture = SubResource("NoiseTexture2D_565yc")
 
 [resource]
+render_priority = 8
 next_pass = SubResource("StandardMaterial3D_k7vml")
 blend_mode = 1
 albedo_color = Color(0, 0, 0.48, 1)

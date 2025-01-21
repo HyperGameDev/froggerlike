@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cspd21s4x5gq0"]
+
+[ext_resource type="Material" uid="uid://cu773lvh2spgr" path="res://platforms/textures/sub_flag_01.tres" id="1_yajs6"]
+
+[resource]
+next_pass = ExtResource("1_yajs6")

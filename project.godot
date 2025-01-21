@@ -25,6 +25,7 @@ Messenger="*res://messenger.gd"
 window/size/viewport_width=1024
 window/size/viewport_height=1024
 window/size/always_on_top=true
+window/stretch/mode="viewport"
 
 [input]
 

@@ -7,6 +7,8 @@ class_name Player
 
 const SPEED = .1
 const JUMP_VELOCITY = 4.5
+const wall_ray_l_x: float = -.5
+const wall_ray_r_x: float = .5
 
 var move: Vector3 = Vector3.ZERO
 
@@ -21,6 +23,8 @@ enum move_states {MOVABLE,MOVING}
 
 @onready var animation: AnimationTree
 @onready var collision: CollisionShape3D = $collision
+@onready var area: Area3D = %Area_Player
+
 
 @onready var ray_forward_l: RayCast3D = %ray_forward_l
 @onready var ray_forward_r: RayCast3D = %ray_forward_r
@@ -35,12 +39,19 @@ var wall_is_left: bool = false
 @onready var ray_right_r: RayCast3D = %ray_right_r
 var wall_is_right: bool = false
 
+var left_rays := []
+var right_rays := []
+
+var left_side_rays := []
+var right_side_rays := []
+
 
 func _ready() -> void:
 	Messenger.player_ready.emit()
 	animation = get_tree().get_current_scene().get_node("Spawned/Player/human_03_00/AnimationTree")
 	
 	add_to_group("Player")
+	area.add_to_group("Player Area")
 	
 	set_ray_masks()
 	
@@ -48,6 +59,12 @@ func _ready() -> void:
 	set_collision_layer_value(Globals.collision.PLAYER_WRAP, true)
 	
 	Messenger.player_respawn.connect(_on_player_respawn)
+	
+	left_rays = [ray_left_l,ray_left_r]
+	right_rays = [ray_right_l,ray_right_r]
+	
+	left_side_rays = [ray_right_l,ray_left_l]
+	right_side_rays = [ray_left_r,ray_right_r]
 	
 func set_ray_masks():
 	for node in get_children():
@@ -81,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	check_for_walls()
 	
 	move_and_slide()
+
 	
 func check_for_walls():
 	wall_is_forward = ray_forward_l.is_colliding() or ray_forward_r.is_colliding()
@@ -88,7 +106,7 @@ func check_for_walls():
 	wall_is_left = ray_left_l.is_colliding() or ray_left_r.is_colliding()
 	wall_is_right = ray_right_l.is_colliding() or ray_right_r.is_colliding()
 	
-	walls_debug()
+	#walls_debug()
 	
 func walls_debug():
 	if ray_forward_l.is_colliding() or ray_forward_r.is_colliding():
@@ -99,6 +117,9 @@ func walls_debug():
 		print("Left wall detected")
 	if ray_right_l.is_colliding() or ray_right_r.is_colliding():
 		print("Right wall detected")
+	
+var previous_pos: Vector3 = Vector3.ZERO
+
 	
 func try_grid_movement(axis,direction):
 	if can_move():
