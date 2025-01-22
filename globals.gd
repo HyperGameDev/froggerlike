@@ -1,5 +1,11 @@
 extends Node
 
+var game_state: game_states
+enum game_states {
+	MENU,
+	PLAY,
+	}
+
 var score: int = 0
 var score_high: int = 0
 

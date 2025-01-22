@@ -197,12 +197,13 @@ func _on_move_z_finished():
 	check_row_score()
 
 func check_row_score():
-	var row: float = abs(global_position.z)
+	var row: int = abs(floor(global_position.z))
 	
 	if not score_min_row == score_max_row:
 		if row > score_min_row and not row == 7:
 			Messenger.update_score.emit(score_value_row)
 			score_min_row += 1
+			
 	
 	
 func _on_player_respawn(is_dead,state):

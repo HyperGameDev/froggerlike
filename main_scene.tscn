@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=44 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://finish-line/finish_lines.gd" id="3_ccrfc"]
 [ext_resource type="PackedScene" uid="uid://sy8noemqrlfq" path="res://finish-line/bunker_doors_01-00.tscn" id="3_y3jml"]
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="4_ikhtq"]
-[ext_resource type="Script" path="res://all_platforms.gd" id="5_trm1l"]
+[ext_resource type="Script" path="res://rows.gd" id="5_trm1l"]
 [ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-5_00.tscn" id="5_y2lln"]
 [ext_resource type="PackedScene" uid="uid://bgjk518k86wey" path="res://platform-2_00.tscn" id="6_fwm3j"]
 [ext_resource type="PackedScene" uid="uid://bgsamx5rklub3" path="res://ground/grass_plane_01_01-00.tscn" id="6_l3qy1"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://46tstyywyhx8" path="res://platform-1_00.tscn" id="7_tf02s"]
 [ext_resource type="PackedScene" uid="uid://dp1so6y3s8kna" path="res://enemy-5_00.tscn" id="8_a2xvh"]
 [ext_resource type="PackedScene" uid="uid://cm0bwxh43ilpf" path="res://platform-4_00.tscn" id="8_gvvhl"]
-[ext_resource type="Script" path="res://all_enemies.gd" id="10_2fmjq"]
 [ext_resource type="PackedScene" uid="uid://dfjaalolso6t1" path="res://enemy_4_00.tscn" id="10_mcp35"]
 [ext_resource type="PackedScene" uid="uid://s530se5wb3d6" path="res://enemy_3_00.tscn" id="11_ny747"]
 [ext_resource type="Script" path="res://wrap.gd" id="12_c6wka"]
@@ -227,13 +226,8 @@ transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -
 [node name="Door_R" parent="FinishLines/bunker_doors_01-04" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
 
-[node name="Ground_water" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -10.5)
-lod_bias = 128.0
-mesh = SubResource("PlaneMesh_vgdm5")
-surface_material_override/0 = ExtResource("4_ikhtq")
-
 [node name="Rows 8-12" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("5_trm1l")
 rows_type = 1
 
@@ -498,59 +492,121 @@ visible = true
 disabled = false
 
 [node name="Rows_0-7" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_trm1l")
 
-[node name="Ground" type="StaticBody3D" parent="Rows_0-7"]
+[node name="Enemy_Row-06_01" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
+row = 6.0
+
+[node name="Enemy_Row-06_02" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
+row = 6.0
+
+[node name="Enemy_Row-06_03" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -6)
+row = 6.0
+
+[node name="Enemy_Row-05_01" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.28986, -5)
+row = 5.0
+
+[node name="Enemy_Row-05_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.28986, -5)
+row = 5.0
+
+[node name="Enemy_Row-05_03" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.28986, -5)
+row = 5.0
+
+[node name="Enemy_Row-04_01" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.6, -4)
+row = 4.0
+
+[node name="Enemy_Row-04_02" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, -4)
+row = 4.0
+
+[node name="Enemy_Row-03_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.28986, -3)
+row = 3.0
+
+[node name="Enemy_Row-03_01" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.28986, -3)
+row = 3.0
+
+[node name="Enemy_Row-03_03" parent="Rows_0-7" instance=ExtResource("11_ny747")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.28986, -3)
+row = 3.0
+
+[node name="Enemy_Row-02_01" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.6, -2)
+row = 2.0
+
+[node name="Enemy_Row-02_02" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+row = 2.0
+
+[node name="Enemy_Row-02_03" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, -2)
+row = 2.0
+
+[node name="Ground_water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -10.5)
+lod_bias = 128.0
+mesh = SubResource("PlaneMesh_vgdm5")
+surface_material_override/0 = ExtResource("4_ikhtq")
+
+[node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -3.5)
 
-[node name="mesh" type="MeshInstance3D" parent="Rows_0-7/Ground"]
+[node name="mesh" type="MeshInstance3D" parent="Ground"]
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_0yht1")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_07ldn")
 
-[node name="mesh2" type="MeshInstance3D" parent="Rows_0-7/Ground"]
+[node name="mesh2" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_0yht1")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_07ldn")
 
-[node name="wall" type="MeshInstance3D" parent="Rows_0-7/Ground/mesh2"]
+[node name="wall" type="MeshInstance3D" parent="Ground/mesh2"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -4, 4)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_0yht1")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_t5tw2")
 
-[node name="collision" type="CollisionShape3D" parent="Rows_0-7/Ground"]
+[node name="collision" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_qo2rm")
 
-[node name="collision2" type="CollisionShape3D" parent="Rows_0-7/Ground"]
+[node name="collision2" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -13)
 shape = SubResource("BoxShape3D_qo2rm")
 
-[node name="grass" type="Node3D" parent="Rows_0-7/Ground"]
+[node name="grass" type="Node3D" parent="Ground"]
 
-[node name="grass_plane_01-01_00" parent="Rows_0-7/Ground/grass" instance=ExtResource("6_l3qy1")]
+[node name="grass_plane_01-01_00" parent="Ground/grass" instance=ExtResource("6_l3qy1")]
 transform = Transform3D(0.965, 0, 0, 0, 1, 0, 0, 0, 0.395, 8, 0, 0.1)
 
-[node name="grass_plane_01-01_01" parent="Rows_0-7/Ground/grass" instance=ExtResource("6_l3qy1")]
+[node name="grass_plane_01-01_01" parent="Ground/grass" instance=ExtResource("6_l3qy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.378, 0, -18.66)
 
-[node name="grass_plane_02-01_00" parent="Rows_0-7/Ground/grass" instance=ExtResource("7_clys3")]
+[node name="grass_plane_02-01_00" parent="Ground/grass" instance=ExtResource("7_clys3")]
 transform = Transform3D(-2.8631e-08, 0, -0.61, 0, 1, 0, 0.655, 0, -2.66639e-08, -6.1319, 0.996327, -10.8427)
 
-[node name="grass_plane_02-01_01" parent="Rows_0-7/Ground/grass" instance=ExtResource("7_clys3")]
+[node name="grass_plane_02-01_01" parent="Ground/grass" instance=ExtResource("7_clys3")]
 transform = Transform3D(-0.00603589, 0, 0.609974, 0, 1, 0, -0.654972, 0, -0.00562121, -2.17753, 0.996327, -11.0069)
 
-[node name="grass_plane_02-01_02" parent="Rows_0-7/Ground/grass" instance=ExtResource("7_clys3")]
+[node name="grass_plane_02-01_02" parent="Ground/grass" instance=ExtResource("7_clys3")]
 transform = Transform3D(0.171293, 0, -0.588772, 0, 1, 0, 0.632206, 0, 0.159524, 0.246451, 0.996327, -10.6886)
 
-[node name="grass_plane_02-01_03" parent="Rows_0-7/Ground/grass" instance=ExtResource("7_clys3")]
+[node name="grass_plane_02-01_03" parent="Ground/grass" instance=ExtResource("7_clys3")]
 transform = Transform3D(-0.00522433, 0, 0.609981, 0, 1, 0, -0.654979, 0, -0.00486541, 3.92958, 0.996327, -11.0539)
 
-[node name="grass_plane_02-01_04" parent="Rows_0-7/Ground/grass" instance=ExtResource("7_clys3")]
+[node name="grass_plane_02-01_04" parent="Ground/grass" instance=ExtResource("7_clys3")]
 transform = Transform3D(0.147053, 0, -0.594428, 0, 1, 0, 0.638279, 0, 0.13695, 6.06457, 0.950673, -10.7756)
 
 [node name="Debug" type="Node3D" parent="."]
@@ -631,63 +687,6 @@ visible = false
 cast_shadow = 0
 mesh = SubResource("BoxMesh_x8n22")
 skeleton = NodePath("../../..")
-
-[node name="Enemies" type="Node3D" parent="Debug"]
-script = ExtResource("10_2fmjq")
-
-[node name="Enemy-5_00" parent="Debug/Enemies" instance=ExtResource("8_a2xvh")]
-row = 6.0
-
-[node name="Enemy-5_01" parent="Debug/Enemies" instance=ExtResource("8_a2xvh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -6)
-row = 6.0
-
-[node name="Enemy-5_02" parent="Debug/Enemies" instance=ExtResource("8_a2xvh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
-row = 6.0
-
-[node name="Enemy-4_00" parent="Debug/Enemies" instance=ExtResource("10_mcp35")]
-row = 2.0
-
-[node name="Enemy-4_03" parent="Debug/Enemies" instance=ExtResource("10_mcp35")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.6, -2)
-row = 2.0
-
-[node name="Enemy-4_04" parent="Debug/Enemies" instance=ExtResource("10_mcp35")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, -2)
-row = 2.0
-
-[node name="Enemy-4_01" parent="Debug/Enemies" instance=ExtResource("10_mcp35")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, -4)
-row = 4.0
-
-[node name="Enemy-4_02" parent="Debug/Enemies" instance=ExtResource("10_mcp35")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.6, -4)
-row = 4.0
-
-[node name="Enemy-3_00" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.28986, -3)
-row = 3.0
-
-[node name="Enemy-3_04" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.28986, -3)
-row = 3.0
-
-[node name="Enemy-3_05" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.28986, -3)
-row = 3.0
-
-[node name="Enemy-3_01" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.28986, -5)
-row = 5.0
-
-[node name="Enemy-3_02" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.28986, -5)
-row = 5.0
-
-[node name="Enemy-3_03" parent="Debug/Enemies" instance=ExtResource("11_ny747")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.28986, -5)
-row = 5.0
 
 [node name="Wrappers" type="Node3D" parent="."]
 
