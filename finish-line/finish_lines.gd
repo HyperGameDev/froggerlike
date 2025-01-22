@@ -28,7 +28,7 @@ func setup_timers():
 	add_child(object_lifetimer)
 	
 func _on_interval_timeout():
-	print("FINISH OBJECT: Coin flip")
+	#print("FINISH OBJECT: Coin flip")
 	if any_finish_lines_available() and object_not_present():
 		var boolean = pow(-1, randi() % 2)
 		if boolean > 0:

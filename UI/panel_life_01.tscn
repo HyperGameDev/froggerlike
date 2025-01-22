@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqfggbkhgiysf"]
+
+[ext_resource type="Texture2D" uid="uid://cj3ihrwqy55sq" path="res://UI/player_life.png" id="1_tnhoc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umk4k"]
+texture = ExtResource("1_tnhoc")
+
+[node name="Panel_Life_01" type="Panel"]
+custom_minimum_size = Vector2(50, 50)
+theme_override_styles/panel = SubResource("StyleBoxTexture_umk4k")

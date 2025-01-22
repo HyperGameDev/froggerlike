@@ -45,6 +45,10 @@ var right_rays := []
 var left_side_rays := []
 var right_side_rays := []
 
+var score_value_row: int = 10
+var score_min_row: int = 1
+var score_max_row: int = 12
+
 
 func _ready() -> void:
 	Messenger.player_ready.emit()
@@ -189,6 +193,17 @@ func _on_move_z_finished():
 	move_state = move_states.MOVABLE
 	await get_tree().create_timer(.1).timeout
 	animation.set("parameters/Transition/transition_request", "idling")
+	
+	check_row_score()
+
+func check_row_score():
+	var row: float = abs(global_position.z)
+	
+	if not score_min_row == score_max_row:
+		if row > score_min_row and not row == 7:
+			Messenger.update_score.emit(score_value_row)
+			score_min_row += 1
+	
 	
 func _on_player_respawn(is_dead,state):
 	if is_dead:

@@ -11,3 +11,7 @@ signal player_ready
 signal player_respawn ## arg1: is_dead, arg2: death type enum
 @warning_ignore("unused_signal")
 signal player_freed
+
+
+@warning_ignore("unused_signal")
+signal update_score ## arg1: score int

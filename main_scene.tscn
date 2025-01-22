@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=45 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -23,6 +23,9 @@
 [ext_resource type="Script" path="res://wrap.gd" id="12_c6wka"]
 [ext_resource type="PackedScene" uid="uid://danwt3o2m5nkh" path="res://wrapper.tscn" id="12_q4olf"]
 [ext_resource type="Script" path="res://debug.gd" id="15_v8146"]
+[ext_resource type="Script" path="res://ui.gd" id="24_4bwkk"]
+[ext_resource type="FontFile" uid="uid://cbwuk281yehdv" path="res://fonts/pressstartk.ttf" id="24_l4kq4"]
+[ext_resource type="PackedScene" uid="uid://dqfggbkhgiysf" path="res://UI/panel_life_01.tscn" id="25_6t7ec"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -73,6 +76,13 @@ baseline_offset = -0.15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36b74"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_bcv1b"]
+base_font = ExtResource("24_l4kq4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kotw"]
+content_margin_bottom = 34.0
+bg_color = Color(0.4324, 0.92, 0.4324, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a7tce"]
 size = Vector3(2, 1, 1)
@@ -593,6 +603,7 @@ shape = SubResource("BoxShape3D_ns5x5")
 
 [node name="Boundaries" type="Node3D" parent="Debug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+visible = false
 script = ExtResource("2_pcsaw")
 
 [node name="left_boundary" type="MeshInstance3D" parent="Debug/Boundaries"]
@@ -793,6 +804,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.05, 0, -6.5)
 
 [node name="Canvas_debug" type="CanvasLayer" parent="."]
 layer = 128
+visible = false
 script = ExtResource("15_v8146")
 
 [node name="MarginContainer" type="MarginContainer" parent="Canvas_debug"]
@@ -851,16 +863,64 @@ theme_override_font_sizes/font_size = 30
 text = "Update"
 
 [node name="Canvas_UI" type="CanvasLayer" parent="."]
+script = ExtResource("24_4bwkk")
 
 [node name="Container_UI-Top" type="MarginContainer" parent="Canvas_UI"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 85.0
+offset_bottom = 96.0
 grow_horizontal = 2
 
 [node name="BG" type="Panel" parent="Canvas_UI/Container_UI-Top"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
+
+[node name="Container_Top_Scores" type="MarginContainer" parent="Canvas_UI/Container_UI-Top"]
+layout_mode = 2
+theme_override_constants/margin_top = 17
+
+[node name="HBox_Scores" type="HBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores"]
+layout_mode = 2
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="VBox_Score" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores"]
+layout_mode = 2
+
+[node name="Label_Score-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_Score"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="Label_Score-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_Score"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4324, 0.92, 0.4324, 1)
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBox_HiScore" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores"]
+layout_mode = 2
+
+[node name="Label_HiScore-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_HiScore"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "HI-SCORE"
+horizontal_alignment = 1
+
+[node name="Label_HiScore-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_HiScore"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4324, 0.92, 0.4324, 1)
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "0"
+horizontal_alignment = 1
 
 [node name="Container_UI-Bottm" type="MarginContainer" parent="Canvas_UI"]
 anchors_preset = 12
@@ -874,6 +934,61 @@ grow_vertical = 0
 [node name="BG" type="Panel" parent="Canvas_UI/Container_UI-Bottm"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
+
+[node name="Container_Bottom" type="MarginContainer" parent="Canvas_UI/Container_UI-Bottm"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 30
+
+[node name="HBox_Bottom" type="HSplitContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom"]
+layout_mode = 2
+split_offset = 324
+
+[node name="HBox_Lives" type="HFlowContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Panel_Life_01" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/HBox_Lives" instance=ExtResource("25_6t7ec")]
+layout_mode = 2
+
+[node name="Panel_Life_02" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/HBox_Lives" instance=ExtResource("25_6t7ec")]
+layout_mode = 2
+
+[node name="Panel_Life_03" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/HBox_Lives" instance=ExtResource("25_6t7ec")]
+layout_mode = 2
+
+[node name="VBox_Time-Level" type="VBoxContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="Label_HiScore-Text" type="Label" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "LEVEL 1"
+horizontal_alignment = 2
+
+[node name="HBox_Time" type="HBoxContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level"]
+layout_mode = 2
+alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level/HBox_Time"]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_0kotw")
+show_percentage = false
+
+[node name="Label_Time" type="Label" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level/HBox_Time"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.889333, 0.92, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_bcv1b")
+theme_override_font_sizes/font_size = 31
+text = "TIME"
+horizontal_alignment = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -9)
