@@ -893,9 +893,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 280
-theme_override_constants/margin_top = 250
+theme_override_constants/margin_top = 315
 theme_override_constants/margin_right = 280
-theme_override_constants/margin_bottom = 250
+theme_override_constants/margin_bottom = 345
 
 [node name="BG" type="Panel" parent="Canvas_Menu/Container_UI-Mid"]
 layout_mode = 2
@@ -931,7 +931,6 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_e04qm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bbx30")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_cq045")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
-action_mode = 0
 text = "PLAY"
 
 [node name="Button_Credits" type="Button" parent="Canvas_Menu/Container_UI-Mid/Container_Menu/VBox_Menu-Options"]
@@ -953,7 +952,6 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_e04qm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bbx30")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_cq045")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
-action_mode = 0
 text = "CREDITS"
 
 [node name="Canvas_Message" type="CanvasLayer" parent="."]
