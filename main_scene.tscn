@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=57 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://wrap.gd" id="12_c6wka"]
 [ext_resource type="PackedScene" uid="uid://danwt3o2m5nkh" path="res://wrapper.tscn" id="12_q4olf"]
 [ext_resource type="Script" path="res://debug.gd" id="15_v8146"]
+[ext_resource type="Script" path="res://menu.gd" id="22_vh0sv"]
 [ext_resource type="Script" path="res://ui.gd" id="24_4bwkk"]
 [ext_resource type="FontFile" uid="uid://cbwuk281yehdv" path="res://fonts/pressstartk.ttf" id="24_l4kq4"]
 [ext_resource type="PackedScene" uid="uid://dqfggbkhgiysf" path="res://UI/panel_life_01.tscn" id="25_6t7ec"]
@@ -65,6 +66,45 @@ size = Vector3(3.5, 3, 0.505)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ctqwv"]
 size = Vector3(3.5, 3, 0.505)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36b74"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_yy5v2"]
+base_font = ExtResource("24_l4kq4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mms5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcv80"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vky3w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt1a2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qid3o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryle7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjje8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e04qm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbx30"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq045"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wocs5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldlj4"]
 bg_color = Color(1, 1, 1, 0.321569)
 
@@ -72,9 +112,6 @@ bg_color = Color(1, 1, 1, 0.321569)
 spacing_top = 3
 spacing_bottom = -15
 baseline_offset = -0.15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36b74"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_bcv1b"]
 base_font = ExtResource("24_l4kq4")
@@ -801,6 +838,80 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 0, -6.5)
 [node name="Wrapper_R" parent="Wrappers/Wrappers_player" instance=ExtResource("12_q4olf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.05, 0, -6.5)
 
+[node name="Canvas_Menu" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("22_vh0sv")
+
+[node name="Container_UI-Mid" type="MarginContainer" parent="Canvas_Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 280
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 280
+theme_override_constants/margin_bottom = 250
+
+[node name="BG" type="Panel" parent="Canvas_Menu/Container_UI-Mid"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
+
+[node name="Container_Menu" type="MarginContainer" parent="Canvas_Menu/Container_UI-Mid"]
+layout_mode = 2
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_bottom = 55
+
+[node name="VBox_Menu-Options" type="VSplitContainer" parent="Canvas_Menu/Container_UI-Mid/Container_Menu"]
+layout_mode = 2
+theme_override_constants/separation = 70
+dragger_visibility = 1
+
+[node name="Button_Play" type="Button" parent="Canvas_Menu/Container_UI-Mid/Container_Menu/VBox_Menu-Options"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.4324, 0.92, 0.4324, 1)
+theme_override_fonts/font = SubResource("FontVariation_yy5v2")
+theme_override_font_sizes/font_size = 51
+theme_override_styles/focus = SubResource("StyleBoxFlat_0mms5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_rcv80")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vky3w")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_wt1a2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qid3o")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ryle7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rjje8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_e04qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bbx30")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_cq045")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
+action_mode = 0
+text = "PLAY"
+
+[node name="Button_Credits" type="Button" parent="Canvas_Menu/Container_UI-Mid/Container_Menu/VBox_Menu-Options"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.4324, 0.92, 0.4324, 1)
+theme_override_fonts/font = SubResource("FontVariation_yy5v2")
+theme_override_font_sizes/font_size = 51
+theme_override_styles/focus = SubResource("StyleBoxFlat_0mms5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_rcv80")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vky3w")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_wt1a2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qid3o")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ryle7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rjje8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_e04qm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bbx30")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_cq045")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
+action_mode = 0
+text = "CREDITS"
+
 [node name="Canvas_debug" type="CanvasLayer" parent="."]
 layer = 128
 visible = false
@@ -862,6 +973,7 @@ theme_override_font_sizes/font_size = 30
 text = "Update"
 
 [node name="Canvas_UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("24_4bwkk")
 
 [node name="Container_UI-Top" type="MarginContainer" parent="Canvas_UI"]
@@ -874,26 +986,27 @@ grow_horizontal = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
 
-[node name="Container_Top_Scores" type="MarginContainer" parent="Canvas_UI/Container_UI-Top"]
+[node name="Container_Top" type="MarginContainer" parent="Canvas_UI/Container_UI-Top"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_top = 17
 
-[node name="HBox_Scores" type="HBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores"]
+[node name="HBox_Scores" type="HBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top"]
 layout_mode = 2
 theme_override_constants/separation = 110
 alignment = 1
 
-[node name="VBox_Score" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores"]
+[node name="VBox_Score" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores"]
 layout_mode = 2
 
-[node name="Label_Score-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_Score"]
+[node name="Label_Score-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores/VBox_Score"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_bcv1b")
 theme_override_font_sizes/font_size = 31
 text = "SCORE"
 horizontal_alignment = 1
 
-[node name="Label_Score-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_Score"]
+[node name="Label_Score-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores/VBox_Score"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4324, 0.92, 0.4324, 1)
@@ -902,17 +1015,17 @@ theme_override_font_sizes/font_size = 31
 text = "0"
 horizontal_alignment = 1
 
-[node name="VBox_HiScore" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores"]
+[node name="VBox_HiScore" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores"]
 layout_mode = 2
 
-[node name="Label_HiScore-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_HiScore"]
+[node name="Label_HiScore-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores/VBox_HiScore"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_bcv1b")
 theme_override_font_sizes/font_size = 31
 text = "HI-SCORE"
 horizontal_alignment = 1
 
-[node name="Label_HiScore-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top_Scores/HBox_Scores/VBox_HiScore"]
+[node name="Label_HiScore-Value" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores/VBox_HiScore"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4324, 0.92, 0.4324, 1)
@@ -935,6 +1048,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
 
 [node name="Container_Bottom" type="MarginContainer" parent="Canvas_UI/Container_UI-Bottm"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 17

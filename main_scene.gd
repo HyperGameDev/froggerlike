@@ -4,10 +4,14 @@ extends Node3D
 @export var player_spawn_pos_x: int = 1
 @export var player_spawn_pos_z: int = -1
 
-func _ready() -> void:
-	spawn_player()
-	
+func _ready() -> void:	
 	Messenger.player_freed.connect(_on_player_freed)
+	Messenger.state_play.connect(_on_state_play)
+	
+	Messenger.update_game_state.emit(Globals.game_states.MENU,true)
+	
+func _on_state_play():
+	spawn_player()
 	
 func _on_player_freed():
 	spawn_player()

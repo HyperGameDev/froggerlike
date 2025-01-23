@@ -15,17 +15,19 @@ var empty_finish_lines = []
 func _ready() -> void:
 	setup_timers()
 	Messenger.update_finish_lines.connect(_on_update_finish_lines)
+	Messenger.state_play.connect(_on_state_play)
 	_on_update_finish_lines()
 	
 func setup_timers():
 	interval_timer.timeout.connect(_on_interval_timeout)
 	interval_timer.one_shot = true
 	add_child(interval_timer)
-	interval_timer.start(interval_length)
-	
 	object_lifetimer.timeout.connect(_on_object_lifetimer_timeout)
 	object_lifetimer.one_shot = true
 	add_child(object_lifetimer)
+	
+func _on_state_play():
+	interval_timer.start(interval_length)
 	
 func _on_interval_timeout():
 	#print("FINISH OBJECT: Coin flip")
