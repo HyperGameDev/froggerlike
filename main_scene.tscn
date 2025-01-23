@@ -928,9 +928,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 280
-theme_override_constants/margin_top = 500
+theme_override_constants/margin_top = 390
 theme_override_constants/margin_right = 280
-theme_override_constants/margin_bottom = 500
+theme_override_constants/margin_bottom = 553
 
 [node name="BG" type="Panel" parent="Canvas_Message/Container_UI-Message"]
 layout_mode = 2
@@ -953,8 +953,29 @@ theme_override_fonts/font = SubResource("FontVariation_yy5v2")
 theme_override_font_sizes/font_size = 51
 theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
 text = "GAME OVER"
+horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+[node name="Timer_Over" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer_Time" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer_Start" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer_Start2" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer_Spawn" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true

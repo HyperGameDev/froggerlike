@@ -15,6 +15,7 @@ class_name Platform
 func _ready() -> void:
 	
 	Messenger.player_ready.connect(_on_player_ready)
+	Messenger.state_msg_start.connect(_on_state_msg_start)
 	
 	set_collision_layer_value(Globals.collision.PLATFORM, true)
 	
@@ -34,8 +35,6 @@ func add_killer_gap():
 	if has_two_killer_gaps:
 		#killer_gap_l.mesh.visible = true
 		killer_gap_l.collision.disabled = false
-		
-
 
 func _physics_process(delta: float) -> void:
 	if not direction == 0:

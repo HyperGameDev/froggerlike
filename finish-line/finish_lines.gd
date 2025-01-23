@@ -16,7 +16,7 @@ func _ready() -> void:
 	setup_timers()
 	Messenger.update_finish_lines.connect(_on_update_finish_lines)
 	Messenger.state_play.connect(_on_state_play)
-	_on_update_finish_lines()
+	update_finish_line_array()
 	
 func setup_timers():
 	interval_timer.timeout.connect(_on_interval_timeout)
@@ -88,6 +88,19 @@ func object_not_present() -> bool:
 	return true
 	
 func _on_update_finish_lines():
+	update_finish_line_array()
+	what_kind_of_finish()
+	
+func what_kind_of_finish():
+	if not any_finish_lines_available():
+		print("FINISH LINES: Start state begun")	
+		Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
+	else:
+		
+		print("FINISH LINES: Time state begun")	
+		Messenger.update_game_state.emit(Globals.game_states.MESSAGE_TIME,true)	
+	
+func update_finish_line_array():
 	empty_finish_lines.clear()
 	for node in get_children():
 		for subnode in node.get_children():
@@ -95,8 +108,8 @@ func _on_update_finish_lines():
 				if not subnode.finish_line_state == subnode.finish_line_states.FILLED:
 					empty_finish_lines.append(subnode)
 	
-	print("FINISH OBJECT: Updated finish lines")				
-	print(empty_finish_lines)
+	#print("FINISH OBJECT: Updated finish lines")				
+	#print(empty_finish_lines)
 					
 
 					

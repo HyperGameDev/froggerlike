@@ -62,7 +62,7 @@ func _ready() -> void:
 	set_collision_layer_value(Globals.collision.PLAYER, true)	
 	set_collision_layer_value(Globals.collision.PLAYER_WRAP, true)
 	
-	Messenger.player_respawn.connect(_on_player_respawn)
+	Messenger.remove_player.connect(_on_remove_player)
 	
 	left_rays = [ray_left_l,ray_left_r]
 	right_rays = [ray_right_l,ray_right_r]
@@ -206,7 +206,7 @@ func check_row_score():
 			
 	
 	
-func _on_player_respawn(is_dead,state):
+func _on_remove_player(is_dead,state):
 	if is_dead:
 		Messenger.update_lives.emit(-1)
 		match state:
@@ -229,7 +229,6 @@ func _on_player_respawn(is_dead,state):
 		free_player()
 			
 func free_player():
-	Messenger.player_freed.emit()
 	queue_free()
 	
 			

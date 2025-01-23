@@ -16,3 +16,8 @@ func _on_player_ready():
 
 func move_object(rate,direction,object):
 	object.global_position.x += rate * direction
+	
+	
+func _on_state_msg_start():
+	if speed < Globals.row_max_speeds[row]:
+		speed + .5

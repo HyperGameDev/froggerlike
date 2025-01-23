@@ -22,5 +22,5 @@ func player_just_left():
 		
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		Messenger.player_respawn.emit(true,Player.death_states.ENEMY)
+		Messenger.remove_player.emit(true,Player.death_states.ENEMY)
 		

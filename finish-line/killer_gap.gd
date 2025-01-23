@@ -10,4 +10,4 @@ func _ready() -> void:
 	
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		Messenger.player_respawn.emit(true,Player.death_states.EDGE)
+		Messenger.remove_player.emit(true,Player.death_states.EDGE)

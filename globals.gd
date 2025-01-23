@@ -27,6 +27,22 @@ enum collision {
 	KILLER_GAP = 7,
 }
 
+var row_max_speeds := [
+	0.,  
+	0.,
+	5.5,
+	5.5,
+	6.,
+	10.,
+	7.,
+	0.,
+	10.,
+	5.,
+	8.,
+	7.,
+	4.5,
+]
+
 func _ready() -> void:
 	Messenger.reload.connect(_on_reload)
 	Messenger.update_game_state.connect(_update_game_state)

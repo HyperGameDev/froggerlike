@@ -29,9 +29,9 @@ signal update_finish_lines
 @warning_ignore("unused_signal")
 signal player_ready
 @warning_ignore("unused_signal")
-signal player_respawn ## arg1: is_dead, arg2: death type enum
+signal remove_player ## arg1: is_dead, arg2: death type enum
 @warning_ignore("unused_signal")
-signal player_freed
+signal respawn
 
 
 @warning_ignore("unused_signal")

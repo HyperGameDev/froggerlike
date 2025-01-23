@@ -1,22 +1,80 @@
 extends CanvasLayer
 
 @onready var message: Label = %Label_Message
-@onready var timer: Timer = %Timer
 
-@export var timer_length: int = 3
+@onready var timer_over: Timer = %Timer_Over
+@export var timer_over_length: float = 3
+
+@onready var timer_time: Timer = %Timer_Time
+@export var timer_time_length: float = 3
+
+@onready var timer_start: Timer = %Timer_Start
+@export var timer_start_length: float = 3
+
+@onready var timer_start2: Timer = %Timer_Start2
+@export var timer_start2_length: int = 3
+
+@onready var timer_spawn: Timer = %Timer_Spawn
+@export var timer_spawn_length: int = 1.5
+
 
 func _ready() -> void:
 	Messenger.state_msg_over.connect(_on_state_msg_over)
-	timer.timeout.connect(_on_timer_timeout)
+	Messenger.state_msg_time.connect(_on_state_msg_time)
+	
+	Messenger.state_msg_start.connect(_on_state_msg_start)
+	
+	
+	timer_over.timeout.connect(_on_timer_over_timeout)
+	timer_time.timeout.connect(_on_timer_time_timeout)
+	timer_start.timeout.connect(_on_timer_start_timeout)
+	timer_start2.timeout.connect(_on_timer_start2_timeout)
+	timer_spawn.timeout.connect(_on_timer_spawn_timeout)
 	
 func _on_state_msg_over():
 	visible = true
-	update_text("GAME OVER")
+	update_text("GAME OVER",true)
 	
-func update_text(new_text):
+func _on_state_msg_time():
+	print("MESSSAGE: Time should show")
+	visible = true
+	update_text("TIME: " + str(10),true)
+	
+func _on_state_msg_start():
+	print("MESSSAGE: Start should show")
+	visible = true
+	update_text("TIME: " + str(10),true)
+	
+	
+func update_text(new_text,run_timer):
 	message.text = new_text
-	timer.start(timer_length)
 	
-func _on_timer_timeout():
+	if run_timer:
+		match Globals.game_state:
+			Globals.game_states.MESSAGE_OVER:
+				timer_over.start(timer_over_length)
+			Globals.game_states.MESSAGE_TIME:
+				timer_time.start(timer_time_length)
+				timer_spawn.start(timer_spawn_length)
+			Globals.game_states.MESSAGE_START:
+				timer_start.start(timer_start_length)
+	
+func _on_timer_over_timeout():
 	visible = false
 	Messenger.reload.emit()
+	
+func _on_timer_time_timeout():
+	visible = false
+	
+func _on_timer_start_timeout():
+	print("MESSSAGE: Start 2 should show")
+	update_text("START",false)
+	timer_start2.start(timer_start2_length)
+	
+func _on_timer_start2_timeout():
+	visible = false
+	
+func _on_timer_spawn_timeout():
+	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)
+	
+	

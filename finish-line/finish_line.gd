@@ -27,7 +27,7 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		match finish_line_state:
 			finish_line_states.EMPTY:
-				Messenger.player_respawn.emit(false,Player.death_states.NON)	
+				Messenger.remove_player.emit(false,Player.death_states.NON)	
 				
 				fill_finish_line()
 				
@@ -39,4 +39,4 @@ func _on_body_entered(body):
 				finish_line_state = finish_line_states.FILLED
 				
 			finish_line_states.ENEMY:
-				Messenger.player_respawn.emit(true,Player.death_states.ENEMY)			
+				Messenger.remove_player.emit(true,Player.death_states.ENEMY)			
