@@ -10,6 +10,12 @@ var set_row_type: int
 func _ready() -> void:
 	row_update_debug()
 	
+
+func _input(event: InputEvent) -> void:
+	if OS.is_debug_build():
+		if event.is_action_pressed("Debug 1"):
+			Messenger.debug_max_speed.emit()
+
 func row_update_debug():
 	row_type.item_selected.connect(_on_row_type_selected)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=58 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://menu.gd" id="22_vh0sv"]
 [ext_resource type="Script" path="res://ui.gd" id="24_4bwkk"]
 [ext_resource type="FontFile" uid="uid://cbwuk281yehdv" path="res://fonts/pressstartk.ttf" id="24_l4kq4"]
+[ext_resource type="Script" path="res://message.gd" id="24_m17kx"]
 [ext_resource type="PackedScene" uid="uid://dqfggbkhgiysf" path="res://UI/panel_life_01.tscn" id="25_6t7ec"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
@@ -271,13 +272,13 @@ rows_type = 1
 [node name="Plat_Row-12_1" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, -0.4, -12)
 row = 12.0
-speed = 1.0
+speed = 1.5
 direction = 1
 
 [node name="Plat_Row-12_2" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.4, -12)
 row = 12.0
-speed = 1.0
+speed = 1.5
 direction = 1
 
 [node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_2" index="4"]
@@ -290,7 +291,7 @@ visible = true
 [node name="Plat_Row-12_3" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.4, -12)
 row = 12.0
-speed = 1.0
+speed = 1.5
 direction = 1
 
 [node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_3" index="4"]
@@ -302,13 +303,13 @@ visible = true
 [node name="Plat_Row-12_4" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, -12)
 row = 12.0
-speed = 1.0
+speed = 1.5
 direction = 1
 
 [node name="Plat_Row-12_5" parent="Rows 8-12" instance=ExtResource("8_gvvhl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.4, -12)
 row = 12.0
-speed = 1.0
+speed = 1.5
 direction = 1
 
 [node name="broken_wood-1" parent="Rows 8-12/Plat_Row-12_5" index="4"]
@@ -321,7 +322,7 @@ visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, -0.4, -11)
 has_two_killer_gaps = true
 row = 11.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="truck_4" parent="Rows 8-12/Plat_Row-11_1" index="7"]
@@ -330,7 +331,7 @@ color_1 = Color(0.590199, 0.414322, 0.289688, 1)
 [node name="Plat_Row-11_2" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -0.4, -11)
 row = 11.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="truck_1" parent="Rows 8-12/Plat_Row-11_2" index="4"]
@@ -343,7 +344,7 @@ visible = false
 [node name="Plat_Row-11_3" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, -11)
 row = 11.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="truck_3" parent="Rows 8-12/Plat_Row-11_3" index="6"]
@@ -356,7 +357,7 @@ visible = false
 [node name="Plat_Row-11_4" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, -0.4, -11)
 row = 11.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="truck_2" parent="Rows 8-12/Plat_Row-11_4" index="5"]
@@ -369,13 +370,13 @@ visible = false
 [node name="Plat_Row-10_1" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.4, -10)
 row = 10.0
-speed = 2.0
+speed = 3.5
 direction = 1
 
 [node name="Plat_Row-10_2" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.4, -10)
 row = 10.0
-speed = 2.0
+speed = 3.5
 direction = 1
 
 [node name="electric-pole_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="4"]
@@ -390,21 +391,19 @@ visible = true
 [node name="Plat_Row-10_3" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, -10)
 row = 10.0
-speed = 2.0
+speed = 3.5
 direction = 1
 
 [node name="Plat_Row-09_1" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
-speed = 1.0
 direction = 1
 
 [node name="Plat_Row-09_2" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
-speed = 1.0
 direction = 1
 
 [node name="broken_wood-1" parent="Rows 8-12/Plat_Row-09_2" index="5"]
@@ -420,7 +419,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
-speed = 1.0
 direction = 1
 
 [node name="broken_wood-3" parent="Rows 8-12/Plat_Row-09_3" index="7"]
@@ -436,7 +434,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
-speed = 1.0
 direction = 1
 
 [node name="broken_wood-2" parent="Rows 8-12/Plat_Row-09_4" index="6"]
@@ -451,7 +448,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Plat_Row-08_1" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.4, -8)
 row = 8.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_1" index="8"]
@@ -467,7 +464,7 @@ disabled = false
 [node name="Plat_Row-08_2" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.4, -8)
 row = 8.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_2" index="8"]
@@ -483,7 +480,7 @@ disabled = false
 [node name="Plat_Row-08_3" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.4, -8)
 row = 8.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_3" index="8"]
@@ -499,7 +496,7 @@ disabled = false
 [node name="Plat_Row-08_4" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.4, -8)
 row = 8.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_4" index="8"]
@@ -515,7 +512,7 @@ disabled = false
 [node name="Plat_Row-08_5" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -8)
 row = 8.0
-speed = 1.0
+speed = 2.5
 direction = -1
 
 [node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_5" index="8"]
@@ -535,33 +532,41 @@ script = ExtResource("5_trm1l")
 [node name="Enemy_Row-06_01" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
 row = 6.0
+speed = 2.5
 
 [node name="Enemy_Row-06_02" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
 row = 6.0
+speed = 2.5
 
 [node name="Enemy_Row-06_03" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -6)
 row = 6.0
+speed = 2.5
 
 [node name="Enemy_Row-05_01" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.28986, -5)
 row = 5.0
+speed = 1.5
 
 [node name="Enemy_Row-05_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.28986, -5)
 row = 5.0
+speed = 1.5
 
 [node name="Enemy_Row-05_03" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.28986, -5)
 row = 5.0
+speed = 1.5
 
 [node name="Enemy_Row-04_01" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.6, -4)
 row = 4.0
+speed = 1.5
 
 [node name="Enemy_Row-04_02" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, -4)
 row = 4.0
+speed = 1.5
 
 [node name="Enemy_Row-03_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.28986, -3)
@@ -912,6 +917,48 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
 action_mode = 0
 text = "CREDITS"
 
+[node name="Canvas_Message" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("24_m17kx")
+
+[node name="Container_UI-Message" type="MarginContainer" parent="Canvas_Message"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 280
+theme_override_constants/margin_top = 500
+theme_override_constants/margin_right = 280
+theme_override_constants/margin_bottom = 500
+
+[node name="BG" type="Panel" parent="Canvas_Message/Container_UI-Message"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_36b74")
+
+[node name="Container_Message" type="MarginContainer" parent="Canvas_Message/Container_UI-Message"]
+custom_minimum_size = Vector2(860, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 27
+
+[node name="Label_Message" type="Label" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yy5v2")
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_wocs5")
+text = "GAME OVER"
+
+[node name="Timer" type="Timer" parent="Canvas_Message/Container_UI-Message/Container_Message"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
 [node name="Canvas_debug" type="CanvasLayer" parent="."]
 layer = 128
 visible = false
@@ -1059,6 +1106,7 @@ layout_mode = 2
 split_offset = 324
 
 [node name="HBox_Lives" type="HFlowContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -1067,9 +1115,6 @@ size_flags_vertical = 0
 layout_mode = 2
 
 [node name="Panel_Life_02" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/HBox_Lives" instance=ExtResource("25_6t7ec")]
-layout_mode = 2
-
-[node name="Panel_Life_03" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/HBox_Lives" instance=ExtResource("25_6t7ec")]
 layout_mode = 2
 
 [node name="VBox_Time-Level" type="VBoxContainer" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom"]

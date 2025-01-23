@@ -208,7 +208,7 @@ func check_row_score():
 	
 func _on_player_respawn(is_dead,state):
 	if is_dead:
-		#subtract life
+		Messenger.update_lives.emit(-1)
 		match state:
 			death_states.NON:
 				pass
@@ -227,10 +227,11 @@ func _on_player_respawn(is_dead,state):
 	else:
 		#add filled finish line
 		free_player()
-		
+			
 func free_player():
 	Messenger.player_freed.emit()
 	queue_free()
+	
 			
 func apply_velocity_change():
 	velocity.y -= fall_speed

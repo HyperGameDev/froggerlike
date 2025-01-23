@@ -14,7 +14,8 @@ func _on_state_play():
 	spawn_player()
 	
 func _on_player_freed():
-	spawn_player()
+	if not Globals.game_state == Globals.game_states.MESSAGE_OVER:
+		spawn_player()
 	
 func spawn_player():
 	await get_tree().create_timer(1).timeout
