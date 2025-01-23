@@ -25,5 +25,23 @@ mesh = SubResource("CapsuleMesh_an62r")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.1, 0.4, 0)
 shape = SubResource("CapsuleShape3D_iorli")
 
-[node name="alien_tall" parent="." instance=ExtResource("2_06uyb")]
+[node name="alien" parent="." instance=ExtResource("2_06uyb")]
 transform = Transform3D(-1.17225e-07, 0, 1, 0, 1, 0, -1, 0, -1.17225e-07, -0.2, -0.432794, 0)
+
+[node name="Armature" parent="alien" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0694917, 0)
+
+[node name="Skeleton3D" parent="alien/Armature" index="2"]
+bones/8/rotation = Quaternion(-0.268964, 0.813067, -0.495136, 0.146358)
+bones/9/rotation = Quaternion(0.614246, -0.538912, 0.133768, 0.560697)
+bones/25/rotation = Quaternion(-0.105607, -0.708916, 0.542507, 0.438145)
+bones/26/rotation = Quaternion(0.459037, 0.495139, -0.0500171, 0.735949)
+bones/45/rotation = Quaternion(0.878103, 0.0401386, 0.00729228, 0.476729)
+bones/46/rotation = Quaternion(0.383325, 0.00586143, 0.013425, 0.923497)
+bones/47/rotation = Quaternion(-0.487099, -0.0215947, 0.0324552, 0.872476)
+bones/50/rotation = Quaternion(0.99562, -0.0809027, -0.0290498, 0.0367716)
+bones/51/rotation = Quaternion(0.820691, -0.00424511, -0.0266106, 0.570737)
+bones/52/rotation = Quaternion(-0.522244, 0.0177646, -0.0324166, 0.851995)
+
+[editable path="alien"]
+[editable path="alien/Blood"]

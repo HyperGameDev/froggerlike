@@ -1,13 +1,16 @@
-[gd_scene load_steps=58 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=61 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
 [ext_resource type="PackedScene" uid="uid://bpdort7stahe0" path="res://enemies/enemy_shooter.tscn" id="2_duxgb"]
+[ext_resource type="Script" path="res://preload.gd" id="2_hq2ki"]
+[ext_resource type="PackedScene" uid="uid://t7wqva3yfs68" path="res://player/particles_blood_human.tscn" id="2_iyjlv"]
 [ext_resource type="PackedScene" uid="uid://bj6tfo3l3fofv" path="res://bonuses/bonus_finish.tscn" id="2_lh48f"]
 [ext_resource type="Script" path="res://boundaries.gd" id="2_pcsaw"]
 [ext_resource type="Material" uid="uid://clwqoiabgmlsl" path="res://textures/grass.tres" id="3_07ldn"]
 [ext_resource type="Script" path="res://finish-line/finish_lines.gd" id="3_ccrfc"]
 [ext_resource type="PackedScene" uid="uid://sy8noemqrlfq" path="res://finish-line/bunker_doors_01-00.tscn" id="3_y3jml"]
+[ext_resource type="PackedScene" uid="uid://dchxreyg5645l" path="res://player/particles_electric.tscn" id="4_eupes"]
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="4_ikhtq"]
 [ext_resource type="Script" path="res://rows.gd" id="5_trm1l"]
 [ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-5_00.tscn" id="5_y2lln"]
@@ -127,6 +130,21 @@ size = Vector3(2, 1, 1)
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_6qfjw")
 
+[node name="Respawn_Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Preload" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 2.55734, -6.37134)
+script = ExtResource("2_hq2ki")
+
+[node name="Particles_Blood-Human" parent="Preload" instance=ExtResource("2_iyjlv")]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Particles_Electric" parent="Preload" instance=ExtResource("4_eupes")]
+unique_name_in_owner = true
+
 [node name="Spawned" type="Node3D" parent="."]
 unique_name_in_owner = true
 
@@ -196,7 +214,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-01" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-01" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -217,7 +235,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-02" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-02" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -238,7 +256,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-03" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-03" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -259,7 +277,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-04" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-04" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -382,7 +400,10 @@ direction = 1
 [node name="electric-pole_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="4"]
 visible = true
 
-[node name="pipe_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="5"]
+[node name="collision" parent="Rows 8-12/Plat_Row-10_2/Area_electric_pole" index="1"]
+disabled = false
+
+[node name="pipe_01-01_00" parent="Rows 8-12/Plat_Row-10_2" index="6"]
 visible = false
 
 [node name="Pipe_2" parent="Rows 8-12/Plat_Row-10_2/pipe_01-01_00" index="1"]
@@ -531,64 +552,83 @@ script = ExtResource("5_trm1l")
 
 [node name="Enemy_Row-06_01" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
+has_blood = true
 row = 6.0
 speed = 2.5
 
 [node name="Enemy_Row-06_02" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
+has_blood = true
 row = 6.0
 speed = 2.5
 
 [node name="Enemy_Row-06_03" parent="Rows_0-7" instance=ExtResource("8_a2xvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -6)
+has_blood = true
 row = 6.0
 speed = 2.5
 
 [node name="Enemy_Row-05_01" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.28986, -5)
+has_blood = true
 row = 5.0
 speed = 1.5
 
 [node name="Enemy_Row-05_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.28986, -5)
+has_blood = true
 row = 5.0
 speed = 1.5
 
 [node name="Enemy_Row-05_03" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.28986, -5)
+has_blood = true
 row = 5.0
 speed = 1.5
 
 [node name="Enemy_Row-04_01" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.6, -4)
+has_animation = true
+has_blood = true
 row = 4.0
 speed = 1.5
 
 [node name="Enemy_Row-04_02" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, -4)
+has_animation = true
+has_blood = true
 row = 4.0
 speed = 1.5
 
 [node name="Enemy_Row-03_02" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.28986, -3)
+has_blood = true
 row = 3.0
 
 [node name="Enemy_Row-03_01" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.28986, -3)
+has_blood = true
 row = 3.0
 
 [node name="Enemy_Row-03_03" parent="Rows_0-7" instance=ExtResource("11_ny747")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.28986, -3)
+has_blood = true
 row = 3.0
 
 [node name="Enemy_Row-02_01" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.6, -2)
+has_animation = true
+has_blood = true
 row = 2.0
 
 [node name="Enemy_Row-02_02" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
+has_animation = true
+has_blood = true
 row = 2.0
 
 [node name="Enemy_Row-02_03" parent="Rows_0-7" instance=ExtResource("10_mcp35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, -2)
+has_animation = true
+has_blood = true
 row = 2.0
 
 [node name="Ground_water" type="MeshInstance3D" parent="."]
@@ -844,7 +884,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 0, -6.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.05, 0, -6.5)
 
 [node name="Canvas_Menu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("22_vh0sv")
 
 [node name="Container_UI-Mid" type="MarginContainer" parent="Canvas_Menu"]
@@ -1144,7 +1183,8 @@ size_flags_vertical = 0
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="Label_HiScore-Text" type="Label" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level"]
+[node name="Label_Level" type="Label" parent="Canvas_UI/Container_UI-Bottm/Container_Bottom/HBox_Bottom/VBox_Time-Level"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_bcv1b")
 theme_override_font_sizes/font_size = 31
@@ -1189,10 +1229,13 @@ mesh = SubResource("BoxMesh_a7tce")
 [editable path="Rows 8-12/Plat_Row-11_3"]
 [editable path="Rows 8-12/Plat_Row-11_4"]
 [editable path="Rows 8-12/Plat_Row-10_1"]
+[editable path="Rows 8-12/Plat_Row-10_1/Area_electric_pole/Electric"]
 [editable path="Rows 8-12/Plat_Row-10_1/pipe_01-01_00"]
 [editable path="Rows 8-12/Plat_Row-10_2"]
+[editable path="Rows 8-12/Plat_Row-10_2/Area_electric_pole/Electric"]
 [editable path="Rows 8-12/Plat_Row-10_2/pipe_01-01_00"]
 [editable path="Rows 8-12/Plat_Row-10_3"]
+[editable path="Rows 8-12/Plat_Row-10_3/Area_electric_pole/Electric"]
 [editable path="Rows 8-12/Plat_Row-10_3/pipe_01-01_00"]
 [editable path="Rows 8-12/Plat_Row-09_2"]
 [editable path="Rows 8-12/Plat_Row-09_3"]

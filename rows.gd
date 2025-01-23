@@ -10,6 +10,7 @@ enum rows_types {
 func _ready() -> void:
 	Messenger.update_row_speed.connect(_on_update_row_speed)
 	Messenger.debug_max_speed.connect(_on_debug_max_speed)
+
 	
 	
 func _on_update_row_speed(type: int,row_number,speed):

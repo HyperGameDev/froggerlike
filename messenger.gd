@@ -38,3 +38,5 @@ signal respawn
 signal update_score ## arg1: score int
 @warning_ignore("unused_signal")
 signal update_lives ## arg1: life change
+@warning_ignore("unused_signal")
+signal update_level

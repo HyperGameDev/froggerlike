@@ -38,5 +38,5 @@ func _on_body_entered(body):
 				pass
 				finish_line_state = finish_line_states.FILLED
 				
-			finish_line_states.ENEMY:
+			finish_line_states.ENEMY: #remember to add respawn!
 				Messenger.remove_player.emit(true,Player.death_states.ENEMY)			

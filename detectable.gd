@@ -20,4 +20,5 @@ func move_object(rate,direction,object):
 	
 func _on_state_msg_start():
 	if speed < Globals.row_max_speeds[row]:
-		speed + .5
+		speed += .25
+		#print("Sped up!")

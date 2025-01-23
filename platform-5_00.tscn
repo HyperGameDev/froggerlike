@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://df0o5t0d5jqli"]
+[gd_scene load_steps=15 format=3 uid="uid://df0o5t0d5jqli"]
 
 [ext_resource type="Script" path="res://platform.gd" id="1_y2lnb"]
 [ext_resource type="PackedScene" uid="uid://dxy13up6ptitp" path="res://platforms/electric_pole_01_01-00.tscn" id="2_ebcok"]
 [ext_resource type="PackedScene" uid="uid://dw8hhdtlobrep" path="res://platforms/pipe_01_01-00.tscn" id="3_66t50"]
+[ext_resource type="Script" path="res://enemy.gd" id="3_d80em"]
+[ext_resource type="PackedScene" uid="uid://dchxreyg5645l" path="res://player/particles_electric.tscn" id="4_77xvu"]
 [ext_resource type="Script" path="res://platforms/killer_gap.gd" id="4_x1mrb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fqwgt"]
@@ -16,6 +18,12 @@ albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3ghy"]
 size = Vector3(6, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufkhr"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_emxyw"]
+size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgxdj"]
 size = Vector3(3, 1, 1)
@@ -49,6 +57,22 @@ shape = SubResource("BoxShape3D_i3ghy")
 [node name="electric-pole_01-01_00" parent="." instance=ExtResource("2_ebcok")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -1.8, 0.353369, 0)
 visible = false
+
+[node name="Area_electric_pole" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26776, 1, 0)
+script = ExtResource("3_d80em")
+has_electric = true
+
+[node name="Electric" parent="Area_electric_pole" instance=ExtResource("4_77xvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.01851, -0.171342)
+
+[node name="collision" type="CollisionShape3D" parent="Area_electric_pole"]
+shape = SubResource("BoxShape3D_ufkhr")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area_electric_pole"]
+visible = false
+mesh = SubResource("BoxMesh_emxyw")
 
 [node name="pipe_01-01_00" parent="." instance=ExtResource("3_66t50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123319, 0.142906, 0)
@@ -89,4 +113,5 @@ mesh = SubResource("BoxMesh_wgxdj")
 shape = SubResource("BoxShape3D_rg6te")
 disabled = true
 
+[editable path="Area_electric_pole/Electric"]
 [editable path="pipe_01-01_00"]

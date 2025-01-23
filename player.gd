@@ -5,6 +5,9 @@ class_name Player
 @export var fall_death_pos: float = -1.1
 @export var fall_speed: float = 10.
 
+@onready var move_timer: Timer = %Move_Timer
+var move_time: float = .1
+
 const SPEED = .1
 const JUMP_VELOCITY = 4.5
 const wall_ray_l_x: float = -.5
@@ -21,7 +24,7 @@ enum death_states {NON,ENEMY,WATER,TIME,EDGE,}
 @export var move_state: move_states
 enum move_states {MOVABLE,MOVING}
 
-@onready var animation: AnimationTree
+var animation: AnimationTree
 @onready var collision: CollisionShape3D = $collision
 @onready var area: Area3D = %Area_Player
 
@@ -51,8 +54,12 @@ var score_max_row: int = 12
 
 
 func _ready() -> void:
+	move_timer.timeout.connect(_on_move_timer_timeout)
 	Messenger.player_ready.emit()
+	
+	
 	animation = get_tree().get_current_scene().get_node("Spawned/Player/human_03_00/AnimationTree")
+	#set_animation_tree()
 	
 	add_to_group("Player")
 	area.add_to_group("Player Area")
@@ -69,6 +76,14 @@ func _ready() -> void:
 	
 	left_side_rays = [ray_right_l,ray_left_l]
 	right_side_rays = [ray_left_r,ray_right_r]
+	
+func set_animation_tree():	
+	var player_string: String
+	if name.contains("Player"):
+		player_string = name
+	
+	print("Spawned/" + player_string + "/human_03_00/AnimationTree")
+	animation = get_tree().get_current_scene().get_node("Spawned/" + str(player_string) + "/human_03_00/AnimationTree")
 	
 func set_ray_masks():
 	for node in get_children():
@@ -102,7 +117,6 @@ func _physics_process(delta: float) -> void:
 	check_for_walls()
 	
 	move_and_slide()
-
 	
 func check_for_walls():
 	wall_is_forward = ray_forward_l.is_colliding() or ray_forward_r.is_colliding()
@@ -160,6 +174,7 @@ func check_direction(direction):
 		
 	
 func grid_movement(axis):
+	#print("PLAYER: GRID MOVE")
 	animation.set("parameters/Transition/transition_request", "running")
 	
 	if axis == "x" or axis == "z":
@@ -186,13 +201,16 @@ func grid_movement(axis):
 
 func _on_move_x_finished():
 	move_state = move_states.MOVABLE
-	await get_tree().create_timer(.1).timeout
-	animation.set("parameters/Transition/transition_request", "idling")
+	move_timer.start(move_time)
+	
 	
 func _on_move_z_finished():
 	move_state = move_states.MOVABLE
-	await get_tree().create_timer(.1).timeout
+	move_timer.start(move_time)
+	
+func _on_move_timer_timeout():
 	animation.set("parameters/Transition/transition_request", "idling")
+	
 	
 	check_row_score()
 
@@ -209,6 +227,7 @@ func check_row_score():
 func _on_remove_player(is_dead,state):
 	if is_dead:
 		Messenger.update_lives.emit(-1)
+		Messenger.respawn.emit()
 		match state:
 			death_states.NON:
 				pass

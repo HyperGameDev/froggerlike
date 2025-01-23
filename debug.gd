@@ -15,6 +15,10 @@ func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():
 		if event.is_action_pressed("Debug 1"):
 			Messenger.debug_max_speed.emit()
+		if event.is_action_pressed("Debug 2"):
+			Messenger.remove_player.emit(false,Player.death_states.NON)
+			Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
+			
 
 func row_update_debug():
 	row_type.item_selected.connect(_on_row_type_selected)

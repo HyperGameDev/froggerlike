@@ -88,3 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49)
 target_position = Vector3(1.2, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Move_Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

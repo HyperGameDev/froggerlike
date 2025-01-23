@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var container_bottom: MarginContainer = %Container_Bottom
 
 @onready var lives: HFlowContainer = %HBox_Lives
+@onready var level: Label = %Label_Level
 
 
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	Messenger.state_menu.connect(_on_state_menu)
 	Messenger.state_play.connect(_on_state_play)
 	Messenger.update_lives.connect(_on_update_lives)
+	Messenger.update_level.connect(_on_update_level)
 	
 func _on_update_score(score:int) -> void:
 	Globals.score += score
@@ -48,3 +50,7 @@ func _on_state_play() -> void:
 	rows_8_12.visible = true
 	container_top.visible = true
 	container_bottom.visible = true
+
+func _on_update_level():
+	Globals.level += 1
+	level.text = "LEVEL: " + str(Globals.level)

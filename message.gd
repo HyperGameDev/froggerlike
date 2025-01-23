@@ -6,16 +6,16 @@ extends CanvasLayer
 @export var timer_over_length: float = 3
 
 @onready var timer_time: Timer = %Timer_Time
-@export var timer_time_length: float = 3
+@export var timer_time_length: float = 2.5
 
 @onready var timer_start: Timer = %Timer_Start
-@export var timer_start_length: float = 3
+@export var timer_start_length: float = 1.5
 
 @onready var timer_start2: Timer = %Timer_Start2
-@export var timer_start2_length: int = 3
+@export var timer_start2_length: float = 3
 
 @onready var timer_spawn: Timer = %Timer_Spawn
-@export var timer_spawn_length: int = 1.5
+@export var timer_spawn_length: float = 1.5
 
 
 func _ready() -> void:
@@ -36,12 +36,12 @@ func _on_state_msg_over():
 	update_text("GAME OVER",true)
 	
 func _on_state_msg_time():
-	print("MESSSAGE: Time should show")
+	#print("MESSSAGE: Time should show")
 	visible = true
 	update_text("TIME: " + str(10),true)
 	
 func _on_state_msg_start():
-	print("MESSSAGE: Start should show")
+	#print("MESSSAGE: Start should show")
 	visible = true
 	update_text("TIME: " + str(10),true)
 	
@@ -65,10 +65,13 @@ func _on_timer_over_timeout():
 	
 func _on_timer_time_timeout():
 	visible = false
+	#print("time timout")
 	
 func _on_timer_start_timeout():
-	print("MESSSAGE: Start 2 should show")
-	update_text("START",false)
+	#print("MESSSAGE: Start 2 should show")
+	update_text("START",false)	
+	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)
+	Messenger.update_level.emit()
 	timer_start2.start(timer_start2_length)
 	
 func _on_timer_start2_timeout():
@@ -76,5 +79,6 @@ func _on_timer_start2_timeout():
 	
 func _on_timer_spawn_timeout():
 	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)
+	#print("should spawn")
 	
 	

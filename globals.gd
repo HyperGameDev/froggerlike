@@ -15,6 +15,7 @@ enum game_states {
 
 var score: int = 0
 var score_high: int = 0
+var level: int = 1
 
 enum collision {
 	DO_NOT_USE = 0,
