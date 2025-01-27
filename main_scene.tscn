@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=62 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="4_ikhtq"]
 [ext_resource type="Script" path="res://rows.gd" id="5_trm1l"]
 [ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-5_00.tscn" id="5_y2lln"]
+[ext_resource type="Script" path="res://finish-line/finish_object.gd" id="6_bvk0h"]
 [ext_resource type="PackedScene" uid="uid://bgjk518k86wey" path="res://platform-2_00.tscn" id="6_fwm3j"]
 [ext_resource type="PackedScene" uid="uid://bgsamx5rklub3" path="res://ground/grass_plane_01_01-00.tscn" id="6_l3qy1"]
 [ext_resource type="PackedScene" uid="uid://b15uytqt1ntan" path="res://ground/grass_plane_02_01-00.tscn" id="7_clys3"]
@@ -157,6 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="Bonus_Finish" parent="Teleportees" instance=ExtResource("2_lh48f")]
 unique_name_in_owner = true
+script = ExtResource("6_bvk0h")
 
 [node name="Enemy_Shooter" parent="Teleportees" instance=ExtResource("2_duxgb")]
 unique_name_in_owner = true

@@ -40,3 +40,6 @@ signal update_score ## arg1: score int
 signal update_lives ## arg1: life change
 @warning_ignore("unused_signal")
 signal update_level
+
+@warning_ignore("unused_signal")
+signal bonus_collected_at_finish

@@ -13,6 +13,8 @@ func _ready() -> void:
 	add_to_group("Finish Line")
 	
 	set_collision_layer_value(Globals.collision.GROUND, false)
+	
+	set_collision_mask_value(Globals.collision.GROUND, false)
 	set_collision_mask_value(Globals.collision.PLAYER, true)
 	
 	body_entered.connect(_on_body_entered)
@@ -35,8 +37,10 @@ func _on_body_entered(body):
 				pass
 				
 			finish_line_states.BONUS:
-				pass
-				finish_line_state = finish_line_states.FILLED
+				Messenger.bonus_collected_at_finish.emit()
+				Messenger.remove_player.emit(false,Player.death_states.NON)	
+				
+				fill_finish_line()
 				
 			finish_line_states.ENEMY: #remember to add respawn!
 				Messenger.remove_player.emit(true,Player.death_states.ENEMY)			

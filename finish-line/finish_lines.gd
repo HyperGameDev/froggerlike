@@ -1,8 +1,11 @@
 extends Node3D
 
+
+@export var interval_length: float = 3.
 @onready var interval_timer : Timer = Timer.new()
 @onready var object_lifetimer : Timer = Timer.new()
-@export var interval_length: float = 3.
+
+@export var bonus_at_finish_score: int = 200
 
 @onready var teleportees: Node3D = %Teleportees
 @onready var bonus_finish: Area3D = %Bonus_Finish
@@ -14,6 +17,7 @@ var empty_finish_lines = []
 
 func _ready() -> void:
 	setup_timers()
+	Messenger.bonus_collected_at_finish.connect(_on_bonus_collected_at_finish)
 	Messenger.update_finish_lines.connect(_on_update_finish_lines)
 	Messenger.state_play.connect(_on_state_play)
 	update_finish_line_array()
@@ -52,6 +56,10 @@ func add_object_to_finish_line():
 		teleport_point.finish_line_state = teleport_point.finish_line_states.ENEMY
 	
 	object_lifetimer.start(interval_length)
+
+func _on_bonus_collected_at_finish():
+	Messenger.update_score.emit(bonus_at_finish_score)
+	_on_object_lifetimer_timeout()
 
 func _on_object_lifetimer_timeout():
 	#print("FINISH OBJECT: Is dead")
