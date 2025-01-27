@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var blood: GPUParticles3D = %"Particles_Blood-Human"
 @onready var electric: GPUParticles3D = %Particles_Electric
+@onready var orb_preload: MeshInstance3D = %Orb_preload
+
 
 func _ready() -> void:
 	blood.emitting = true

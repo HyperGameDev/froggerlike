@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=64 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://sy8noemqrlfq" path="res://finish-line/bunker_doors_01-00.tscn" id="3_y3jml"]
 [ext_resource type="PackedScene" uid="uid://dchxreyg5645l" path="res://player/particles_electric.tscn" id="4_eupes"]
 [ext_resource type="Material" uid="uid://polx1h244ck" path="res://textures/water.tres" id="4_ikhtq"]
+[ext_resource type="Material" uid="uid://dh4o13h0depe4" path="res://textures/orb_texture_01_alien-planet.tres" id="5_kej4u"]
 [ext_resource type="Script" path="res://rows.gd" id="5_trm1l"]
 [ext_resource type="PackedScene" uid="uid://df0o5t0d5jqli" path="res://platform-5_00.tscn" id="5_y2lln"]
 [ext_resource type="Script" path="res://finish-line/finish_object.gd" id="6_bvk0h"]
@@ -31,6 +32,8 @@
 [ext_resource type="FontFile" uid="uid://cbwuk281yehdv" path="res://fonts/pressstartk.ttf" id="24_l4kq4"]
 [ext_resource type="Script" path="res://message.gd" id="24_m17kx"]
 [ext_resource type="PackedScene" uid="uid://dqfggbkhgiysf" path="res://UI/panel_life_01.tscn" id="25_6t7ec"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_l3c0g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsek7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -145,6 +148,11 @@ one_shot = true
 
 [node name="Particles_Electric" parent="Preload" instance=ExtResource("4_eupes")]
 unique_name_in_owner = true
+
+[node name="Orb_preload" type="MeshInstance3D" parent="Preload"]
+unique_name_in_owner = true
+mesh = SubResource("SphereMesh_l3c0g")
+surface_material_override/0 = ExtResource("5_kej4u")
 
 [node name="Spawned" type="Node3D" parent="."]
 unique_name_in_owner = true

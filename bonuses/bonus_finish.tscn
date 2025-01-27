@@ -1,11 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bj6tfo3l3fofv"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fdyyx"]
-radius = 0.3
-height = 1.0
+[ext_resource type="Material" uid="uid://dh4o13h0depe4" path="res://textures/orb_texture_01_alien-planet.tres" id="1_160e1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwvmh"]
-albedo_color = Color(0.481831, 0.786912, 1, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_p0rhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0n0pu"]
 
@@ -13,8 +10,8 @@ albedo_color = Color(0.481831, 0.786912, 1, 1)
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434772, 0)
-mesh = SubResource("CapsuleMesh_fdyyx")
-surface_material_override/0 = SubResource("StandardMaterial3D_rwvmh")
+mesh = SubResource("SphereMesh_p0rhn")
+surface_material_override/0 = ExtResource("1_160e1")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0n0pu")
