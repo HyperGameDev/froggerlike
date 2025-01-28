@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://b65vl8ymy0feu"]
+
+[ext_resource type="Script" path="res://audio.gd" id="1_6qav4"]
+[ext_resource type="AudioStream" uid="uid://dvuejm1s0fson" path="res://audio/sfx/movement3_edited-01.wav" id="2_2okt7"]
+[ext_resource type="AudioStream" uid="uid://dl5p1fbpfanpe" path="res://audio/music/track_01_gameplay-theme.wav" id="3_31yvi"]
+[ext_resource type="AudioStream" uid="uid://13rta8bc1bbq" path="res://audio/sfx/falling/falling_parts-1-2_edited-01.wav" id="3_yrnmr"]
+[ext_resource type="AudioStream" uid="uid://btkuvbh2f5sqv" path="res://audio/sfx/eating/enemy_eating-01_edited-01.wav" id="4_nxy7r"]
+[ext_resource type="AudioStream" uid="uid://b7bjr8tv0eneg" path="res://audio/sfx/falling/splash_edited.wav" id="4_umfvv"]
+[ext_resource type="AudioStream" uid="uid://ji4eb36agyiu" path="res://audio/sfx/eating/enemy_eating-02_edited-01.wav" id="5_46vvq"]
+[ext_resource type="AudioStream" uid="uid://c5j30n4lmi0q7" path="res://audio/sfx/eating/enemy_eating-03_edited-01.wav" id="6_cxgtn"]
+[ext_resource type="AudioStream" uid="uid://cilvigeqx5r7q" path="res://audio/sfx/zapping/zapping_edited-01.wav" id="8_ftnlh"]
+[ext_resource type="AudioStream" uid="uid://bnd80pppwcngh" path="res://audio/sfx/bunker/door_creak_edited-01.wav" id="8_oer81"]
+[ext_resource type="AudioStream" uid="uid://cjj32pjop4b0l" path="res://audio/sfx/bunker/door_close_edited-01.wav" id="9_el4lj"]
+[ext_resource type="AudioStream" uid="uid://3kqudhvvidiy" path="res://audio/sfx/collectible/collect_edited.wav" id="11_axfwb"]
+[ext_resource type="AudioStream" uid="uid://biwq84k6tbsu" path="res://audio/sfx/bunker/walldeath_editred.wav" id="11_iq8fs"]
+[ext_resource type="AudioStream" uid="uid://dfbsnrj4lxnq6" path="res://audio/sfx/collectible/collect_02_edited.wav" id="14_wrnu7"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_6qav4")
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Player_movement" type="AudioStreamPlayer" parent="Player"]
+unique_name_in_owner = true
+stream = ExtResource("2_2okt7")
+volume_db = 3.0
+
+[node name="Falling" type="Node" parent="Player"]
+
+[node name="Player_falling" type="AudioStreamPlayer" parent="Player/Falling"]
+unique_name_in_owner = true
+stream = ExtResource("3_yrnmr")
+
+[node name="Player_splash" type="AudioStreamPlayer" parent="Player/Falling"]
+unique_name_in_owner = true
+stream = ExtResource("4_umfvv")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Gameplay_Theme" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("3_31yvi")
+autoplay = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Aliens" type="Node" parent="Enemies"]
+
+[node name="Aliens_Eating" type="Node" parent="Enemies/Aliens"]
+unique_name_in_owner = true
+
+[node name="Enemy-eating_01" type="AudioStreamPlayer" parent="Enemies/Aliens/Aliens_Eating"]
+stream = ExtResource("4_nxy7r")
+volume_db = 5.0
+
+[node name="Enemy-eating_02" type="AudioStreamPlayer" parent="Enemies/Aliens/Aliens_Eating"]
+stream = ExtResource("5_46vvq")
+volume_db = 5.0
+
+[node name="Enemy-eating_03" type="AudioStreamPlayer" parent="Enemies/Aliens/Aliens_Eating"]
+stream = ExtResource("6_cxgtn")
+volume_db = 8.0
+
+[node name="Electric" type="Node" parent="Enemies"]
+
+[node name="Electric_Shock" type="AudioStreamPlayer" parent="Enemies/Electric"]
+unique_name_in_owner = true
+stream = ExtResource("8_ftnlh")
+volume_db = 4.0
+
+[node name="Bunker" type="Node" parent="."]
+
+[node name="Door_Creak" type="AudioStreamPlayer" parent="Bunker"]
+unique_name_in_owner = true
+stream = ExtResource("8_oer81")
+volume_db = -4.0
+
+[node name="Door_Close" type="AudioStreamPlayer" parent="Bunker"]
+unique_name_in_owner = true
+stream = ExtResource("9_el4lj")
+volume_db = -4.0
+
+[node name="Wall_Collide" type="AudioStreamPlayer" parent="Bunker"]
+unique_name_in_owner = true
+stream = ExtResource("11_iq8fs")
+
+[node name="Bonus" type="Node" parent="."]
+
+[node name="Collect_01" type="AudioStreamPlayer" parent="Bonus"]
+unique_name_in_owner = true
+stream = ExtResource("11_axfwb")
+volume_db = 2.0
+
+[node name="Collect_02" type="AudioStreamPlayer" parent="Bonus"]
+unique_name_in_owner = true
+stream = ExtResource("14_wrnu7")
+volume_db = 2.0

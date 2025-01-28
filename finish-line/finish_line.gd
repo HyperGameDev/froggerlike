@@ -44,3 +44,9 @@ func _on_body_entered(body):
 				
 			finish_line_states.ENEMY: #remember to add respawn!
 				Messenger.remove_player.emit(true,Player.death_states.ENEMY)			
+
+func animating_door_closing():
+	Messenger.door_closing.emit()
+	
+func animating_door_closed():
+	Messenger.door_closed.emit()

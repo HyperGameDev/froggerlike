@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://stb45ta1pexv"
+valid=false
+
+[deps]
+
+source_file="res://audio/sfx/falling/falling Project/Samples/Recorded/Main 0004 [2025-01-28 004805].wav"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://kfqilcxldkk4"]
+[gd_scene load_steps=8 format=3 uid="uid://kfqilcxldkk4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_jxjj8"]
 [ext_resource type="PackedScene" uid="uid://byigjw6ypjv5n" path="res://player/human_03_00.tscn" id="2_tvxr5"]
@@ -8,6 +8,57 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0j0yx"]
 size = Vector3(0.009, 0.9, 0.279)
 
+[sub_resource type="Animation" id="Animation_mtbpt"]
+resource_name = "fall_over"
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("human_03_00:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.132225),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-1.5708, 3.14159, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.132225),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_death_fall_overed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f6xhu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("human_03_00:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpsie"]
+_data = {
+"RESET": SubResource("Animation_f6xhu"),
+"fall_over": SubResource("Animation_mtbpt")
+}
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 platform_on_leave = 2
@@ -15,7 +66,7 @@ script = ExtResource("1_jxjj8")
 fall_speed = 20.0
 
 [node name="human_03_00" parent="." instance=ExtResource("2_tvxr5")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.458401, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -0.458401, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 visible = false
@@ -92,3 +143,9 @@ collide_with_bodies = false
 [node name="Move_Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Animation_death" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_tpsie")
+}

@@ -43,3 +43,21 @@ signal update_level
 
 @warning_ignore("unused_signal")
 signal bonus_collected_at_finish
+@warning_ignore("unused_signal")
+signal wall_collided_at_finish
+
+
+@warning_ignore("unused_signal")
+signal player_moved
+@warning_ignore("unused_signal")
+signal player_fell_off_edge
+@warning_ignore("unused_signal")
+signal player_falling
+@warning_ignore("unused_signal")
+signal alien_eating
+@warning_ignore("unused_signal")
+signal electric_shock
+@warning_ignore("unused_signal")
+signal door_closing
+@warning_ignore("unused_signal")
+signal door_closed

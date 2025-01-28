@@ -19,12 +19,14 @@ var move_direction: move_directions
 enum move_directions {FORWARD,BACK,LEFT,RIGHT}
 
 var death_state: death_states
-enum death_states {NON,ENEMY,WATER,TIME,EDGE,}
+enum death_states {NON,ENEMY,WATER,TIME,EDGE,WALL}
 
 @export var move_state: move_states
 enum move_states {MOVABLE,MOVING}
 
 var animation: AnimationTree
+@onready var animation_death: AnimationPlayer = %Animation_death
+
 @onready var collision: CollisionShape3D = $collision
 @onready var area: Area3D = %Area_Player
 
@@ -70,6 +72,7 @@ func _ready() -> void:
 	set_collision_layer_value(Globals.collision.PLAYER_WRAP, true)
 	
 	Messenger.remove_player.connect(_on_remove_player)
+	Messenger.wall_collided_at_finish.connect(_on_wall_collided_at_finish)
 	
 	left_rays = [ray_left_l,ray_left_r]
 	right_rays = [ray_right_l,ray_right_r]
@@ -175,6 +178,7 @@ func check_direction(direction):
 	
 func grid_movement(axis):
 	#print("PLAYER: GRID MOVE")
+	Messenger.player_moved.emit()
 	animation.set("parameters/Transition/transition_request", "running")
 	
 	if axis == "x" or axis == "z":
@@ -235,12 +239,18 @@ func _on_remove_player(is_dead,state):
 				death_state = death_states.ENEMY
 				free_player()
 			death_states.WATER:
+				Messenger.player_falling.emit()
 				death_state = death_states.WATER
 				collision.set_deferred("disabled", true)
 				call_deferred("apply_velocity_change")
 				
 			death_states.EDGE:
+				Messenger.player_fell_off_edge.emit()
 				death_state = death_states.EDGE
+				free_player()
+				
+			death_states.WALL:
+				death_state = death_states.WALL
 				free_player()
 			
 	else:
@@ -253,3 +263,10 @@ func free_player():
 			
 func apply_velocity_change():
 	velocity.y -= fall_speed
+	
+func _on_wall_collided_at_finish():
+	animation_death.play("fall_over")
+	
+	
+func animation_death_fall_overed():
+	Messenger.remove_player.emit(true,Player.death_states.WALL)

@@ -31,6 +31,10 @@ func _physics_process(delta: float) -> void:
 		
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
+		if has_electric:
+			Messenger.electric_shock.emit()
+		else:
+			Messenger.alien_eating.emit()
 		Messenger.remove_player.emit(true,Player.death_states.ENEMY)
 		death_animation()
 		

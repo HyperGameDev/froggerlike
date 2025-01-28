@@ -77,6 +77,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [Quaternion(0.133378, 0.857215, -0.276564, -0.413407), Quaternion(-0.307044, -0.00315588, 0.00101822, 0.951689)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Finish_Line")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1525),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"animating_door_closing"
+}, {
+"args": [],
+"method": &"animating_door_closed"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fyfhl"]
 resource_name = "open_doors"

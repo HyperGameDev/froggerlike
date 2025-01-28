@@ -9,6 +9,9 @@ var set_row_type: int
 
 func _ready() -> void:
 	row_update_debug()
+	#print(AudioServer.get_output_device_list())
+	if OS.is_debug_build():
+		AudioServer.set_output_device("CABLE Input (VB-Audio Virtual Cable)")
 	
 
 func _input(event: InputEvent) -> void:
