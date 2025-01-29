@@ -247,6 +247,12 @@ func _on_remove_player(is_dead,state):
 				death_state = death_states.WATER
 				collision.set_deferred("disabled", true)
 				call_deferred("apply_velocity_change")
+			death_states.TIME:
+				death_state = death_states.TIME
+				
+				Messenger.player_died_of_time.emit()
+				Messenger.update_game_state.emit(Globals.game_states.MESSAGE_TIME_OVER,true)
+				free_player()
 				
 			death_states.EDGE:
 				Messenger.player_fell_off_edge.emit()

@@ -9,6 +9,7 @@ enum game_states {
 	LEVELUP,
 	MESSAGE_START,
 	MESSAGE_TIME,
+	MESSAGE_TIME_OVER,
 	MESSAGE_OVER,
 	OVER,
 	}
@@ -16,6 +17,7 @@ enum game_states {
 var score: int = 0
 var score_high: int = 0
 var level: int = 1
+var lives: int = 2
 
 enum collision {
 	DO_NOT_USE = 0,
@@ -49,15 +51,22 @@ var row_max_speeds := [
 func _ready() -> void:
 	Messenger.reload.connect(_on_reload)
 	Messenger.update_game_state.connect(_update_game_state)
+	Messenger.update_lives.connect(_on_update_lives)
 	
 	if ui:
 		_update_game_state(game_states.MENU,false)
-  
+
+
 func _on_reload():
 	score = 0
 	level = 1
+	lives = 2
 	get_tree().reload_current_scene()
 
+func _on_update_lives(amount):
+	lives += amount
+	#print("GLOBALS: Lives left: ",lives)
+	
 func _update_game_state(state,emit) -> void:
 	game_state = state
 	if emit:
@@ -74,6 +83,8 @@ func _emit_game_state() -> void:
 			Messenger.state_msg_start.emit()
 		game_states.MESSAGE_TIME:
 			Messenger.state_msg_time.emit()
+		game_states.MESSAGE_TIME_OVER:
+			Messenger.state_msg_time_over.emit()
 		game_states.MESSAGE_OVER:
 			Messenger.state_msg_over.emit()
 		game_states.OVER:

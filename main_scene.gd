@@ -31,3 +31,5 @@ func spawn_player():
 	
 	player.global_position.x = player_spawn_pos_x
 	player.global_position.z = player_spawn_pos_z
+	
+	Messenger.start_progress_timer.emit()

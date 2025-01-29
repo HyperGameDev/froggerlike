@@ -9,6 +9,11 @@ extends CanvasLayer
 @onready var lives: HFlowContainer = %HBox_Lives
 @onready var level: Label = %Label_Level
 
+@onready var progress_bar: ProgressBar = %Progress_Time
+@onready var progress_timer: Timer = %Progress_Timer
+@export var progress_timer_length: float = 30.
+
+var start_time: bool = false
 
 
 @onready var rows_8_12: Node3D = %"Rows 8-12"
@@ -16,11 +21,24 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	progress_timer.timeout.connect(_on_progress_timer_timeout)
 	Messenger.update_score.connect(_on_update_score)
 	Messenger.state_menu.connect(_on_state_menu)
 	Messenger.state_play.connect(_on_state_play)
 	Messenger.update_lives.connect(_on_update_lives)
 	Messenger.update_level.connect(_on_update_level)
+	Messenger.start_progress_timer.connect(_on_start_progress_timer)
+	
+func _on_start_progress_timer():
+	progress_timer.start(progress_timer_length)
+	start_time = true
+	
+func _process(delta: float) -> void:
+	if start_time:
+		update_progress_timer()
+	
+func update_progress_timer():
+	progress_bar.value = progress_timer.time_left
 	
 func _on_update_score(score:int) -> void:
 	Globals.score += score
@@ -54,3 +72,7 @@ func _on_state_play() -> void:
 func _on_update_level():
 	Globals.level += 1
 	level.text = "LEVEL: " + str(Globals.level)
+
+func _on_progress_timer_timeout():
+	Messenger.remove_player.emit(true,Player.death_states.TIME)
+	start_time = false

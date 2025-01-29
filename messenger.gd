@@ -17,9 +17,14 @@ signal state_msg_start
 @warning_ignore("unused_signal")
 signal state_msg_time
 @warning_ignore("unused_signal")
+signal state_msg_time_over
+@warning_ignore("unused_signal")
 signal state_msg_over
 @warning_ignore("unused_signal")
 signal state_over
+
+@warning_ignore("unused_signal")
+signal start_progress_timer
 
 @warning_ignore("unused_signal")
 signal update_row_speed ## arg1: type, arg2: row, arg3, speed
@@ -53,6 +58,8 @@ signal wall_collided_at_finish
 signal player_moved
 @warning_ignore("unused_signal")
 signal player_fell_off_edge
+@warning_ignore("unused_signal")
+signal player_died_of_time
 @warning_ignore("unused_signal")
 signal player_falling
 @warning_ignore("unused_signal")

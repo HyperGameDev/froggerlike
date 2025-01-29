@@ -13,6 +13,8 @@ extends Node
 @onready var collect_01: AudioStreamPlayer = %Collect_01
 @onready var wall_collide: AudioStreamPlayer = %Wall_Collide
 
+@onready var oof: AudioStreamPlayer = %Oof
+
 
 
 func _ready() -> void:
@@ -23,6 +25,7 @@ func _ready() -> void:
 	Messenger.player_falling.connect(_on_player_falling)
 	Messenger.door_closing.connect(_on_door_closing)
 	Messenger.door_closed.connect(_on_door_closed)
+	Messenger.player_died_of_time.connect(_on_player_died_of_time)
 	Messenger.bonus_collected_at_finish.connect(_on_bonus_collected_at_finish)
 	Messenger.wall_collided_at_finish.connect(_on_wall_collided_at_finish)
 	
@@ -58,3 +61,6 @@ func _on_wall_collided_at_finish():
 
 func _on_player_fell_off_edge():
 	player_splash.playing = true
+
+func _on_player_died_of_time():
+	oof.playing = true

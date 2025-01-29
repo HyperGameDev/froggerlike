@@ -21,7 +21,7 @@ extends CanvasLayer
 func _ready() -> void:
 	Messenger.state_msg_over.connect(_on_state_msg_over)
 	Messenger.state_msg_time.connect(_on_state_msg_time)
-	
+	Messenger.state_msg_time_over.connect(_on_state_msg_time_over)
 	Messenger.state_msg_start.connect(_on_state_msg_start)
 	
 	
@@ -45,6 +45,14 @@ func _on_state_msg_start():
 	visible = true
 	update_text("TIME: " + str(10),true)
 	
+func _on_state_msg_time_over():
+	visible = true
+	#print("MESSAGE: Lives left: ", Globals.lives)
+	if Globals.lives == -1:
+		update_text("GAME OVER",true)
+	else:
+		update_text("TIME OVER",true)
+	
 	
 func update_text(new_text,run_timer):
 	message.text = new_text
@@ -56,6 +64,8 @@ func update_text(new_text,run_timer):
 			Globals.game_states.MESSAGE_TIME:
 				timer_time.start(timer_time_length)
 				timer_spawn.start(timer_spawn_length)
+			Globals.game_states.MESSAGE_TIME_OVER:
+				timer_time.start(timer_over_length)
 			Globals.game_states.MESSAGE_START:
 				timer_start.start(timer_start_length)
 	
@@ -69,7 +79,7 @@ func _on_timer_time_timeout():
 	
 func _on_timer_start_timeout():
 	#print("MESSSAGE: Start 2 should show")
-	update_text("START",false)	
+	update_text("START LEVEL " + str(Globals.level),false)	
 	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)
 	Messenger.update_level.emit()
 	timer_start2.start(timer_start2_length)

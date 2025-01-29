@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b65vl8ymy0feu"]
+[gd_scene load_steps=16 format=3 uid="uid://b65vl8ymy0feu"]
 
 [ext_resource type="Script" path="res://audio.gd" id="1_6qav4"]
 [ext_resource type="AudioStream" uid="uid://dvuejm1s0fson" path="res://audio/sfx/movement3_edited-01.wav" id="2_2okt7"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://13rta8bc1bbq" path="res://audio/sfx/falling/falling_parts-1-2_edited-01.wav" id="3_yrnmr"]
 [ext_resource type="AudioStream" uid="uid://btkuvbh2f5sqv" path="res://audio/sfx/eating/enemy_eating-01_edited-01.wav" id="4_nxy7r"]
 [ext_resource type="AudioStream" uid="uid://b7bjr8tv0eneg" path="res://audio/sfx/falling/splash_edited.wav" id="4_umfvv"]
+[ext_resource type="AudioStream" uid="uid://d1wn4jxt65rrp" path="res://audio/sfx/timedeath/oof_edited.wav" id="5_10oli"]
 [ext_resource type="AudioStream" uid="uid://ji4eb36agyiu" path="res://audio/sfx/eating/enemy_eating-02_edited-01.wav" id="5_46vvq"]
 [ext_resource type="AudioStream" uid="uid://c5j30n4lmi0q7" path="res://audio/sfx/eating/enemy_eating-03_edited-01.wav" id="6_cxgtn"]
 [ext_resource type="AudioStream" uid="uid://cilvigeqx5r7q" path="res://audio/sfx/zapping/zapping_edited-01.wav" id="8_ftnlh"]
@@ -36,6 +37,13 @@ volume_db = -11.0
 unique_name_in_owner = true
 stream = ExtResource("4_umfvv")
 volume_db = -3.0
+
+[node name="Timedeath" type="Node" parent="Player"]
+
+[node name="Oof" type="AudioStreamPlayer" parent="Player/Timedeath"]
+unique_name_in_owner = true
+stream = ExtResource("5_10oli")
+volume_db = -2.0
 
 [node name="Music" type="Node" parent="."]
 
