@@ -57,6 +57,33 @@ func _ready() -> void:
 	if ui:
 		_update_game_state(game_states.MENU,false)
 
+	load_game()
+
+func save_data() -> Dictionary:
+	var save_dict :Dictionary = {
+		
+		"hiscore" = score_high,
+	}
+	return save_dict
+
+
+func save_game() -> void:
+	var save_score :FileAccess = FileAccess.open("user://save_score.save", FileAccess.WRITE)
+	var json_string : String= JSON.stringify(save_data())
+	save_score.store_line(json_string)
+
+
+func load_game() -> void:
+	if not FileAccess.file_exists("user://save_score.save"):
+		return
+	
+	var save_score :FileAccess= FileAccess.open("user://save_score.save", FileAccess.READ)
+	
+	var content: Dictionary = JSON.parse_string(save_score.get_as_text())
+	score_high = content["hiscore"]
+	Messenger.update_score.emit(0)
+		
+	
 
 func _on_reload():
 	score = 0

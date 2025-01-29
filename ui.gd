@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var label_score: Label = %"Label_Score-Value"
 @onready var label_hiscore: Label = %"Label_HiScore-Value"
+@onready var vbox_score: VBoxContainer = %VBox_Score
 
 @onready var container_top: MarginContainer = %Container_Top
 @onready var container_bottom: MarginContainer = %Container_Bottom
@@ -29,6 +30,8 @@ func _ready() -> void:
 	Messenger.update_level.connect(_on_update_level)
 	Messenger.start_progress_timer.connect(_on_start_progress_timer)
 	
+	Messenger.update_score.emit(0)
+	
 func _on_start_progress_timer():
 	progress_timer.start(progress_timer_length)
 	start_time = true
@@ -51,7 +54,13 @@ func update_progress_timer():
 	
 func _on_update_score(score:int) -> void:
 	Globals.score += score
+	if Globals.score > Globals.score_high:
+		Globals.score_high = Globals.score
+		Globals.save_game()
+		
 	label_score.text = str(Globals.score)
+	label_hiscore.text = str(Globals.score_high)
+	
 	
 func _on_update_lives(amount) -> void:
 	var lives_children = []
@@ -69,13 +78,13 @@ func _on_update_lives(amount) -> void:
 func _on_state_menu() -> void:
 	rows_0_7.visible = false
 	rows_8_12.visible = false
-	container_top.visible = false
+	vbox_score.visible = false
 	container_bottom.visible = false
 	
 func _on_state_play() -> void:
 	rows_0_7.visible = true
 	rows_8_12.visible = true
-	container_top.visible = true
+	vbox_score.visible = true
 	container_bottom.visible = true
 
 func _on_update_level():

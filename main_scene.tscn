@@ -1116,6 +1116,7 @@ theme_override_constants/separation = 110
 alignment = 1
 
 [node name="VBox_Score" type="VBoxContainer" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Label_Score-Text" type="Label" parent="Canvas_UI/Container_UI-Top/Container_Top/HBox_Scores/VBox_Score"]
