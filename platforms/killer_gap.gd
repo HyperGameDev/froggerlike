@@ -11,4 +11,5 @@ func _ready() -> void:
 	
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
+		print("PLAT ",get_parent().name,"'s KG sees Player! (",self,")")
 		Messenger.remove_player.emit(true,Player.death_states.WATER)

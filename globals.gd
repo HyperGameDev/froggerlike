@@ -22,10 +22,12 @@ enum collision {
 	GROUND = 1,
 	WALL = 2,
 	ENEMY = 3,
-	PLATFORM = 4,
-	PLAYER = 5,
-	PLAYER_WRAP = 6,
-	KILLER_GAP = 7,
+	ENEMY_WRAP = 4,
+	PLATFORM = 5,
+	PLATFORM_WRAP = 6,
+	PLAYER = 7,
+	PLAYER_WRAP = 8,
+	KILLER_GAP = 9,
 }
 
 var row_max_speeds := [

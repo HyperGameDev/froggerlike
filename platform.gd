@@ -16,14 +16,19 @@ func _ready() -> void:
 	
 	Messenger.player_ready.connect(_on_player_ready)
 	Messenger.state_msg_start.connect(_on_state_msg_start)
+	area_entered.connect(_on_area_entered)
 	
-	set_collision_layer_value(Globals.collision.PLATFORM, true)
+	set_collision_layer_value(Globals.collision.PLATFORM_WRAP, true)
 	
 	if uses_alt_killer_gap:
 		change_killer_gap()
 		
 	add_killer_gap()
 	
+func _on_area_entered(area):
+	#print("PLAT ",name," sees ",area)
+	if area.is_in_group("Player Area"):
+		print("PLAT ",name," sees Player!")
 
 func change_killer_gap():
 	killer_gap_l = %KillerGap_L2

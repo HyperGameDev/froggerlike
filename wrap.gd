@@ -22,10 +22,10 @@ func collisions_to_wrap():
 			set_collision_mask_value(Globals.collision.PLAYER_WRAP, true)
 			
 		target_types.ENEMY:
-			set_collision_mask_value(Globals.collision.ENEMY, true)
+			set_collision_mask_value(Globals.collision.ENEMY_WRAP, true)
 			
 		target_types.PLATFORM:
-			set_collision_mask_value(Globals.collision.PLATFORM, true)
+			set_collision_mask_value(Globals.collision.PLATFORM_WRAP, true)
 
 func _on_area_entered(area):
 	teleport_object(area)
@@ -35,7 +35,7 @@ func _on_body_entered(body):
 		Messenger.remove_player.emit(true,Player.death_states.EDGE)
 	
 func teleport_object(object):
-	var pos_flip: float = -.97
+	var pos_flip: float = -1.
 		
 	object.global_position.x *= pos_flip
 	

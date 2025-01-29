@@ -3,6 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var fall_death_pos: float = -1.1
+@export var fall_oob_pos: float = -5.
 @export var fall_speed: float = 10.
 
 @onready var move_timer: Timer = %Move_Timer
@@ -115,7 +116,10 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	if global_position.y <= fall_death_pos:
-		free_player()
+		if death_state == death_states.WATER:
+			queue_free()
+		else:
+			Messenger.remove_player.emit(true,Player.death_states.EDGE)
 	
 	check_for_walls()
 	
