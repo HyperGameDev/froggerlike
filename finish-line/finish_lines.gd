@@ -5,6 +5,7 @@ extends Node3D
 @onready var interval_timer : Timer = Timer.new()
 @onready var object_lifetimer : Timer = Timer.new()
 
+@export var all_doors_filled_score: int = 1000
 @export var bonus_at_finish_score: int = 200
 
 @onready var teleportees: Node3D = %Teleportees
@@ -113,6 +114,7 @@ func end_round_only() -> void:
 
 func start_next_level() -> void:
 	Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
+	Messenger.update_score.emit(all_doors_filled_score)
 	
 func _on_open_all_doors() -> void:
 	for node in all_finish_lines:

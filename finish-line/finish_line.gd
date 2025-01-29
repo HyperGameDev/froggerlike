@@ -8,6 +8,8 @@ extends Detectable
 var finish_line_state: finish_line_states
 enum finish_line_states {EMPTY,FILLED,BONUS,ENEMY,}
 
+@export var score_door_filled_amount: int = 50
+
 
 func _ready() -> void:
 	add_to_group("Finish Line")
@@ -29,6 +31,7 @@ func fill_finish_line():
 	finish_line_state = finish_line_states.FILLED
 	Messenger.update_finish_lines.emit(true)
 	animation.play("close_doors")
+	Messenger.update_score.emit(score_door_filled_amount)
 	set_collision_layer_value(Globals.collision.WALL, true)
 	
 func empty_finish_line():

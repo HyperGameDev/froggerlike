@@ -224,11 +224,13 @@ func _on_move_timer_timeout():
 
 func check_row_score():
 	var row: int = abs(floor(global_position.z))
+	print("CURRENT ROW: ",row)
 	
 	if not score_min_row == score_max_row:
-		if row > score_min_row and not row == 7:
-			Messenger.update_score.emit(score_value_row)
+		if row > score_min_row:
 			score_min_row += 1
+			if not row == 7:
+				Messenger.update_score.emit(score_value_row)
 			
 	
 	

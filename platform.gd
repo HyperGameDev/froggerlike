@@ -28,7 +28,8 @@ func _ready() -> void:
 func _on_area_entered(area):
 	#print("PLAT ",name," sees ",area)
 	if area.is_in_group("Player Area"):
-		print("PLAT ",name," sees Player!")
+		pass
+		#print("PLAT ",name," sees Player!")
 
 func change_killer_gap():
 	killer_gap_l = %KillerGap_L2
