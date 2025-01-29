@@ -11,6 +11,7 @@ enum finish_line_states {EMPTY,FILLED,BONUS,ENEMY,}
 
 func _ready() -> void:
 	add_to_group("Finish Line")
+	append_to_finish_line_array()
 	
 	set_collision_layer_value(Globals.collision.GROUND, false)
 	
@@ -19,11 +20,21 @@ func _ready() -> void:
 	
 	body_entered.connect(_on_body_entered)
 	
+func append_to_finish_line_array() -> void:
+	var finish_lines_node: Node3D = get_tree().get_current_scene().get_node("FinishLines")
+	
+	finish_lines_node.all_finish_lines.append(self)
+	
 func fill_finish_line():
 	finish_line_state = finish_line_states.FILLED
-	Messenger.update_finish_lines.emit()
+	Messenger.update_finish_lines.emit(true)
 	animation.play("close_doors")
 	set_collision_layer_value(Globals.collision.WALL, true)
+	
+func empty_finish_line():
+	finish_line_state = finish_line_states.EMPTY
+	animation.play("open_doors")
+	set_collision_layer_value(Globals.collision.WALL, false)
 	
 func _on_body_entered(body):
 	if body.is_in_group("Player"):

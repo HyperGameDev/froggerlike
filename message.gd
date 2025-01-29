@@ -76,6 +76,7 @@ func _on_timer_start_timeout():
 	
 func _on_timer_start2_timeout():
 	visible = false
+	Messenger.open_all_doors.emit()
 	
 func _on_timer_spawn_timeout():
 	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)

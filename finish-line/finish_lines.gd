@@ -13,6 +13,7 @@ extends Node3D
 
 @export var will_teleport_bonus: bool = true
 
+var all_finish_lines = []
 var empty_finish_lines = []
 
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _ready() -> void:
 	Messenger.bonus_collected_at_finish.connect(_on_bonus_collected_at_finish)
 	Messenger.update_finish_lines.connect(_on_update_finish_lines)
 	Messenger.state_play.connect(_on_state_play)
+	Messenger.open_all_doors.connect(_on_open_all_doors)
 	update_finish_line_array()
 	
 func setup_timers():
@@ -95,19 +97,28 @@ func object_not_present() -> bool:
 			return false
 	return true
 	
-func _on_update_finish_lines():
+func _on_update_finish_lines(check_kind_of_finish):
 	update_finish_line_array()
-	what_kind_of_finish()
+	if check_kind_of_finish:
+		what_kind_of_finish()
 	
 func what_kind_of_finish():
-	if not any_finish_lines_available():
-		print("FINISH LINES: Start state begun")	
-		Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
+	if any_finish_lines_available():
+		end_round_only()
 	else:
-		
-		print("FINISH LINES: Time state begun")	
-		Messenger.update_game_state.emit(Globals.game_states.MESSAGE_TIME,true)	
+		start_next_level()
+
+func end_round_only() -> void:
+	Messenger.update_game_state.emit(Globals.game_states.MESSAGE_TIME,true)
+
+func start_next_level() -> void:
+	Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
 	
+func _on_open_all_doors() -> void:
+	for node in all_finish_lines:
+		node.empty_finish_line()
+		Messenger.update_finish_lines.emit(false)
+
 func update_finish_line_array():
 	empty_finish_lines.clear()
 	for node in get_children():

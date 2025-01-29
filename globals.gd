@@ -53,6 +53,7 @@ func _ready() -> void:
   
 func _on_reload():
 	score = 0
+	level = 1
 	get_tree().reload_current_scene()
 
 func _update_game_state(state,emit) -> void:

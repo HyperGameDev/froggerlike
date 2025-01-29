@@ -24,7 +24,9 @@ signal state_over
 @warning_ignore("unused_signal")
 signal update_row_speed ## arg1: type, arg2: row, arg3, speed
 @warning_ignore("unused_signal")
-signal update_finish_lines
+signal update_finish_lines ## arg1: check what kind of finish? (bool)
+@warning_ignore("unused_signal")
+signal open_all_doors
 
 @warning_ignore("unused_signal")
 signal player_ready
