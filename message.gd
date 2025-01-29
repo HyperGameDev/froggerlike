@@ -37,8 +37,12 @@ func _on_state_msg_over():
 	
 func _on_state_msg_time():
 	#print("MESSSAGE: Time should show")
+	var time_left: int = roundi(Globals.time_left)
+	var score_multiplier: int = 10
+	var time_score: int = time_left * score_multiplier
+	Messenger.update_score.emit(time_score)
 	visible = true
-	update_text("TIME: " + str(10),true)
+	update_text("TIME: " + str(time_left),true)
 	
 func _on_state_msg_start():
 	#print("MESSSAGE: Start should show")

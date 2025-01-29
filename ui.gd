@@ -38,7 +38,16 @@ func _process(delta: float) -> void:
 		update_progress_timer()
 	
 func update_progress_timer():
-	progress_bar.value = progress_timer.time_left
+	var time_left: float = progress_timer.time_left
+	Globals.time_left = time_left
+	
+	progress_bar.value = time_left
+	
+	
+	if time_left <= 10.:
+		progress_bar.modulate = Color(2,0,0)
+	else:
+		progress_bar.modulate = Color(1,1,1)
 	
 func _on_update_score(score:int) -> void:
 	Globals.score += score

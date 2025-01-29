@@ -18,6 +18,7 @@ var score: int = 0
 var score_high: int = 0
 var level: int = 1
 var lives: int = 2
+var time_left: float = 0.
 
 enum collision {
 	DO_NOT_USE = 0,
@@ -61,6 +62,7 @@ func _on_reload():
 	score = 0
 	level = 1
 	lives = 2
+	time_left = 0.
 	get_tree().reload_current_scene()
 
 func _on_update_lives(amount):
