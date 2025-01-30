@@ -352,13 +352,18 @@ visible = true
 
 [node name="Plat_Row-11_1" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, -0.4, -11)
+has_sinking = true
 has_two_killer_gaps = true
 row = 11.0
 speed = 2.5
 direction = -1
 
-[node name="truck_4" parent="Rows 8-12/Plat_Row-11_1" index="7"]
-color_1 = Color(0.590199, 0.414322, 0.289688, 1)
+[node name="truck_1" parent="Rows 8-12/Plat_Row-11_1/meshes" index="0"]
+visible = true
+color_1 = Color(0.7068, 0.0647317, 0.273512, 1)
+
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_1/meshes" index="3"]
+visible = false
 
 [node name="Plat_Row-11_2" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -0.4, -11)
@@ -366,11 +371,11 @@ row = 11.0
 speed = 2.5
 direction = -1
 
-[node name="truck_1" parent="Rows 8-12/Plat_Row-11_2" index="4"]
+[node name="truck_2" parent="Rows 8-12/Plat_Row-11_2/meshes" index="1"]
 visible = true
-color_1 = Color(0.190914, 0.405013, 0.183585, 1)
+color_1 = Color(0.67, 0.631698, 0.3417, 1)
 
-[node name="truck_4" parent="Rows 8-12/Plat_Row-11_2" index="7"]
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_2/meshes" index="3"]
 visible = false
 
 [node name="Plat_Row-11_3" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
@@ -379,11 +384,11 @@ row = 11.0
 speed = 2.5
 direction = -1
 
-[node name="truck_3" parent="Rows 8-12/Plat_Row-11_3" index="6"]
+[node name="truck_3" parent="Rows 8-12/Plat_Row-11_3/meshes" index="2"]
 visible = true
-color_1 = Color(0.423651, 0.423651, 0.423651, 1)
+color_1 = Color(0.702093, 0.874233, 0.916177, 1)
 
-[node name="truck_4" parent="Rows 8-12/Plat_Row-11_3" index="7"]
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_3/meshes" index="3"]
 visible = false
 
 [node name="Plat_Row-11_4" parent="Rows 8-12" instance=ExtResource("7_tf02s")]
@@ -392,12 +397,8 @@ row = 11.0
 speed = 2.5
 direction = -1
 
-[node name="truck_2" parent="Rows 8-12/Plat_Row-11_4" index="5"]
-visible = true
-color_1 = Color(0.383299, 8.30255e-07, 0.0295464, 1)
-
-[node name="truck_4" parent="Rows 8-12/Plat_Row-11_4" index="7"]
-visible = false
+[node name="truck_4" parent="Rows 8-12/Plat_Row-11_4/meshes" index="3"]
+color_1 = Color(0.179598, 0.314163, 9.62615e-08, 1)
 
 [node name="Plat_Row-10_1" parent="Rows 8-12" instance=ExtResource("5_y2lln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, -0.4, -10)
@@ -441,14 +442,11 @@ uses_alt_killer_gap = true
 row = 9.0
 direction = 1
 
-[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-09_2" index="5"]
+[node name="broken_wood-1" parent="Rows 8-12/Plat_Row-09_2" index="6"]
 visible = true
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_2" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_2" index="9"]
 visible = false
-
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-09_2" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Plat_Row-09_3" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, -9)
@@ -456,14 +454,11 @@ uses_alt_killer_gap = true
 row = 9.0
 direction = 1
 
-[node name="broken_wood-3" parent="Rows 8-12/Plat_Row-09_3" index="7"]
+[node name="broken_wood-3" parent="Rows 8-12/Plat_Row-09_3" index="8"]
 visible = true
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_3" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_3" index="9"]
 visible = false
-
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-09_3" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Plat_Row-09_4" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -9)
@@ -471,14 +466,11 @@ uses_alt_killer_gap = true
 row = 9.0
 direction = 1
 
-[node name="broken_wood-2" parent="Rows 8-12/Plat_Row-09_4" index="6"]
+[node name="broken_wood-2" parent="Rows 8-12/Plat_Row-09_4" index="7"]
 visible = true
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_4" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-09_4" index="9"]
 visible = false
-
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-09_4" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Plat_Row-08_1" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.4, -8)
@@ -486,11 +478,10 @@ row = 8.0
 speed = 2.5
 direction = -1
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_1" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_1" index="9"]
 visible = false
 
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_1" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_1" index="14"]
 visible = true
 
 [node name="collision" parent="Rows 8-12/Plat_Row-08_1/Wall" index="1"]
@@ -502,11 +493,10 @@ row = 8.0
 speed = 2.5
 direction = -1
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_2" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_2" index="9"]
 visible = false
 
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_2" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_2" index="14"]
 visible = true
 
 [node name="collision" parent="Rows 8-12/Plat_Row-08_2/Wall" index="1"]
@@ -518,11 +508,10 @@ row = 8.0
 speed = 2.5
 direction = -1
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_3" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_3" index="9"]
 visible = false
 
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_3" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_3" index="14"]
 visible = true
 
 [node name="collision" parent="Rows 8-12/Plat_Row-08_3/Wall" index="1"]
@@ -530,15 +519,15 @@ disabled = false
 
 [node name="Plat_Row-08_4" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.4, -8)
+has_sinking = true
 row = 8.0
 speed = 2.5
 direction = -1
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_4" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_4" index="9"]
 visible = false
 
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_4" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_4" index="14"]
 visible = true
 
 [node name="collision" parent="Rows 8-12/Plat_Row-08_4/Wall" index="1"]
@@ -550,11 +539,10 @@ row = 8.0
 speed = 2.5
 direction = -1
 
-[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_5" index="8"]
+[node name="broken_wood-4" parent="Rows 8-12/Plat_Row-08_5" index="9"]
 visible = false
 
-[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_5" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="submarine_01-01_00" parent="Rows 8-12/Plat_Row-08_5" index="14"]
 visible = true
 
 [node name="collision" parent="Rows 8-12/Plat_Row-08_5/Wall" index="1"]
