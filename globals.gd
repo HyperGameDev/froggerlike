@@ -2,6 +2,7 @@ extends Node
 
 @onready var ui: CanvasLayer = get_tree().get_current_scene().get_node("%Canvas_UI")
 
+
 var game_state: game_states
 enum game_states {
 	MENU,
@@ -16,6 +17,8 @@ enum game_states {
 
 var score: int = 0
 var score_high: int = 0
+var extra_life_tracker: int = 0
+@export var extra_life_score: int = 20000
 var level: int = 1
 var lives: int = 2
 var time_left: float = 0.

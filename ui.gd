@@ -54,6 +54,10 @@ func update_progress_timer():
 	
 func _on_update_score(score:int) -> void:
 	Globals.score += score
+	Globals.extra_life_tracker += score
+	
+	track_extra_lives(Globals.score)
+	
 	if Globals.score > Globals.score_high:
 		Globals.score_high = Globals.score
 		Globals.save_game()
@@ -61,16 +65,30 @@ func _on_update_score(score:int) -> void:
 	label_score.text = str(Globals.score)
 	label_hiscore.text = str(Globals.score_high)
 	
+func track_extra_lives(current_score):
+	if Globals.extra_life_tracker >= Globals.extra_life_score:
+		Globals.extra_life_tracker -= Globals.extra_life_score
+		Messenger.update_lives.emit(1)
+	
 	
 func _on_update_lives(amount) -> void:
 	var lives_children = []
 	lives_children.append_array(lives.get_children())
 	
-	if amount < 0 and lives_children.size() > 0:
-		var lives_array = []
-		lives_array.append_array(lives_children)
-		var last_life = lives_array.pop_back()
-		last_life.queue_free()
+	var lives_array = []
+	lives_array.append_array(lives_children)
+	
+	if amount < 0: # If life lost
+		if lives_children.size() > 0:
+			var pop_back_life = lives_array.pop_back()
+			pop_back_life.queue_free()
+			
+	else: # If life gained
+		var extra_life := preload("res://UI/panel_life_01.tscn").instantiate()
+		
+		lives.add_child(extra_life)
+		
+
 		
 	if lives_children.size() <= 0:
 		Messenger.update_game_state.emit(Globals.game_states.MESSAGE_OVER,true)

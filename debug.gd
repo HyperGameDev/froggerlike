@@ -22,6 +22,8 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("Debug 2"):
 			Messenger.remove_player.emit(false,Player.death_states.NON)
 			Messenger.update_game_state.emit(Globals.game_states.MESSAGE_START,true)
+		if event.is_action_pressed("Debug 3"):
+			Messenger.update_score.emit(10000)
 			
 
 func row_update_debug():
