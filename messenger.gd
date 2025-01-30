@@ -53,6 +53,8 @@ signal bonus_collected_at_finish
 @warning_ignore("unused_signal")
 signal wall_collided_at_finish
 
+@warning_ignore("unused_signal")
+signal is_enemy
 
 @warning_ignore("unused_signal")
 signal player_moved

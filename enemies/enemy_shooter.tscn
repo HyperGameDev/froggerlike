@@ -1,4 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpdort7stahe0"]
+[gd_scene load_steps=9 format=3 uid="uid://bpdort7stahe0"]
+
+[ext_resource type="Script" path="res://enemies/enemy_shooter.gd" id="1_dduxr"]
+[ext_resource type="PackedScene" uid="uid://byigjw6ypjv5n" path="res://player/human_03_00.tscn" id="1_y6eap"]
+[ext_resource type="Material" uid="uid://dj2kou4bo1hix" path="res://player/textures/human_clothes_camo_01.tres" id="2_arj1h"]
+[ext_resource type="Material" uid="uid://dthdoawtdm7ev" path="res://player/textures/alien_headpiece_18-01.tres" id="3_8w573"]
+[ext_resource type="Material" path="res://player/textures/alien_headpiece_18-02.tres" id="4_uyh4n"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pjkbp"]
 radius = 0.3
@@ -10,11 +16,72 @@ albedo_color = Color(0.5, 0, 0.00833321, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vh1y"]
 
 [node name="Enemy_Shooter" type="Area3D"]
+script = ExtResource("1_dduxr")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434772, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_pjkbp")
 surface_material_override/0 = SubResource("StandardMaterial3D_42ipn")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_2vh1y")
+
+[node name="human_03_00" parent="." instance=ExtResource("1_y6eap")]
+
+[node name="Armature" parent="human_03_00/human_03_00_GIANT" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00596721, 0)
+
+[node name="Skeleton3D" parent="human_03_00/human_03_00_GIANT/Armature" index="0"]
+bones/8/rotation = Quaternion(-0.298456, 0.834513, -0.312698, 0.34166)
+bones/24/rotation = Quaternion(-0.528128, -0.329013, -0.211058, 0.753847)
+bones/26/rotation = Quaternion(-0.332817, -0.672615, 0.380804, 0.540195)
+bones/42/rotation = Quaternion(-0.616725, 0.136267, 0.162668, 0.758037)
+bones/47/rotation = Quaternion(0.961227, 0.116029, -0.0111028, 0.249915)
+bones/48/rotation = Quaternion(0.270551, 0.0266049, 0.111719, 0.955831)
+bones/49/rotation = Quaternion(-0.74146, -0.00541209, 0.0414282, 0.669695)
+bones/52/rotation = Quaternion(0.961146, -0.11664, 0.0111966, 0.249937)
+bones/53/rotation = Quaternion(0.270531, -0.0267278, -0.112409, 0.955753)
+bones/54/rotation = Quaternion(-0.742662, 0.0148514, 0.0098813, 0.669429)
+
+[node name="Human_ArmL" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="9"]
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/1 = ExtResource("2_arj1h")
+
+[node name="Human_ArmR" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="10"]
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/1 = ExtResource("2_arj1h")
+
+[node name="Human_Body" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="11"]
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/1 = ExtResource("2_arj1h")
+surface_material_override/2 = ExtResource("2_arj1h")
+
+[node name="Human_Head" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="12"]
+visible = false
+
+[node name="Human_Head_Army" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="14"]
+visible = true
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/4 = ExtResource("3_8w573")
+surface_material_override/5 = ExtResource("4_uyh4n")
+
+[node name="Human_LegL" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="16"]
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/1 = ExtResource("2_arj1h")
+
+[node name="Human_LegR" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="17"]
+surface_material_override/0 = ExtResource("2_arj1h")
+surface_material_override/1 = ExtResource("2_arj1h")
+
+[node name="BoneAttachment3D" parent="human_03_00/human_03_00_GIANT/Armature/Skeleton3D" index="18"]
+transform = Transform3D(-0.99893, 0, -0.0462446, 1.19209e-07, -1, -1.99676e-06, -0.0462447, -1.99676e-06, 0.99893, 0.619981, 0.876419, 0.371315)
+
+[node name="AnimationTree" parent="human_03_00" index="1"]
+parameters/PISTOL/blend_amount = 0
+
+[node name="point_marker" parent="human_03_00" index="2"]
+transform = Transform3D(-0.699251, 0, -0.0323712, 8.34465e-08, -0.7, -1.39773e-06, -0.0323713, -1.39773e-06, 0.699251, -0.291291, 0.712169, 0.941109)
+
+[editable path="human_03_00"]
+[editable path="human_03_00/human_03_00_GIANT"]

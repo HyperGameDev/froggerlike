@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 class_name Player
+static var ref: Player
 
 @export var fall_death_pos: float = -1.1
 @export var fall_oob_pos: float = -5.
@@ -55,6 +56,8 @@ var score_value_row: int = 10
 var score_min_row: int = 1
 var score_max_row: int = 12
 
+func _init() -> void:
+	ref = self
 
 func _ready() -> void:
 	move_timer.timeout.connect(_on_move_timer_timeout)
