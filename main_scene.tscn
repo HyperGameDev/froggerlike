@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=73 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -73,6 +73,10 @@ size = Vector3(3.5, 3, 0.505)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ctqwv"]
 size = Vector3(3.5, 3, 0.505)
+
+[sub_resource type="FontVariation" id="FontVariation_posqp"]
+base_font = ExtResource("24_l4kq4")
+spacing_glyph = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36b74"]
 bg_color = Color(0, 0, 0, 1)
@@ -248,7 +252,7 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="Preload" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 2.55734, -6.37134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -1.133, -6.371)
 script = ExtResource("2_hq2ki")
 
 [node name="Particles_Blood-Human" parent="Preload" instance=ExtResource("2_iyjlv")]
@@ -993,10 +997,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.05, 0, -6.5)
 [node name="Canvas_Menu" type="CanvasLayer" parent="."]
 script = ExtResource("22_vh0sv")
 
+[node name="Container_Title" type="MarginContainer" parent="Canvas_Menu"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -410.0
+offset_bottom = 72.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Canvas_Menu/Container_Title"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.1566, 0.1566, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 22
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 60
+theme_override_constants/shadow_outline_size = 50
+theme_override_fonts/font = SubResource("FontVariation_posqp")
+theme_override_font_sizes/font_size = 84
+text = "BUNKER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Container_UI-Mid" type="MarginContainer" parent="Canvas_Menu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 130.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 280
