@@ -28,7 +28,7 @@ shape = SubResource("SphereShape3D_tnou8")
 transform = Transform3D(-6.11959e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.11959e-08, 0.3, -0.79765, 0)
 
 [node name="Armature" parent="alien" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026234, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0422727, 0)
 
 [editable path="alien"]
 [editable path="alien/Blood"]

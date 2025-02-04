@@ -25,6 +25,11 @@ signal state_over
 
 @warning_ignore("unused_signal")
 signal start_progress_timer
+@warning_ignore("unused_signal")
+signal stop_progress_timer
+
+@warning_ignore("unused_signal")
+signal return_to_start_pos
 
 @warning_ignore("unused_signal")
 signal update_row_speed ## arg1: type, arg2: row, arg3, speed
@@ -42,7 +47,10 @@ signal respawn
 
 
 @warning_ignore("unused_signal")
-signal update_score ## arg1: score int
+signal kill_score_popup 
+
+@warning_ignore("unused_signal")
+signal update_score ## arg1: score (int)
 @warning_ignore("unused_signal")
 signal update_lives ## arg1: life change
 @warning_ignore("unused_signal")

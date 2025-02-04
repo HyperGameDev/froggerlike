@@ -4,8 +4,11 @@ extends Node3D
 @export var player_spawn_pos_x: int = 1
 @export var player_spawn_pos_z: int = -1
 
+@onready var rows_8_12: Node3D = %"Rows 8-12"
+@onready var rows_0_7: Node3D = %"Rows_0-7"
+
 @onready var respawn_timer: Timer = %Respawn_Timer
-var respawn_time: float = 1.
+var respawn_time: float = 1.3
 
 func _ready() -> void:	
 	Messenger.respawn.connect(_on_respawn)
@@ -23,6 +26,10 @@ func _on_respawn():
 
 func _on_respawn_timer_timeout():
 	spawn_player()
+	Messenger.return_to_start_pos.emit()
+	
+	rows_0_7.visible = true
+	rows_8_12.visible = true
 	
 func spawn_player():
 	var player = preload("res://player.tscn").instantiate()

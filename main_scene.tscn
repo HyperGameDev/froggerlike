@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cwtjvhkfpj8ya"]
+[gd_scene load_steps=76 format=3 uid="uid://cwtjvhkfpj8ya"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_6qfjw"]
 [ext_resource type="Script" path="res://wall.gd" id="2_6sw12"]
@@ -120,6 +120,33 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="FontVariation" id="FontVariation_mjv82"]
 base_font = ExtResource("24_l4kq4")
 
+[sub_resource type="Animation" id="Animation_41w2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:theme_override_constants/margin_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1670]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_4xe7c"]
 resource_name = "scroll"
 length = 25.0
@@ -150,37 +177,25 @@ tracks/1/keys = {
 "values": [true, true, false, false]
 }
 
-[sub_resource type="Animation" id="Animation_41w2c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:theme_override_constants/margin_bottom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1670]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfw4w"]
 _data = {
 "RESET": SubResource("Animation_41w2c"),
 "scroll": SubResource("Animation_4xe7c")
+}
+
+[sub_resource type="Animation" id="Animation_exlpl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_constants/margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [665]
 }
 
 [sub_resource type="Animation" id="Animation_mlht3"]
@@ -201,21 +216,6 @@ tracks/0/keys = {
 "values": [665, -525]
 }
 
-[sub_resource type="Animation" id="Animation_exlpl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_constants/margin_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [665]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47t8w"]
 _data = {
 "RESET": SubResource("Animation_exlpl"),
@@ -229,6 +229,57 @@ bg_color = Color(1, 1, 1, 0.321569)
 spacing_top = 3
 spacing_bottom = -15
 baseline_offset = -0.15
+
+[sub_resource type="Animation" id="Animation_67wxo"]
+resource_name = "show_score"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_constants/margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0768416, 0.966667, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 100, 100, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill_score_popup"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wtbud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_constants/margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8x2w"]
+_data = {
+"RESET": SubResource("Animation_wtbud"),
+"show_score": SubResource("Animation_67wxo")
+}
 
 [sub_resource type="FontVariation" id="FontVariation_bcv1b"]
 base_font = ExtResource("24_l4kq4")
@@ -316,7 +367,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-00" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-00" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -337,7 +388,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-01" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-01" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -358,7 +409,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-02" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-02" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -379,7 +430,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-03" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-03" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -400,7 +451,7 @@ visible = false
 visible = false
 
 [node name="Door_L" parent="FinishLines/bunker_doors_01-04" index="6"]
-transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311433, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
+transform = Transform3D(-0.423981, 1.74712e-07, -0.405021, 0.311432, 0.528554, -0.188331, 0.432406, -0.380681, -0.261487, -0.626537, 0.353358, 0.568979)
 
 [node name="Door_R" parent="FinishLines/bunker_doors_01-04" index="7"]
 transform = Transform3D(-0.534855, 2.23243e-07, 0.320358, -0.246333, 0.528554, -0.237581, -0.342019, -0.380681, -0.329868, 0.627088, 0.353358, 0.568979)
@@ -543,12 +594,14 @@ direction = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
+speed = 3.0
 direction = 1
 
 [node name="Plat_Row-09_2" parent="Rows 8-12" instance=ExtResource("6_fwm3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
+speed = 3.0
 direction = 1
 
 [node name="broken_wood-1" parent="Rows 8-12/Plat_Row-09_2" index="6"]
@@ -561,6 +614,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
+speed = 3.0
 direction = 1
 
 [node name="broken_wood-3" parent="Rows 8-12/Plat_Row-09_3" index="8"]
@@ -573,6 +627,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.4, -9)
 uses_alt_killer_gap = true
 row = 9.0
+speed = 3.0
 direction = 1
 
 [node name="broken_wood-2" parent="Rows 8-12/Plat_Row-09_4" index="7"]
@@ -896,23 +951,31 @@ target_type = 2
 shape = SubResource("BoxShape3D_6o4v0")
 
 [node name="Wrapper_R" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.55, 0, -10)
 script = ExtResource("12_c6wka")
 target_type = 2
+has_other_side_point = true
 
 [node name="collision" type="CollisionShape3D" parent="Wrappers/Wrappers_plats/Wrapper_row10/Wrapper_R"]
 shape = SubResource("BoxShape3D_ctqwv")
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_plats/Wrapper_row10/Wrapper_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.55, 0, 0)
 
 [node name="Wrapper_row11" type="Node3D" parent="Wrappers/Wrappers_plats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Wrapper_L" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.88, 0, -10)
 script = ExtResource("12_c6wka")
 target_type = 2
+has_other_side_point = true
 
 [node name="collision" type="CollisionShape3D" parent="Wrappers/Wrappers_plats/Wrapper_row11/Wrapper_L"]
 shape = SubResource("BoxShape3D_6o4v0")
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_plats/Wrapper_row11/Wrapper_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 0, 0)
 
 [node name="Wrapper_R" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, 0, -10)
@@ -933,12 +996,16 @@ target_type = 2
 shape = SubResource("BoxShape3D_6o4v0")
 
 [node name="Wrapper_R" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.95, 0, -11.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -11.975)
 script = ExtResource("12_c6wka")
 target_type = 2
+has_other_side_point = true
 
 [node name="collision" type="CollisionShape3D" parent="Wrappers/Wrappers_plats/Wrapper_row12/Wrapper_R"]
 shape = SubResource("BoxShape3D_ctqwv")
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_plats/Wrapper_row12/Wrapper_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4, 0, 0)
 
 [node name="Wrapper_row9" type="Node3D" parent="Wrappers/Wrappers_plats"]
 
@@ -951,22 +1018,30 @@ target_type = 2
 shape = SubResource("BoxShape3D_6o4v0")
 
 [node name="Wrapper_R" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.45, 0, -8.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.43, 0, -8.975)
 script = ExtResource("12_c6wka")
 target_type = 2
+has_other_side_point = true
 
 [node name="collision" type="CollisionShape3D" parent="Wrappers/Wrappers_plats/Wrapper_row9/Wrapper_R"]
 shape = SubResource("BoxShape3D_ctqwv")
 
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_plats/Wrapper_row9/Wrapper_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9, 0, 0)
+
 [node name="Wrapper_row8" type="Node3D" parent="Wrappers/Wrappers_plats"]
 
 [node name="Wrapper_L" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9, 0, -7.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.99, 0, -7.975)
 script = ExtResource("12_c6wka")
 target_type = 2
+has_other_side_point = true
 
 [node name="collision" type="CollisionShape3D" parent="Wrappers/Wrappers_plats/Wrapper_row8/Wrapper_L"]
 shape = SubResource("BoxShape3D_6o4v0")
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_plats/Wrapper_row8/Wrapper_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.44, 0, 0)
 
 [node name="Wrapper_R" type="Area3D" parent="Wrappers/Wrappers_plats/Wrapper_row8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6, 0, -7.975)
@@ -981,10 +1056,18 @@ shape = SubResource("BoxShape3D_ctqwv")
 [node name="Wrapper_L" parent="Wrappers/Wrappers_enemy" instance=ExtResource("12_q4olf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0, -6.5)
 target_type = 1
+has_other_side_point = true
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_enemy/Wrapper_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6, 0, 0.5)
 
 [node name="Wrapper_R" parent="Wrappers/Wrappers_enemy" instance=ExtResource("12_q4olf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7, 0, -6.5)
 target_type = 1
+has_other_side_point = true
+
+[node name="other_side_point" type="Marker3D" parent="Wrappers/Wrappers_enemy/Wrapper_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8, 0, 2.5)
 
 [node name="Wrappers_player" type="Node3D" parent="Wrappers"]
 
@@ -1491,6 +1574,26 @@ text = "Update"
 unique_name_in_owner = true
 script = ExtResource("24_4bwkk")
 
+[node name="Container_UI-Scorepopup" type="MarginContainer" parent="Canvas_UI"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.133
+offset_bottom = -0.192001
+theme_override_constants/margin_left = 233
+theme_override_constants/margin_top = 0
+
+[node name="Animation_scorepopup" type="AnimationPlayer" parent="Canvas_UI/Container_UI-Scorepopup"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_b8x2w")
+}
+
+[node name="HBox_Scorepopups" type="HFlowContainer" parent="Canvas_UI/Container_UI-Scorepopup"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/v_separation = 25
+last_wrap_alignment = 3
+
 [node name="Container_UI-Top" type="MarginContainer" parent="Canvas_UI"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -1627,9 +1730,12 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 0, -11)
 visible = false
 mesh = SubResource("BoxMesh_a7tce")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
 
 [editable path="FinishLines/bunker_doors_01-00"]
 [editable path="FinishLines/bunker_doors_01-01"]

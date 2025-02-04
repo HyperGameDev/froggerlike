@@ -83,9 +83,10 @@ func _on_timer_time_timeout():
 	
 func _on_timer_start_timeout():
 	#print("MESSSAGE: Start 2 should show")
-	update_text("START LEVEL " + str(Globals.level),false)	
 	Messenger.update_game_state.emit(Globals.game_states.PLAY,true)
 	Messenger.update_level.emit()
+
+	update_text("START LEVEL " + str(Globals.level),false)	
 	timer_start2.start(timer_start2_length)
 	
 func _on_timer_start2_timeout():

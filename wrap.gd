@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var target_type: target_types
+@export var has_other_side_point: bool = false
 enum target_types {PLAYER,ENEMY,PLATFORM}
 
 
@@ -35,7 +36,11 @@ func _on_body_entered(body):
 		Messenger.remove_player.emit(true,Player.death_states.EDGE)
 	
 func teleport_object(object):
-	var pos_flip: float = -1.
+	if target_type == target_types.PLAYER:
+		var pos_flip: float = -1.
+		object.global_position.x *= pos_flip
 		
-	object.global_position.x *= pos_flip
+	else:
+		if has_other_side_point:
+			object.global_position.x = get_node("other_side_point").global_position.x
 	

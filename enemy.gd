@@ -7,7 +7,10 @@ class_name Enemy
 @export var has_electric: bool = false
 
 func _ready() -> void:
+	#start_pos = global_position.x
+	#Messenger.return_to_start_pos.connect(_on_return_to_start_pos)
 	Messenger.player_ready.connect(_on_player_ready)
+	Messenger.state_play.connect(_on_state_play)
 
 	if not has_electric:
 		Messenger.state_msg_start.connect(_on_state_msg_start)
@@ -17,11 +20,14 @@ func _ready() -> void:
 		set_collision_layer_value(Globals.collision.ENEMY_WRAP, true)
 	set_collision_mask_value(Globals.collision.PLAYER, true)
 
+func _on_state_play():
+	move_ok = true
 
 func _physics_process(delta: float) -> void:
 	if not direction == 0:
 		var rate: float = speed * delta
-		move_object(rate,direction,self)
+		if move_ok:
+			move_object(rate,direction,self)
 
 #func player_just_landed():
 	#print(player.name, " is aligned with ",self.name)

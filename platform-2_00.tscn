@@ -46,6 +46,21 @@ size = Vector3(3, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rknuf"]
 
+[sub_resource type="Animation" id="Animation_o3fk5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("submarine_01-01_00:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0331677, 0.0170599, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_qwj7s"]
 resource_name = "sink"
 length = 3.0
@@ -79,21 +94,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"sink_added_collision"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_o3fk5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("submarine_01-01_00:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0331677, 0.0170599, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xaory"]

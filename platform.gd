@@ -14,11 +14,12 @@ var animation: AnimationPlayer
 @export var has_two_killer_gaps: bool = false
 @export var uses_alt_killer_gap: bool = false
 
-
 func _ready() -> void:
-	
+	#start_pos = global_position.x
+	#Messenger.return_to_start_pos.connect(_on_return_to_start_pos)
 	Messenger.player_ready.connect(_on_player_ready)
 	Messenger.state_msg_start.connect(_on_state_msg_start)
+	Messenger.state_play.connect(_on_state_play)
 	area_entered.connect(_on_area_entered)
 	
 	set_collision_layer_value(Globals.collision.PLATFORM_WRAP, true)	
@@ -31,6 +32,10 @@ func _ready() -> void:
 		setup_sinking()
 		
 	add_killer_gap()
+
+
+func _on_state_play():
+	move_ok = true
 	
 func _on_area_entered(area):
 	#print("PLAT ",name," sees ",area)
@@ -64,7 +69,9 @@ func _physics_process(delta: float) -> void:
 	if not direction == 0:
 		var rate: float = speed * delta
 
-		move_object(rate,direction,ground)
+		if move_ok:
+			move_object(rate,direction,ground)
+			
 		
 		self.global_position.x = ground.global_position.x
 	

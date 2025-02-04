@@ -64,12 +64,12 @@ script = ExtResource("1_8b36s")
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="Armature" parent="human_03_00_GIANT" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037721, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0348486, 0)
 
 [node name="Skeleton3D" parent="human_03_00_GIANT/Armature" index="0"]
 bones/6/rotation = Quaternion(-0.0343034, -1.16471e-07, 1.57604e-08, 0.999411)
 bones/7/rotation = Quaternion(-0.529347, -0.453436, -0.466569, 0.544518)
-bones/8/rotation = Quaternion(-0.349091, 0.797329, -0.355082, 0.341055)
+bones/8/rotation = Quaternion(-0.344724, 0.800779, -0.351441, 0.341187)
 bones/9/rotation = Quaternion(0.578388, -0.146379, 0.232546, 0.76809)
 bones/10/rotation = Quaternion(0.205966, 0.0147476, -0.119349, 0.971142)
 bones/12/rotation = Quaternion(-0.039279, -0.0623083, -0.0464746, 0.9962)
@@ -84,9 +84,9 @@ bones/21/rotation = Quaternion(-0.423217, -0.0290024, 0.14092, 0.894532)
 bones/22/rotation = Quaternion(0.0337555, 0.00843742, -0.00672542, 0.999372)
 bones/23/rotation = Quaternion(0.0524176, -4.47866e-05, -0.047229, 0.997508)
 bones/24/position = Vector3(-0.0580036, 0.246204, -0.103801)
-bones/24/rotation = Quaternion(-0.554979, -0.261914, -0.191715, 0.765928)
+bones/24/rotation = Quaternion(-0.552748, -0.267867, -0.193458, 0.765043)
 bones/25/rotation = Quaternion(-0.529348, 0.453436, 0.466569, 0.544519)
-bones/26/rotation = Quaternion(-0.379464, -0.65269, 0.388547, 0.528236)
+bones/26/rotation = Quaternion(-0.375392, -0.65452, 0.387908, 0.52935)
 bones/27/rotation = Quaternion(0.508169, 0.11136, -0.0501971, 0.852551)
 bones/28/rotation = Quaternion(0.205966, -0.0147476, 0.119349, 0.971142)
 bones/30/rotation = Quaternion(-0.039279, 0.0623083, 0.0464746, 0.9962)
@@ -101,13 +101,13 @@ bones/39/rotation = Quaternion(-0.423217, 0.0290024, -0.14092, 0.894532)
 bones/40/rotation = Quaternion(0.0337555, -0.00843743, 0.00672542, 0.999372)
 bones/41/rotation = Quaternion(0.0524177, 4.47959e-05, 0.047229, 0.997508)
 bones/42/position = Vector3(0.0580035, 0.246204, -0.103801)
-bones/42/rotation = Quaternion(-0.614119, 0.0876251, 0.146895, 0.770455)
-bones/47/rotation = Quaternion(0.979295, 0.09306, -0.0153384, 0.179126)
-bones/48/rotation = Quaternion(0.100881, 0.0123584, 0.0744707, 0.99203)
-bones/49/rotation = Quaternion(-0.67523, -0.0117786, 0.0302578, 0.736892)
-bones/52/rotation = Quaternion(0.97888, -0.0969366, 0.0159311, 0.179288)
-bones/53/rotation = Quaternion(0.100803, -0.0131386, -0.078843, 0.991691)
-bones/54/rotation = Quaternion(-0.674461, 0.0215403, 0.0114533, 0.737907)
+bones/42/rotation = Quaternion(-0.614418, 0.0919248, 0.148302, 0.769446)
+bones/47/rotation = Quaternion(0.977898, 0.0951602, -0.014959, 0.185572)
+bones/48/rotation = Quaternion(0.116357, 0.0136629, 0.0779366, 0.990051)
+bones/49/rotation = Quaternion(-0.681518, -0.0112029, 0.0312869, 0.731046)
+bones/52/rotation = Quaternion(0.977506, -0.0987417, 0.0155066, 0.18572)
+bones/53/rotation = Quaternion(0.116283, -0.0143846, -0.0819806, 0.989722)
+bones/54/rotation = Quaternion(-0.680929, 0.02094, 0.0113147, 0.731963)
 bones/55/rotation = Quaternion(-5.49686e-07, 0.995399, -0.0958151, -1.93912e-07)
 
 [node name="Human_ArmL" parent="human_03_00_GIANT/Armature/Skeleton3D" index="9"]
@@ -136,7 +136,7 @@ surface_material_override/2 = ExtResource("2_j803k")
 surface_material_override/3 = ExtResource("2_j803k")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="human_03_00_GIANT/Armature/Skeleton3D" index="18"]
-transform = Transform3D(-0.99893, 0, -0.0462449, 1.78814e-07, -1, -1.81794e-06, -0.0462447, -1.80304e-06, 0.99893, 0.59827, 0.851548, 0.362431)
+transform = Transform3D(-0.99893, -2.98023e-08, -0.0462447, 8.9407e-08, -1, -1.77324e-06, -0.0462446, -1.77324e-06, 0.99893, 0.600324, 0.853633, 0.363105)
 bone_name = "gun.L"
 bone_idx = 24
 
@@ -157,6 +157,6 @@ parameters/Transition/current_index = 0
 
 [node name="point_marker" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-0.699251, 0, -0.0323714, 1.2517e-07, -0.7, -1.27256e-06, -0.0323713, -1.26213e-06, 0.699251, -0.306488, 0.716987, 0.93489)
+transform = Transform3D(-0.699251, -2.08616e-08, -0.0323713, 6.25849e-08, -0.7, -1.24127e-06, -0.0323712, -1.24127e-06, 0.699251, -0.30505, 0.716436, 0.935362)
 
 [editable path="human_03_00_GIANT"]
